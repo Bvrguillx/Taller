@@ -187,8 +187,8 @@ public class login {
 			JOptionPane.showMessageDialog(login, "Usuario & Contraseña Válidos", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
 			login.dispose();
-			// Principal p = new Principal();
-			// p.frame.setVisible(true);
+			 Principal p = new Principal();
+			 p.getFramePrincipal().setVisible(true);
 		} else {
 			JOptionPane.showMessageDialog(login, "Usuario ó Contraseña Incorrectos", "Login",
 					JOptionPane.ERROR_MESSAGE);

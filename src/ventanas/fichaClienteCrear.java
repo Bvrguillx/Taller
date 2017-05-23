@@ -42,6 +42,16 @@ public class fichaClienteCrear {
 		});
 	}
 
+	
+	
+	//get frameCliente
+	public JFrame getFrameCliente() {
+		return frameCliente;
+	}
+
+
+
+
 	/**
 	 * Create the application.
 	 */
