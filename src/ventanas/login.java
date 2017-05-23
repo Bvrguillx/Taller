@@ -182,7 +182,7 @@ public class login {
 	}
 	
 	public void accion(JLabel lblTitulo){
-		if (credenciales.logeo(getUsuario(), getContrasenia())){
+		if (Credenciales.logeo(getUsuario(), getContrasenia())){
 			exito = true;
 			JOptionPane.showMessageDialog(login, "Usuario & Contraseña Válidos", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
