@@ -1,4 +1,4 @@
-package ventanaReparar;
+package ventanas;
 
 import java.awt.EventQueue;
 import java.awt.Font;

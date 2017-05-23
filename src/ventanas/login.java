@@ -1,4 +1,4 @@
-package ventanasLog;
+package ventanas;
 
 import java.awt.EventQueue;
 

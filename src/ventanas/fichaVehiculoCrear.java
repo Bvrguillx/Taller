@@ -1,4 +1,4 @@
-package ventanaVehiculo;
+package ventanas;
 
 import java.awt.EventQueue;
 
