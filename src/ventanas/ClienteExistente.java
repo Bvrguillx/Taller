@@ -33,11 +33,11 @@ public class ClienteExistente {
 			}
 		});
 	}
-	
-	//Getter para la ventana.
-		public JFrame getFrameExistente() {
-			return frameExistente;
-		}
+
+	// Getter para la ventana.
+	public JFrame getFrameExistente() {
+		return frameExistente;
+	}
 
 	/**
 	 * Create the application.
@@ -59,7 +59,7 @@ public class ClienteExistente {
 		// label
 		lbExisteCliente = new JLabel("\u00BFExiste el Cliente?");
 
-		// boton Cliente SI existe 
+		// boton Cliente SI existe
 		btnClienteSi = new JButton("SI");
 
 		// boton Cliente NO existe
@@ -96,11 +96,10 @@ public class ClienteExistente {
 		btnClienteNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				 fichaClienteCrear ventana= new fichaClienteCrear();
-				 
-				  ventana.getFrameCliente().setVisible(true);
-				 
-				 
+				fichaClienteCrear ventana = new fichaClienteCrear();
+
+				ventana.getFrameCliente().setVisible(true);
+
 				frameExistente.dispose();
 
 			}
@@ -110,15 +109,11 @@ public class ClienteExistente {
 		btnClienteSi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				//Enlazar a la ventana de alejandro buscar DNI
-				/*
-				 * nuevoVehiculo ventana= new nuevoVehiculo();
-				 * 
-				 * ventana.getFrame().setVisible(true);
-				 * 
-				 */
+				fichaDni ventana = new fichaDni();
+
+				ventana.getFrameDni().setVisible(true);
+
 				frameExistente.dispose();
-				 
 
 			}
 		});

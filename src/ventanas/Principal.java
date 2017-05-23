@@ -34,12 +34,11 @@ public class Principal {
 		});
 	}
 
-	//get ventana
+	// get ventana
 	public JFrame getFramePrincipal() {
 		return framePrincipal;
 	}
-	
-	
+
 	/**
 	 * Create the application.
 	 */
@@ -93,16 +92,14 @@ public class Principal {
 	}
 
 	private void setEventos() {
-		// Eventos boton nuevo Vehiculo hacia elegir cliente 
+		// Eventos boton nuevo Vehiculo hacia elegir cliente
 		btnNuevoVehiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
-				 ClienteExistente ventana= new ClienteExistente();
-				 
+				ClienteExistente ventana = new ClienteExistente();
+
 				ventana.getFrameExistente().setVisible(true);
-				
-				
+
 				framePrincipal.dispose();
 
 			}
@@ -124,10 +121,5 @@ public class Principal {
 		});
 
 	}
-
-
-
-
-
 
 }
