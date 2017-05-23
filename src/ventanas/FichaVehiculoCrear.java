@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class fichaVehiculoCrear {
+public class FichaVehiculoCrear {
 
 	private JFrame frameCrearFichaVehiculo;
 	private JTextField matriculaField;
@@ -42,7 +42,7 @@ public class fichaVehiculoCrear {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					fichaVehiculoCrear window = new fichaVehiculoCrear();
+					FichaVehiculoCrear window = new FichaVehiculoCrear();
 					window.frameCrearFichaVehiculo.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,7 +54,7 @@ public class fichaVehiculoCrear {
 	/**
 	 * Create the application.
 	 */
-	public fichaVehiculoCrear() {
+	public FichaVehiculoCrear() {
 		initialize();
 		setPropiedades();
 		setEventos();
@@ -154,26 +154,26 @@ public class fichaVehiculoCrear {
 		motorField.setBounds(213, 257, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(motorField);
 		
-		btnGuardar.setIcon(new ImageIcon(fichaVehiculoCrear.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
+		btnGuardar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
 		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		btnGuardar.setBounds(78, 335, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnGuardar);
 		
-		btnCliente.setIcon(new ImageIcon(fichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
+		btnCliente.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
 		btnCliente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		btnCliente.setBounds(415, 93, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnCliente);
 		
-		btnReparar.setIcon(new ImageIcon(fichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
+		btnReparar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnReparar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		btnReparar.setBounds(415, 206, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnReparar);
 		
-		btnAtras.setIcon(new ImageIcon(fichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnAtras.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnAtras.setBounds(432, 335, 81, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnAtras);
 		
-		btnCerrar.setIcon(new ImageIcon(fichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
+		btnCerrar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
 		btnCerrar.setBounds(554, 335, 81, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnCerrar);
 		

@@ -12,15 +12,17 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.JTextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class fichaReparar {
+public class FichaReparar {
 
 	private JFrame frameFichaReparar;
 	private JTextField responsableField;
 	private JTextField matriculaField;
 	private JTextField fechaentradaField;
 	private JTextField fechasalidaField;
-	private JTextField textField;
 	private JLabel lblClientesicosDelTrvpller;
 	private JLabel lblResponsable;
 	private JLabel lblMatricula;
@@ -33,10 +35,11 @@ public class fichaReparar {
 	private JButton btnCrearFicha;
 	private JButton btnVaciar;
 	private JLabel lblOpciones;
-	private JButton btnNewButton;
+	private JButton btnAtras;
 	private JTextField presupuestoField;
 	private JLabel lblPresupuesto;
-
+	private JTextArea comentariosArea;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -44,7 +47,7 @@ public class fichaReparar {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					fichaReparar window = new fichaReparar();
+					FichaReparar window = new FichaReparar();
 					window.frameFichaReparar.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +59,7 @@ public class fichaReparar {
 	/**
 	 * Create the application.
 	 */
-	public fichaReparar() {
+	public FichaReparar() {
 		initialize();
 		setPropiedades();
 		setEventos();
@@ -69,7 +72,6 @@ public class fichaReparar {
 	private void initialize() {
 	
 		frameFichaReparar = new JFrame();
-		frameFichaReparar.setResizable(false);
 		lblClientesicosDelTrvpller = new JLabel("Clientesicos del Trvpller");
 		lblResponsable = new JLabel("Responsable");
 		responsableField = new JTextField();
@@ -80,15 +82,16 @@ public class fichaReparar {
 		lblFechaSalida = new JLabel("Fecha Salida");
 		fechasalidaField = new JTextField();
 		lblComentarios = new JLabel("Comentarios");
-		textField = new JTextField();
 		lblEstado = new JLabel("Estado");
 		listEstado = new JList();
 		btnCrearFicha = new JButton("CREAR FICHA");
 		btnVaciar = new JButton("VACIAR");
 		lblOpciones = new JLabel("Opciones");
-		btnNewButton = new JButton("");
+		btnAtras = new JButton("");
 		presupuestoField = new JTextField();
 		lblPresupuesto = new JLabel("Presupuesto");
+		comentariosArea = new JTextArea();
+		
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes", "serial" })
@@ -103,6 +106,7 @@ public class fichaReparar {
 		lblClientesicosDelTrvpller.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClientesicosDelTrvpller.setBounds(10, 11, 707, 46);
 		frameFichaReparar.getContentPane().add(lblClientesicosDelTrvpller);
+		frameFichaReparar.setResizable(false);
 		
 		lblResponsable.setHorizontalAlignment(SwingConstants.CENTER);
 		lblResponsable.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -145,16 +149,11 @@ public class fichaReparar {
 		lblComentarios.setBounds(458, 68, 259, 36);
 		frameFichaReparar.getContentPane().add(lblComentarios);
 		
-		textField.setBounds(458, 115, 259, 150);
-		frameFichaReparar.getContentPane().add(textField);
-		textField.setColumns(10);
-		
 		lblEstado.setHorizontalAlignment(SwingConstants.CENTER);
+		listEstado.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		lblEstado.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblEstado.setBounds(10, 270, 209, 36);
 		frameFichaReparar.getContentPane().add(lblEstado);
-		
-		listEstado.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listEstado.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		listEstado.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		listEstado.setModel(new AbstractListModel() {
@@ -169,12 +168,12 @@ public class fichaReparar {
 		listEstado.setBounds(10, 317, 250, 139);
 		frameFichaReparar.getContentPane().add(listEstado);
 		
-		btnCrearFicha.setIcon(new ImageIcon(fichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/images/capslock-icon.png")));
+		btnCrearFicha.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/images/capslock-icon.png")));
 		btnCrearFicha.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		btnCrearFicha.setBounds(451, 321, 259, 57);
 		frameFichaReparar.getContentPane().add(btnCrearFicha);
 		
-		btnVaciar.setIcon(new ImageIcon(fichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-confirm.png")));
+		btnVaciar.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-confirm.png")));
 		btnVaciar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		btnVaciar.setBounds(451, 389, 259, 57);
 		frameFichaReparar.getContentPane().add(btnVaciar);
@@ -184,9 +183,9 @@ public class fichaReparar {
 		lblOpciones.setBounds(452, 277, 256, 36);
 		frameFichaReparar.getContentPane().add(lblOpciones);
 		
-		btnNewButton.setIcon(new ImageIcon(fichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnNewButton.setBounds(628, 11, 82, 46);
-		frameFichaReparar.getContentPane().add(btnNewButton);
+		btnAtras.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnAtras.setBounds(628, 11, 82, 46);
+		frameFichaReparar.getContentPane().add(btnAtras);
 		
 		lblPresupuesto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPresupuesto.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -196,9 +195,29 @@ public class fichaReparar {
 		presupuestoField.setColumns(10);
 		presupuestoField.setBounds(239, 133, 209, 46);
 		frameFichaReparar.getContentPane().add(presupuestoField);
+		
+		comentariosArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		comentariosArea.setBounds(468, 107, 249, 157);
+		frameFichaReparar.getContentPane().add(comentariosArea);
 	}
 	
 	public void setEventos(){
+		
+		btnVaciar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				responsableField.setText("");
+				matriculaField.setText("");
+				fechaentradaField.setText("");
+				fechasalidaField.setText("");
+				listEstado.setSelectedIndex(-1);
+				presupuestoField.setText("");
+				comentariosArea.setText("");
+				listEstado.clearSelection();
+				
+			}
+		});
 		
 	}
 }

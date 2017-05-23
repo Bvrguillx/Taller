@@ -1,6 +1,6 @@
 package ventanas;
 
-public class credenciales {
+public class Credenciales {
 
 	public static boolean logeo(String usuario, String contrasenia){
 		

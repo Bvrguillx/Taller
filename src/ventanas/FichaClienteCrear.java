@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class fichaClienteCrear {
+public class FichaClienteCrear {
 
 	private JFrame frameCliente;
 	private JTextField nombreField;
@@ -33,7 +33,7 @@ public class fichaClienteCrear {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					fichaClienteCrear window = new fichaClienteCrear();
+					FichaClienteCrear window = new FichaClienteCrear();
 					window.frameCliente.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class fichaClienteCrear {
 	/**
 	 * Create the application.
 	 */
-	public fichaClienteCrear() {
+	public FichaClienteCrear() {
 		initialize();
 		setPropiedades();
 		setEventos();
@@ -129,12 +129,12 @@ public class fichaClienteCrear {
 		dniField.setBounds(10, 275, 194, 42);
 		frameCliente.getContentPane().add(dniField);
 		
-		btnCrear.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
+		btnCrear.setIcon(new ImageIcon(FichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnCrear.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
 		btnCrear.setBounds(261, 236, 116, 80);
 		frameCliente.getContentPane().add(btnCrear);
 		
-		btnAtras.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnAtras.setIcon(new ImageIcon(FichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnAtras.setBounds(388, 236, 67, 80);
 		frameCliente.getContentPane().add(btnAtras);
 	}

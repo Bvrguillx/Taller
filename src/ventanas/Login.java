@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class login {
+public class Login {
 
 	private JFrame login;
 	private JTextField textFieldUsuario;
@@ -36,7 +36,7 @@ public class login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					login window = new login();
+					Login window = new Login();
 					window.login.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class login {
 	/**
 	 * Create the application.
 	 */
-	public login() {
+	public Login() {
 		initialize();
 		setPropiedades();
 		setEventos();
@@ -108,7 +108,7 @@ public class login {
 		btnGo.setBounds(27, 256, 311, 79);
 		login.getContentPane().add(btnGo);
 		
-		btnNewButton.setIcon(new ImageIcon(login.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
+		btnNewButton.setIcon(new ImageIcon(Login.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
 		btnNewButton.setBounds(348, 256, 89, 79);
 		login.getContentPane().add(btnNewButton);
 		
@@ -182,7 +182,7 @@ public class login {
 	}
 	
 	public void accion(JLabel lblTitulo){
-		if (credenciales.logeo(getUsuario(), getContrasenia())){
+		if (Credenciales.logeo(getUsuario(), getContrasenia())){
 			exito = true;
 			JOptionPane.showMessageDialog(login, "Usuario & Contraseña Válidos", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
