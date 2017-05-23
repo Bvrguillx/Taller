@@ -109,12 +109,11 @@ public class Principal {
 		btnBuscarVehiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				/*
-				 * buscarVehiculo ventana= new buscarVehiculo();
-				 * 
-				 * ventana.getFrame().setVisible(true);
-				 * 
-				 */
+				
+				 BuscarVehiculo ventanaBuscar= new BuscarVehiculo();
+				
+				 ventanaBuscar.getFrameBuscarMatricula().setVisible(true);
+				
 				framePrincipal.dispose();
 
 			}

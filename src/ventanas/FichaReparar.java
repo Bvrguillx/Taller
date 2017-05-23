@@ -56,6 +56,13 @@ public class FichaReparar {
 		});
 	}
 
+	
+	//get BuscarMatricula
+		public JFrame getframeFichaReparar() {
+			return frameFichaReparar;
+		}
+	
+	
 	/**
 	 * Create the application.
 	 */
