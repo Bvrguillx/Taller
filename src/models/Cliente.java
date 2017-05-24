@@ -6,9 +6,9 @@ public class Cliente {
 	protected int cp;
 	protected String apellido;
 	protected String dni;
-	protected float telefono;
+	protected int telefono;
 	
-	public Cliente(String nombre, int cp, String apellido, String dni, float telefono) {
+	public Cliente(String nombre, int cp, String apellido, String dni, int telefono) {
 
 		this.nombre = nombre;
 		this.cp = cp;

@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 
 public class fichaClienteCrear {
 
-	private JFrame frameCliente;
+	protected JFrame frameCliente;
 	private JTextField nombreField;
 	private JTextField apellidoField;
 	private JTextField telefonoField;
@@ -27,7 +27,13 @@ public class fichaClienteCrear {
 	private JLabel lblDNI;
 	private JButton btnCrear;
 	private JButton btnAtras;
-
+	
+	protected String nombre_;
+	protected int cp_;
+	protected String apellido_;
+	protected String dni_;
+	protected int telefono_;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -172,5 +178,14 @@ public class fichaClienteCrear {
 			}
 		});
 
+	}
+	public void crearCliente(){
+	
+		nombre_=nombreField.getText();
+	    String cp_Aux=codpostalField.getText();
+	    cp_=Integer.parseInt(cp_Aux);
+		apellido_=apellidoField.getText();
+		dni_=dniField.getText();
+		telefono_=Integer.parseInt(telefonoField.getText());
 	}
 }
