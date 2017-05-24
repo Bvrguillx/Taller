@@ -14,7 +14,11 @@ import javax.swing.JTextField;
 public class fichaDni {
 
 	private JFrame frameDni;
-	private JTextField textField;
+	private JTextField dniField;
+	private JLabel lblTitulo;
+	private JLabel lblDni;
+	private JButton btnOk;
+	private JButton btnAtras;
 
 	/**
 	 * Launch the application.
@@ -37,6 +41,8 @@ public class fichaDni {
 	 */
 	public fichaDni() {
 		initialize();
+		setPropiedades();
+		setEventos();
 	}
 
 	public JFrame getFrameDni() {
@@ -47,27 +53,48 @@ public class fichaDni {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+	
 		frameDni = new JFrame();
+		lblTitulo = new JLabel("Introduzca DNI");
+		dniField = new JTextField();
+		lblDni = new JLabel("DNI :");
+		btnOk = new JButton("OK");
+		btnAtras = new JButton("");
+	
+	}
+	
+	public void setPropiedades(){
+		
 		frameDni.setBounds(100, 100, 450, 300);
 		frameDni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameDni.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Introduzca DNI");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lblNewLabel.setBounds(127, 0, 186, 43);
-		frameDni.getContentPane().add(lblNewLabel);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		lblTitulo.setBounds(127, 0, 186, 43);
+		frameDni.getContentPane().add(lblTitulo);
 
-		textField = new JTextField();
-		textField.setBounds(164, 61, 170, 43);
-		frameDni.getContentPane().add(textField);
-		textField.setColumns(10);
+		dniField.setBounds(164, 61, 170, 43);
+		frameDni.getContentPane().add(dniField);
+		dniField.setColumns(10);
 
-		JLabel lblDni = new JLabel("DNI :");
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		lblDni.setBounds(99, 73, 55, 23);
 		frameDni.getContentPane().add(lblDni);
+		
+		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 60));
+		btnOk.setBounds(94, 136, 114, 98);
+		frameDni.getContentPane().add(btnOk);
 
-		JButton btnOk = new JButton("OK");
+		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 44));
+		
+		btnAtras.setIcon(new ImageIcon(fichaDni.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnAtras.setBounds(249, 136, 114, 98);
+		frameDni.getContentPane().add(btnAtras);
+		
+	}
+	
+	public void setEventos(){
+
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -86,31 +113,22 @@ public class fichaDni {
 				// si no existe
 
 				fichaClienteCrear ventanaCliente = new fichaClienteCrear();
-
 				ventanaCliente.getFrameCliente().setVisible(true);
-
 				frameDni.dispose();
 
 			}
 		});
-		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		btnOk.setBounds(94, 136, 114, 98);
-		frameDni.getContentPane().add(btnOk);
-
-		JButton btnBack = new JButton("");
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 44));
-		btnBack.addActionListener(new ActionListener() {
+		
+		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				ClienteExistente ClienteExistente1 = new ClienteExistente();
-
 				ClienteExistente1.getFrameExistente().setVisible(true);
 				frameDni.dispose();
 			}
 
 		});
-		btnBack.setIcon(new ImageIcon(fichaDni.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnBack.setBounds(249, 136, 114, 98);
-		frameDni.getContentPane().add(btnBack);
+		
+		
 	}
 }
