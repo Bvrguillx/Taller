@@ -176,18 +176,23 @@ public class fichaClienteCrear {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				boolean seguir=false;
+				
+				seguir = crearCliente();
+				if (seguir){
 				FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
 
 				ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
 				frameCliente.dispose();
-
+				}
 			}
 		});
 
 	}
 
-	public void crearCliente() {
+	public boolean crearCliente() {
 
+		boolean correcto=false;
 		String cp = codpostalField.getText();
 		nombre_ = nombreField.getText();
 		apellido_ = apellidoField.getText();
@@ -228,9 +233,13 @@ public class fichaClienteCrear {
 		}else telefono_ = Integer.parseInt(telefono);
 		
 		if (nombre__.matches() && apellido__.matches() && cp__.matches() && dni__.matches() && telefono__.matches()){
+			correcto=true;
+			
 			Cliente c = new Cliente (nombre_, cp_ ,apellido_, dni_, telefono_);
 			
 			Listas.listaClientes.add(c);
+			
 		}
+		return correcto;
 	}
 }
