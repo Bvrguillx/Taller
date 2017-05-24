@@ -8,6 +8,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import container.Listas;
 
 public class FichaVehiculoCrear {
 
@@ -256,6 +260,8 @@ public class FichaVehiculoCrear {
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				String errores="";
+				int contErrores=6;
 				
 				matricula_ = matriculaField.getText().trim();
 				km_ = Integer.parseInt(kmField.getText());
@@ -264,47 +270,55 @@ public class FichaVehiculoCrear {
 				color_ = colorField.getText().trim();
 				potencia_ = Integer.parseInt(motorField.getText());
 				
-				if (matricula_== null || matricula_.equals("") || matricula_ == ""){
-					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Matricula Vacio", "Matricula",
-							JOptionPane.ERROR_MESSAGE);
+				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
+				Matcher matricula3letras = tresLetrasFinal.matcher(matricula_);
+
+				// 1 o2 letras, 4 numeros, 2 letras
+				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Z]{4}\\d{2}");
+				Matcher matricula4numeros = cuatroNumerosCentro.matcher(matricula_);
+				
+				if (matricula_== null || matricula_.equals("") || matricula3letras.matches() || matricula4numeros.matches()){
+					errores+="La matricula no cumple con el modelo.\n";
+					contErrores--;
 				}
 				if (km_ <= 0){
-					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Km Vacio", "Kilometros",
-							JOptionPane.ERROR_MESSAGE);
+					errores+="Los Kms estan vacios.\n";
+					contErrores--;
 				}
-				if (marca_ == null || marca_.equals("") || marca_ == ""){
-					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Marca Vacio", "Marca",
-							JOptionPane.ERROR_MESSAGE);
+				if (marca_ == null || marca_.equals("")){
+					errores+="La marca esta vacia.\n";
+					contErrores--;
 				}
-				if (modelo_ == null || modelo_.equals("") || modelo_ == ""){
-					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Modelo Vacio", "Modelo",
-							JOptionPane.ERROR_MESSAGE);
+				if (modelo_ == null || modelo_.equals("")){
+					errores+="El modelo esta vacio.\n";
+					contErrores--;
 				}
-				if (color_ == null || color_.equals("") || color_ == ""){
-					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Color Vacio", "Color",
-							JOptionPane.ERROR_MESSAGE);
+				if (color_ == null || color_.equals("")){
+					errores+="El color esta vacio.\n";
+					contErrores--;
 				}
 				if (potencia_ <= 0){
-					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Potencia Negativo", "Potencia",
-							JOptionPane.ERROR_MESSAGE);
-				
+					errores+="La potencia esta vacia.\n";
+					contErrores--;				
+				}
+				if (contErrores==6){
+					crearVehiculo();
+				}else{
+				JOptionPane.showMessageDialog(frameCrearFichaVehiculo, errores, "Error Campos Vehiculo",
+						JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 	}
-	public boolean crearVehiculo(){
+	public void crearVehiculo(){
 		
-		boolean continua =false;
-		String errores="";
-		String km__ = kmField.getText();
-		String potencia__ = motorField.getText();
-		matricula_ = matriculaField.getText().trim();
-		marca_ = marcaField.getText().trim();
-		modelo_ = modeloField.getText().trim();
-		color_ = colorField.getText().trim();
-
+		int indice=Listas.listaVehiculo.size()-1;
 		
-		
-		return continua;
+		Listas.listaVehiculo.get(indice).setMatricula(matricula_);
+		Listas.listaVehiculo.get(indice).setColor(color_);
+		Listas.listaVehiculo.get(indice).setKm(km_);
+		Listas.listaVehiculo.get(indice).setMarca(marca_);
+		Listas.listaVehiculo.get(indice).setModelo(modelo_);
+		Listas.listaVehiculo.get(indice).setPotencia(potencia_);		
 	}
 }
