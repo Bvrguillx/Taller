@@ -1,12 +1,9 @@
 package ventanas;
 
-import listas.*;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import models.Vehiculo;
+import container.*;
 
 public class BuscarVehiculo {
 
@@ -155,7 +153,7 @@ public class BuscarVehiculo {
 				if (matricula3letras.matches() || matricula4numeros.matches()) {
 					JOptionPane.showMessageDialog(null, entrada+"  Formato Matricula correcto");
 
-					for (Vehiculo c : ListaVehiculos.listaVehiculo) {
+					for (Vehiculo c : Listas.listaVehiculo) {
 
 						if (!(c.getMatricula().equals(entrada))||c.getMatricula()==null){
 							JOptionPane.showMessageDialog(null, "La matricula "+entrada+ "  esta guardada");
