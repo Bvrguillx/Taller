@@ -6,5 +6,5 @@ import models.Vehiculo;
 
 public class ListaVehiculos {
 
-	protected ArrayList <Vehiculo> listaVehiculo = new ArrayList <Vehiculo> ();
+	public static ArrayList <Vehiculo> listaVehiculo = new ArrayList <Vehiculo> ();
 }
