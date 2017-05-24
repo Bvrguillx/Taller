@@ -192,12 +192,13 @@ public class fichaClienteCrear {
 
 	public boolean crearCliente() {
 
+		String errores = "";
 		boolean correcto=false;
 		String cp = codpostalField.getText();
+		String telefono = telefonoField.getText();
 		nombre_ = nombreField.getText();
 		apellido_ = apellidoField.getText();
 		dni_ = dniField.getText();
-		String telefono = telefonoField.getText();
 
 		Pattern patron = Pattern.compile("[^A-Za-z ]");
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
@@ -211,25 +212,21 @@ public class fichaClienteCrear {
 		Matcher telefono__ = patronTLFN.matcher(telefono);
 
 		if (!nombre__.matches()) {
-			JOptionPane.showMessageDialog(frameCliente, "El nombre no acepta numeros", "Insane error",
-					JOptionPane.ERROR_MESSAGE);
+			errores+= "El nombre no acepta numeros.\n";
+					
 		}
 		if (!apellido__.matches()) {
-			JOptionPane.showMessageDialog(frameCliente, "El apellido no acepta numeros", "Insane error",
-					JOptionPane.ERROR_MESSAGE);
+			errores+= "El apellido no acepta numeros.\n";
 		}
 		if (!cp__.matches()) {
-			JOptionPane.showMessageDialog(frameCliente, "El Cp no cumple con el modelo", "Insane error",
-					JOptionPane.ERROR_MESSAGE);
+			errores+= "El CP no cumple con el modelo NNNNN.\n";
 		}else cp_ = Integer.parseInt(cp);
 		
 		if (!dni__.matches()) {
-			JOptionPane.showMessageDialog(frameCliente, "El DNI no cumple con el modelo", "Insane error",
-					JOptionPane.ERROR_MESSAGE);
+			errores+= "El DNI no cumple con el modelo NNNNNNNNL.\n";
 		}
 		if (!telefono__.matches()) {
-			JOptionPane.showMessageDialog(frameCliente, "El Telefono no cumple con el modelo", "Insane error",
-					JOptionPane.ERROR_MESSAGE);
+			errores+= "El telefono no cumple con el modelo.\n";
 		}else telefono_ = Integer.parseInt(telefono);
 		
 		if (nombre__.matches() && apellido__.matches() && cp__.matches() && dni__.matches() && telefono__.matches()){
@@ -239,6 +236,9 @@ public class fichaClienteCrear {
 			
 			Listas.listaClientes.add(c);
 			
+		}else{
+			JOptionPane.showMessageDialog(frameCliente, errores, "Error del trVp",
+					JOptionPane.ERROR_MESSAGE);
 		}
 		return correcto;
 	}
