@@ -1,21 +1,27 @@
 package ventanas;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import models.Vehiculo;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class FichaVehiculoCrear {
 
+	// ATRIBUTOS
 	private JFrame frameCrearFichaVehiculo;
 	private JTextField matriculaField;
 	private JTextField kmField;
@@ -36,6 +42,15 @@ public class FichaVehiculoCrear {
 	private JButton btnAtras;
 	private JButton btnCerrar;
 	private JLabel lblOpciones;
+	
+	// ATRIBUTOS VEHICULO
+	protected String matricula_;
+	protected int km_;
+	protected String marca_;
+	protected String modelo_;
+	protected String color_;
+	protected int potencia_;
+	// protected String dniCliente_;
 
 	/**
 	 * Launch the application.
@@ -215,6 +230,68 @@ public class FichaVehiculoCrear {
 
 			}
 		});
-
+		
+		kmField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char vChar = arg0.getKeyChar();
+				if (!(Character.isDigit(vChar) ||
+						(vChar == KeyEvent.VK_DELETE)))
+				{
+					arg0.consume(); 
+					}
+			}
+		});
+	
+		motorField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char vChar = e.getKeyChar();
+				if (!(Character.isDigit(vChar) ||
+						(vChar == KeyEvent.VK_DELETE)))
+				{
+					e.consume(); 
+					}
+			}
+		});
+		
+		btnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				matricula_ = matriculaField.getText().trim();
+				km_ = Integer.parseInt(kmField.getText());
+				marca_ = marcaField.getText().trim();
+				modelo_ = modeloField.getText().trim();
+				color_ = colorField.getText().trim();
+				potencia_ = Integer.parseInt(motorField.getText());
+				
+				if (matricula_== null || matricula_.equals("") || matricula_ == ""){
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Matricula Vacio", "Matricula",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				if (km_ <= 0){
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Km Vacio", "Kilometros",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				if (marca_ == null || marca_.equals("") || marca_ == ""){
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Marca Vacio", "Marca",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				if (modelo_ == null || modelo_.equals("") || modelo_ == ""){
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Modelo Vacio", "Modelo",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				if (color_ == null || color_.equals("") || color_ == ""){
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Color Vacio", "Color",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				if (potencia_ <= 0){
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "Campo Potencia Negativo", "Potencia",
+							JOptionPane.ERROR_MESSAGE);
+				
+				}
+			}
+		});
 	}
 }
