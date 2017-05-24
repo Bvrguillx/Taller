@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import container.Listas;
 import models.Cliente;
+import models.Vehiculo;
 
 public class fichaClienteCrear {
 
@@ -233,8 +234,9 @@ public class fichaClienteCrear {
 			correcto=true;
 			
 			Cliente c = new Cliente (nombre_, cp_ ,apellido_, dni_, telefono_);
-			
+			Vehiculo v = new Vehiculo(dni_);
 			Listas.listaClientes.add(c);
+			Listas.listaVehiculo.add(v);
 			
 		}else{
 			JOptionPane.showMessageDialog(frameCliente, errores, "Error del trVp",

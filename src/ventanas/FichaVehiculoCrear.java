@@ -292,4 +292,19 @@ public class FichaVehiculoCrear {
 			}
 		});
 	}
+	public boolean crearVehiculo(){
+		
+		boolean continua =false;
+		String errores="";
+		String km__ = kmField.getText();
+		String potencia__ = motorField.getText();
+		matricula_ = matriculaField.getText().trim();
+		marca_ = marcaField.getText().trim();
+		modelo_ = modeloField.getText().trim();
+		color_ = colorField.getText().trim();
+
+		
+		
+		return continua;
+	}
 }

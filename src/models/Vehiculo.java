@@ -11,6 +11,12 @@ public class Vehiculo {
 	protected int potencia;
 	protected String dniCliente;
 	
+	public Vehiculo(String dniCliente) {
+		
+		this.dniCliente = dniCliente;
+		
+	}
+	
 	public Vehiculo(String matricula, int km, String marca, String modelo, String color, int potencia,
 			String dniCliente) {
 		
@@ -31,7 +37,7 @@ public class Vehiculo {
 	public void setMatricula(String matricula) {
 		
 		if (matricula == null || matricula.equals("")) throw new RuntimeException("Campo Matricula Vacio");
-		// ESTO TENEMOS QUE MIRARLO MAÑANA TRIBOGA
+		// ESTO TENEMOS QUE MIRARLO MAï¿½ANA TRIBOGA
 		if (!comprobarString(matricula)) throw new RuntimeException("Matricula Introducida No Valida");
 		
 		this.matricula = matricula;
