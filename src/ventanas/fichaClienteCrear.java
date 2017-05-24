@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import container.Listas;
+import models.Cliente;
+
 public class fichaClienteCrear {
 
 	protected JFrame frameCliente;
@@ -30,13 +33,13 @@ public class fichaClienteCrear {
 	private JLabel lblDNI;
 	private JButton btnCrear;
 	private JButton btnAtras;
-	
+
 	protected String nombre_;
 	protected int cp_;
 	protected String apellido_;
 	protected String dni_;
 	protected int telefono_;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -182,36 +185,52 @@ public class fichaClienteCrear {
 		});
 
 	}
-	public void crearCliente(){
-	
-		nombre_=nombreField.getText();
-	    cp_=Integer.parseInt(codpostalField.getText());
-		apellido_=apellidoField.getText();
-		dni_=dniField.getText();
-		telefono_=Integer.parseInt(telefonoField.getText());
-		
+
+	public void crearCliente() {
+
+		String cp = codpostalField.getText();
+		nombre_ = nombreField.getText();
+		apellido_ = apellidoField.getText();
+		dni_ = dniField.getText();
+		String telefono = telefonoField.getText();
+
 		Pattern patron = Pattern.compile("[^A-Za-z ]");
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
 		Pattern patronDNI = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");
+		Pattern patronTLFN = Pattern.compile("^(0034|\\+34)?(\\d\\d\\d)-? ?(\\d\\d)-? ?(\\d)-? ?(\\d)-? ?(\\d\\d)$");
+
+		Matcher nombre__ = patron.matcher(nombre_);
+		Matcher apellido__ = patron.matcher(nombre_);
+		Matcher cp__ = patronCP.matcher(cp);
+		Matcher dni__ = patronDNI.matcher(dni_);
+		Matcher telefono__ = patronTLFN.matcher(telefono);
+
+		if (!nombre__.matches()) {
+			JOptionPane.showMessageDialog(frameCliente, "El nombre no acepta numeros", "Insane error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+		if (!apellido__.matches()) {
+			JOptionPane.showMessageDialog(frameCliente, "El apellido no acepta numeros", "Insane error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+		if (!cp__.matches()) {
+			JOptionPane.showMessageDialog(frameCliente, "El Cp no cumple con el modelo", "Insane error",
+					JOptionPane.ERROR_MESSAGE);
+		}else cp_ = Integer.parseInt(cp);
 		
-        Matcher nombre__ = patron.matcher(nombre_); 
-        Matcher apellido__ = patron.matcher(nombre_); 
-        Matcher cp__ = patronCP.matcher(cp_);
-        Matcher dni__ = patronDNI.matcher(dni_);
-        
-        
-        if (!nombre__.matches()){
-        	JOptionPane.showMessageDialog(frameCliente,
-				    "El nombre no acepta numeros",
-				    "Insane error",
-				    JOptionPane.ERROR_MESSAGE);
-        }
-        if (!apellido__.matches()){
-        	JOptionPane.showMessageDialog(frameCliente,
-				    "El apellido no acepta numeros",
-				    "Insane error",
-				    JOptionPane.ERROR_MESSAGE);
-        }
+		if (!dni__.matches()) {
+			JOptionPane.showMessageDialog(frameCliente, "El DNI no cumple con el modelo", "Insane error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+		if (!telefono__.matches()) {
+			JOptionPane.showMessageDialog(frameCliente, "El Telefono no cumple con el modelo", "Insane error",
+					JOptionPane.ERROR_MESSAGE);
+		}else telefono_ = Integer.parseInt(telefono);
 		
+		if (nombre__.matches() && apellido__.matches() && cp__.matches() && dni__.matches() && telefono__.matches()){
+			Cliente c = new Cliente (nombre_, cp_ ,apellido_, dni_, telefono_);
+			
+			Listas.listaClientes.add(c);
+		}
 	}
 }
