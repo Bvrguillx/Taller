@@ -1,9 +1,12 @@
 package ventanas;
 
+import container.*;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import models.Vehiculo;
-import container.*;
 
 public class BuscarVehiculo {
 
@@ -138,6 +140,8 @@ public class BuscarVehiculo {
 			public void actionPerformed(ActionEvent e) {
 
 				String entrada = textField.getText().toUpperCase().replaceAll(" ", "");
+				boolean esCorrecto=false;
+				
 				
 				// 4 numeros, 3 letras al final
 				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
@@ -153,9 +157,17 @@ public class BuscarVehiculo {
 				if (matricula3letras.matches() || matricula4numeros.matches()) {
 					JOptionPane.showMessageDialog(null, entrada+"  Formato Matricula correcto");
 
+				esCorrecto=true;	
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto");
+
+				}
+				
+				if(!esCorrecto){
 					for (Vehiculo c : Listas.listaVehiculo) {
 
-						if (!(c.getMatricula().equals(entrada))||c.getMatricula()==null){
+						if (c.getMatricula().contains(entrada)){
 							JOptionPane.showMessageDialog(null, "La matricula "+entrada+ "  esta guardada");
 
 							FichaReparar ventanaReparar = new FichaReparar();
@@ -204,10 +216,7 @@ public class BuscarVehiculo {
 						
 					}
 
-				} else {
-					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto");
-
-				}
+				} 
 
 			}
 		});
