@@ -2,15 +2,18 @@ package ventanas;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class fichaClienteCrear {
 
@@ -182,10 +185,33 @@ public class fichaClienteCrear {
 	public void crearCliente(){
 	
 		nombre_=nombreField.getText();
-	    String cp_Aux=codpostalField.getText();
-	    cp_=Integer.parseInt(cp_Aux);
+	    cp_=Integer.parseInt(codpostalField.getText());
 		apellido_=apellidoField.getText();
 		dni_=dniField.getText();
 		telefono_=Integer.parseInt(telefonoField.getText());
+		
+		Pattern patron = Pattern.compile("[^A-Za-z ]");
+		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
+		Pattern patronDNI = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");
+		
+        Matcher nombre__ = patron.matcher(nombre_); 
+        Matcher apellido__ = patron.matcher(nombre_); 
+        Matcher cp__ = patronCP.matcher(cp_);
+        Matcher dni__ = patronDNI.matcher(dni_);
+        
+        
+        if (!nombre__.matches()){
+        	JOptionPane.showMessageDialog(frameCliente,
+				    "El nombre no acepta numeros",
+				    "Insane error",
+				    JOptionPane.ERROR_MESSAGE);
+        }
+        if (!apellido__.matches()){
+        	JOptionPane.showMessageDialog(frameCliente,
+				    "El apellido no acepta numeros",
+				    "Insane error",
+				    JOptionPane.ERROR_MESSAGE);
+        }
+		
 	}
 }
