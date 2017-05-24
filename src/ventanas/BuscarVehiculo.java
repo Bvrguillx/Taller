@@ -86,34 +86,34 @@ public class BuscarVehiculo {
 	}
 
 	private void setPropiedades() {
-		
-		//Propiedades frame
+
+		// Propiedades frame
 		frameBuscarMatricula.setTitle("Busqueda Matr\u00EDcula");
 		frameBuscarMatricula.setBounds(100, 100, 450, 300);
 		frameBuscarMatricula.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameBuscarMatricula.getContentPane().setLayout(null);
 
-		//propieades Label Titulo
+		// propieades Label Titulo
 		lblMatricula.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		lblMatricula.setBounds(94, 0, 269, 43);
 		frameBuscarMatricula.getContentPane().add(lblMatricula);
 
-		//Propiedades texto
+		// Propiedades texto
 		textField.setBounds(164, 61, 170, 43);
 		frameBuscarMatricula.getContentPane().add(textField);
 		textField.setColumns(10);
 
-		//Propiedades label matricula
+		// Propiedades label matricula
 		lblIntroducirMatricula.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		lblIntroducirMatricula.setBounds(55, 73, 99, 23);
 		frameBuscarMatricula.getContentPane().add(lblIntroducirMatricula);
 
-		//Propiedades Boton ok
+		// Propiedades Boton ok
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		btnOk.setBounds(94, 136, 114, 98);
 		frameBuscarMatricula.getContentPane().add(btnOk);
 
-		//Propiedades boton back
+		// Propiedades boton back
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 44));
 		btnBack.setIcon(
 				new ImageIcon(BuscarVehiculo.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
@@ -139,53 +139,78 @@ public class BuscarVehiculo {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
-				//4 numeros, 3 letras al final
+				String entrada = textField.getText().toUpperCase().replaceAll(" ", "");
+				
+				// 4 numeros, 3 letras al final
 				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
-				Matcher matricula3letras = tresLetrasFinal.matcher(textField.getText().toUpperCase().replaceAll(" ", ""));	
-				
-				//1 o2 letras, 4 numeros, 2 letras
+				Matcher matricula3letras = tresLetrasFinal.matcher(entrada);
+
+				// 1 o2 letras, 4 numeros, 2 letras
 				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Z]{4}\\d{2}");
-				Matcher matricula4numeros = cuatroNumerosCentro.matcher(textField.getText().toUpperCase().replaceAll(" ", ""));	
+				Matcher matricula4numeros = cuatroNumerosCentro.matcher(entrada);
+
 				
-				if(matricula3letras.matches()||matricula4numeros.matches()){
-					JOptionPane.showMessageDialog(null, "Formato Matricula correcto");
-					
 				
-					
-					
-					for (Vehiculo c : ListaVehiculos.listaVehiculo){
-						c.getMatricula().equals(matricula4numeros);
+				
+				if (matricula3letras.matches() || matricula4numeros.matches()) {
+					JOptionPane.showMessageDialog(null, entrada+"  Formato Matricula correcto");
+
+					for (Vehiculo c : ListaVehiculos.listaVehiculo) {
+
+						if (!(c.getMatricula().equals(entrada))||c.getMatricula()==null){
+							JOptionPane.showMessageDialog(null, "La matricula "+entrada+ "  esta guardada");
+
+							FichaReparar ventanaReparar = new FichaReparar();
+
+							ventanaReparar.getframeFichaReparar().setVisible(true);
+
+							frameBuscarMatricula.dispose();
+						}
 						
+						
+
+						/*
+						 * if(c.getMatricula().equals(matricula4numeros)||
+						 * c.getMatricula().equals(matricula3letras)) {
+						 * 
+						 * JOptionPane.showMessageDialog(null,
+						 * "La matricula esta guardada");
+						 * 
+						 * 
+						 * // Si existe la matricula ir a reparar
+						 * 
+						 * FichaReparar ventanaReparar = new FichaReparar();
+						 * 
+						 * ventanaReparar.getframeFichaReparar().setVisible(true
+						 * );
+						 * 
+						 * frameBuscarMatricula.dispose();
+						*/
+						
+						
+						// si NO existe la matricula ir a crear vehiculo
+					else{
+						  
+						  JOptionPane.showMessageDialog(null, "La matricula "+entrada+ " no esta guardada"); 
+						  
+						 
+						 FichaVehiculoCrear ventanaVehiculo = new
+						  FichaVehiculoCrear();
+						  
+						  ventanaVehiculo.getFrameCrearFichaVehiculo().
+						  setVisible(true);
+						 
+						  frameBuscarMatricula.dispose();
+						  
+						  }
 						
 					}
-					
-					
-					
-				}
-				else{
+
+				} else {
 					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto");
 
 				}
-						
-				
-			
-				// si NO existe la matricula
-				/*
-				 * FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
-				 * 
-				 * ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
-				 * 
-				 * frameBuscarMatricula.dispose();
-				 
-				// Si existe la matricula
 
-				FichaReparar ventanaReparar = new FichaReparar();
-
-				ventanaReparar.getframeFichaReparar().setVisible(true);
-
-				frameBuscarMatricula.dispose();
-*/
 			}
 		});
 
