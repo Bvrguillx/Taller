@@ -1,9 +1,12 @@
 package ventanas;
 
+import listas.*;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import models.Vehiculo;
 
 public class BuscarVehiculo {
 
@@ -144,10 +149,22 @@ public class BuscarVehiculo {
 				Matcher matricula4numeros = cuatroNumerosCentro.matcher(textField.getText().toUpperCase().replaceAll(" ", ""));	
 				
 				if(matricula3letras.matches()||matricula4numeros.matches()){
-					JOptionPane.showMessageDialog(null, "Matricula correcta");
+					JOptionPane.showMessageDialog(null, "Formato Matricula correcto");
+					
+				
+					
+					
+					for (Vehiculo c : ListaVehiculos.listaVehiculo){
+						c.getMatricula().equals(matricula4numeros);
+						
+						
+					}
+					
+					
+					
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Matricula incorrecta");
+					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto");
 
 				}
 						
