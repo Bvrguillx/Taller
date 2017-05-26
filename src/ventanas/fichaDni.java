@@ -22,6 +22,8 @@ public class fichaDni {
 	private JLabel lblDni;
 	private JButton btnOk;
 	private JButton btnAtras;
+	private String dnientrada;
+	private boolean esCorrecto;
 
 	/**
 	 * Launch the application.
@@ -116,10 +118,11 @@ public class fichaDni {
 				// si no existe
 				
 				/*Comprobar formato DNI*/
-				String dnientrada = dniField.getText().toUpperCase().replaceAll(" ", "");
-				boolean esCorrecto=false;
+				
+				dnientrada = dniField.getText().toUpperCase().replaceAll(" ", "");
+				esCorrecto=false;
 
-Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Z]{1}");
+				Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Z]{1}");
 				Matcher dni1letra = dniunaletra8numeros.matcher(dnientrada);
 
 
@@ -134,7 +137,7 @@ Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Z]{1}");
 				
 				
 				}
-else {
+				else {
 					JOptionPane.showMessageDialog(null, "Formato Dni  INcorrecto");
 
 				//fichaClienteCrear ventanaCliente = new fichaClienteCrear();
