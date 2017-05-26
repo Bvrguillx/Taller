@@ -4,11 +4,14 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class fichaDni {
@@ -111,10 +114,35 @@ public class fichaDni {
 				 * frameDni.dispose();
 				 */
 				// si no existe
+				
+				/*Comprobar formato DNI*/
+				String dnientrada = dniField.getText().toUpperCase().replaceAll(" ", "");
+				boolean esCorrecto=false;
 
-				fichaClienteCrear ventanaCliente = new fichaClienteCrear();
-				ventanaCliente.getFrameCliente().setVisible(true);
-				frameDni.dispose();
+Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Z]{1}");
+				Matcher dni1letra = dniunaletra8numeros.matcher(dnientrada);
+
+
+				
+				if (dni1letra.matches()) {
+					JOptionPane.showMessageDialog(null, dnientrada+"  Formato Dni correcto");
+
+				esCorrecto=true;	
+				
+				/*Falta for each a array listaVehiculos*/
+				
+				
+				
+				}
+else {
+					JOptionPane.showMessageDialog(null, "Formato Dni  INcorrecto");
+
+				//fichaClienteCrear ventanaCliente = new fichaClienteCrear();
+				//ventanaCliente.getFrameCliente().setVisible(true);
+				//frameDni.dispose();
+				}
+				
+				
 
 			}
 		});
