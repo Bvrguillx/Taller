@@ -14,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import container.Listas;
+import models.Cliente;
+import models.Vehiculo;
+
 public class fichaDni {
 
 	private JFrame frameDni;
@@ -58,18 +62,18 @@ public class fichaDni {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-	
+
 		frameDni = new JFrame();
 		lblTitulo = new JLabel("Introduzca DNI");
 		dniField = new JTextField();
 		lblDni = new JLabel("DNI :");
 		btnOk = new JButton("OK");
 		btnAtras = new JButton("");
-	
+
 	}
-	
-	public void setPropiedades(){
-		
+
+	public void setPropiedades() {
+
 		frameDni.setBounds(100, 100, 450, 300);
 		frameDni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameDni.getContentPane().setLayout(null);
@@ -85,25 +89,26 @@ public class fichaDni {
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		lblDni.setBounds(99, 73, 55, 23);
 		frameDni.getContentPane().add(lblDni);
-		
+
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		btnOk.setBounds(94, 136, 114, 98);
 		frameDni.getContentPane().add(btnOk);
 
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 44));
-		
-		btnAtras.setIcon(new ImageIcon(fichaDni.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+
+		btnAtras.setIcon(
+				new ImageIcon(fichaDni.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnAtras.setBounds(249, 136, 114, 98);
 		frameDni.getContentPane().add(btnAtras);
-		
+
 	}
-	
-	public void setEventos(){
+
+	public void setEventos() {
 
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				// añadir condicion de si existe o no existe el dni y enlazar a
+				// aï¿½adir condicion de si existe o no existe el dni y enlazar a
 				// ventana.
 				// si existe
 				/*
@@ -116,40 +121,39 @@ public class fichaDni {
 				 * frameDni.dispose();
 				 */
 				// si no existe
-				
-				/*Comprobar formato DNI*/
-				
+
+				/* Comprobar formato DNI */
+
 				dnientrada = dniField.getText().toUpperCase().replaceAll(" ", "");
-				esCorrecto=false;
+				esCorrecto = false;
 
 				Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Z]{1}");
 				Matcher dni1letra = dniunaletra8numeros.matcher(dnientrada);
 
-
-				
 				if (dni1letra.matches()) {
-					JOptionPane.showMessageDialog(null, dnientrada+"  Formato Dni correcto");
-
-				esCorrecto=true;	
-				
-				/*Falta for each a array listaVehiculos*/
-				
-				
-				
-				}
-				else {
+					for (Cliente c : Listas.listaClientes) {
+						if (c.getDni().equals(dnientrada)) {
+							Vehiculo v = new Vehiculo(c.getDni());
+							Listas.listaVehiculo.add(v);
+							esCorrecto = true;
+						}
+					}
+					if (!esCorrecto) {
+						JOptionPane.showMessageDialog(frameDni, "El dni " + dnientrada + " no se encuentra registrado.",
+								"Error del trVp", JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
 					JOptionPane.showMessageDialog(null, "Formato Dni  INcorrecto");
 
-				//fichaClienteCrear ventanaCliente = new fichaClienteCrear();
-				//ventanaCliente.getFrameCliente().setVisible(true);
-				//frameDni.dispose();
+					// fichaClienteCrear ventanaCliente = new
+					// fichaClienteCrear();
+					// ventanaCliente.getFrameCliente().setVisible(true);
+					// frameDni.dispose();
 				}
-				
-				
 
 			}
 		});
-		
+
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -159,7 +163,6 @@ public class fichaDni {
 			}
 
 		});
-		
-		
+
 	}
 }
