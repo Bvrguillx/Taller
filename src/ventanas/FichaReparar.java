@@ -15,13 +15,14 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import com.toedter.calendar.JDateChooser;
 
 public class FichaReparar {
 
 	private JFrame frameFichaReparar;
 	private JTextField responsableField;
 	private JTextField matriculaField;
+	private JTextField fechaentradaField;
+	private JTextField fechasalidaField;
 	private JLabel lblClientesicosDelTrvpller;
 	private JLabel lblResponsable;
 	private JLabel lblMatricula;
@@ -38,8 +39,6 @@ public class FichaReparar {
 	private JTextField presupuestoField;
 	private JLabel lblPresupuesto;
 	private JTextArea comentariosArea;
-	private JDateChooser fechaEntradaDC;
-	private JDateChooser fechaSalidaDC;
 
 	/**
 	 * Launch the application.
@@ -86,7 +85,9 @@ public class FichaReparar {
 		lblMatricula = new JLabel("Matricula");
 		matriculaField = new JTextField();
 		lblFechaEntrada = new JLabel("Fecha Entrada");
+		fechaentradaField = new JTextField();
 		lblFechaSalida = new JLabel("Fecha Salida");
+		fechasalidaField = new JTextField();
 		lblComentarios = new JLabel("Comentarios");
 		lblEstado = new JLabel("Estado");
 		listEstado = new JList();
@@ -97,8 +98,6 @@ public class FichaReparar {
 		presupuestoField = new JTextField();
 		lblPresupuesto = new JLabel("Presupuesto");
 		comentariosArea = new JTextArea();
-		fechaEntradaDC = new JDateChooser();
-		fechaSalidaDC = new JDateChooser();
 
 	}
 
@@ -139,10 +138,18 @@ public class FichaReparar {
 		lblFechaEntrada.setBounds(10, 182, 209, 36);
 		frameFichaReparar.getContentPane().add(lblFechaEntrada);
 
+		fechaentradaField.setColumns(10);
+		fechaentradaField.setBounds(10, 219, 209, 46);
+		frameFichaReparar.getContentPane().add(fechaentradaField);
+
 		lblFechaSalida.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFechaSalida.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFechaSalida.setBounds(239, 182, 209, 36);
+		lblFechaSalida.setBounds(239, 172, 209, 36);
 		frameFichaReparar.getContentPane().add(lblFechaSalida);
+
+		fechasalidaField.setColumns(10);
+		fechasalidaField.setBounds(239, 219, 209, 46);
+		frameFichaReparar.getContentPane().add(fechasalidaField);
 
 		lblComentarios.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComentarios.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -205,12 +212,6 @@ public class FichaReparar {
 		comentariosArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		comentariosArea.setBounds(468, 107, 249, 157);
 		frameFichaReparar.getContentPane().add(comentariosArea);
-		
-		fechaEntradaDC.setBounds(20, 220, 199, 46);
-		frameFichaReparar.getContentPane().add(fechaEntradaDC);
-		
-		fechaSalidaDC.setBounds(249, 220, 199, 44);
-		frameFichaReparar.getContentPane().add(fechaSalidaDC);
 	}
 
 	public void setEventos() {
@@ -221,8 +222,8 @@ public class FichaReparar {
 
 				responsableField.setText("");
 				matriculaField.setText("");
-				fechaEntradaDC.setDate(null);
-				fechaSalidaDC.setDate(null);
+				fechaentradaField.setText("");
+				fechasalidaField.setText("");
 				listEstado.setSelectedIndex(-1);
 				presupuestoField.setText("");
 				comentariosArea.setText("");
