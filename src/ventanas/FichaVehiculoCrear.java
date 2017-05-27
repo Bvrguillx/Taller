@@ -45,7 +45,7 @@ public class FichaVehiculoCrear {
 	private JButton btnCerrar;
 	private JLabel lblOpciones;
 	private JLabel lblCliente;
-	
+
 	// ATRIBUTOS VEHICULO
 	protected String matricula_;
 	protected int km_;
@@ -113,8 +113,8 @@ public class FichaVehiculoCrear {
 		btnReparar = new JButton("REPARAR");
 		btnAtras = new JButton("");
 		btnCerrar = new JButton("");
-		lblOpciones = new JLabel("OPCIONES");		
-		lblCliente = new JLabel("Cliente");	
+		lblOpciones = new JLabel("OPCIONES");
+		lblCliente = new JLabel("Cliente");
 		clienteField = new JTextField();
 		usuarioField = new JTextField();
 		lblUsuario = new JLabel("Mecanico");
@@ -218,29 +218,29 @@ public class FichaVehiculoCrear {
 		lblOpciones.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOpciones.setBounds(415, 37, 238, 39);
 		frameCrearFichaVehiculo.getContentPane().add(lblOpciones);
-		
+
 		lblCliente.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCliente.setBounds(258, 265, 81, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblCliente);
 
 		clienteField.setText("Mirar codigo");
-		//**************descomentar cuando el programa este terminado***************
-		//clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
+		// **************descomentar cuando el programa este
+		// terminado***************
+		// clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
 		clienteField.setBounds(213, 293, 157, 30);
 		clienteField.setColumns(10);
 		clienteField.setEditable(false);
 		frameCrearFichaVehiculo.getContentPane().add(clienteField);
-		
+
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblUsuario.setBounds(55, 265, 81, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblUsuario);
-		
+
 		usuarioField.setEditable(false);
 		usuarioField.setColumns(10);
 		usuarioField.setBounds(10, 293, 157, 30);
 		usuarioField.setText(Listas.usuario);
 		frameCrearFichaVehiculo.getContentPane().add(usuarioField);
-
 
 	}
 
@@ -263,93 +263,91 @@ public class FichaVehiculoCrear {
 
 			}
 		});
-		
+
 		kmField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
 				char vChar = arg0.getKeyChar();
-				if (!(Character.isDigit(vChar) ||
-						(vChar == KeyEvent.VK_DELETE)))
-				{
-					arg0.consume(); 
-					}
+				if (!(Character.isDigit(vChar) || (vChar == KeyEvent.VK_DELETE))) {
+					arg0.consume();
+				}
 			}
 		});
-	
+
 		motorField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char vChar = e.getKeyChar();
-				if (!(Character.isDigit(vChar) ||
-						(vChar == KeyEvent.VK_DELETE)))
-				{
-					e.consume(); 
-					}
+				if (!(Character.isDigit(vChar) || (vChar == KeyEvent.VK_DELETE))) {
+					e.consume();
+				}
 			}
 		});
-		
+
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String errores="";
-				int contErrores=6;
-				
+				String errores = "";
+				int contErrores = 6;
+
 				matricula_ = matriculaField.getText().trim();
 				km_ = Integer.parseInt(kmField.getText());
 				marca_ = marcaField.getText().trim();
 				modelo_ = modeloField.getText().trim();
 				color_ = colorField.getText().trim();
 				potencia_ = Integer.parseInt(motorField.getText());
-				
+
 				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
 				Matcher matricula3letras = tresLetrasFinal.matcher(matricula_);
 
 				// 1 o2 letras, 4 numeros, 2 letras
 				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Z]{4}\\d{2}");
 				Matcher matricula4numeros = cuatroNumerosCentro.matcher(matricula_);
-				
-				if (matricula_== null || matricula_.equals("") || matricula3letras.matches() || matricula4numeros.matches()){
-					errores+="La matricula no cumple con el modelo.\n";
+
+				if (matricula_ == null || matricula_.equals("") || matricula3letras.matches()
+						|| matricula4numeros.matches()) {
+					errores += "La matricula no cumple con el modelo.\n";
 					contErrores--;
 				}
-				if (km_ <= 0){
-					errores+="Los Kms estan vacios.\n";
+				if (km_ <= 0) {
+					errores += "Los Kms estan vacios.\n";
 					contErrores--;
 				}
-				if (marca_ == null || marca_.equals("")){
-					errores+="La marca esta vacia.\n";
+				if (marca_ == null || marca_.equals("")) {
+					errores += "La marca esta vacia.\n";
 					contErrores--;
 				}
-				if (modelo_ == null || modelo_.equals("")){
-					errores+="El modelo esta vacio.\n";
+				if (modelo_ == null || modelo_.equals("")) {
+					errores += "El modelo esta vacio.\n";
 					contErrores--;
 				}
-				if (color_ == null || color_.equals("")){
-					errores+="El color esta vacio.\n";
+				if (color_ == null || color_.equals("")) {
+					errores += "El color esta vacio.\n";
 					contErrores--;
 				}
-				if (potencia_ <= 0){
-					errores+="La potencia esta vacia.\n";
-					contErrores--;				
+				if (potencia_ <= 0) {
+					errores += "La potencia esta vacia.\n";
+					contErrores--;
 				}
-				if (contErrores==6){
+				if (contErrores == 6) {
 					crearVehiculo();
-				}else{
-				JOptionPane.showMessageDialog(frameCrearFichaVehiculo, errores, "Error Campos Vehiculo",
-						JOptionPane.ERROR_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, errores, "Error Campos Vehiculo",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 	}
-	public void crearVehiculo(){
-		
-		int indice=Listas.listaVehiculo.size()-1;
-		
+
+	public void crearVehiculo() {
+
+		int indice = Listas.listaVehiculo.size() - 1;
+
 		Listas.listaVehiculo.get(indice).setMatricula(matricula_);
 		Listas.listaVehiculo.get(indice).setColor(color_);
 		Listas.listaVehiculo.get(indice).setKm(km_);
 		Listas.listaVehiculo.get(indice).setMarca(marca_);
 		Listas.listaVehiculo.get(indice).setModelo(modelo_);
-		Listas.listaVehiculo.get(indice).setPotencia(potencia_);		
+		Listas.listaVehiculo.get(indice).setPotencia(potencia_);
 	}
 }

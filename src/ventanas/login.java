@@ -187,7 +187,7 @@ public class login {
 	public void accion(JLabel lblTitulo) {
 		if (Credenciales.logeo(getUsuario(), getContrasenia())) {
 			exito = true;
-			Listas.usuario=getUsuario();
+			Listas.usuario = getUsuario();
 			JOptionPane.showMessageDialog(login, "Usuario & Contrase�a V�lidos", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
 			login.dispose();
