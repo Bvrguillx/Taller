@@ -48,7 +48,6 @@ public class FichaVehiculoCrear {
 	private JLabel lblCliente;
 	private JLabel lblUsuario;
 	private JTextField usuarioField;
-	
 	private	JButton btnAlante;
 	private JButton btnAtras_1; 
 	private JMenuBar menuBar; 
