@@ -20,6 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import container.Listas;
+import models.Reparacion;
+import models.Vehiculo;
+
 import javax.swing.JMenuBar;
 
 public class FichaVehiculoCrear {
@@ -51,6 +54,7 @@ public class FichaVehiculoCrear {
 	private	JButton btnAlante;
 	private JButton btnAtras_1; 
 	private JMenuBar menuBar; 
+	private int indiceVehiculos;
 
 
 	// ATRIBUTOS VEHICULO
@@ -374,5 +378,81 @@ public class FichaVehiculoCrear {
 		Listas.listaVehiculo.get(indice).setMarca(marca_);
 		Listas.listaVehiculo.get(indice).setModelo(modelo_);
 		Listas.listaVehiculo.get(indice).setPotencia(potencia_);
+	}
+	
+	public void modoLeer(){
+		
+		lblModoInsertar.setText("Modo leer vehiculo");
+		btnAtras_1.setEnabled(true);
+		btnAtras_1.setVisible(true);
+		btnAlante.setEnabled(true);
+		btnAlante.setVisible(true);
+		
+		lblMatricula.setEnabled(false);
+		matriculaField.setEnabled(false);
+		lblKm.setEnabled(false);
+		kmField.setEnabled(false);
+		lblMarca.setEnabled(false);
+		marcaField.setEnabled(false);
+		lblModelo.setEnabled(false);
+		modeloField.setEnabled(false);
+		lblColor.setEnabled(false);
+		colorField.setEnabled(false);
+		lblMotor.setEnabled(false);
+		motorField.setEnabled(false);
+		btnGuardar.setEnabled(false);
+		btnCliente.setEnabled(false);
+		btnReparar.setEnabled(false);
+		btnAtras.setEnabled(false);
+		btnCerrar.setEnabled(false);
+		
+		indiceVehiculos=Listas.listaVehiculo.size()-1;
+		mostrarVehiculo();
+	}
+	
+public void modoEditar(){
+		
+		lblModoInsertar.setText("Modo editar/modificar vehiculo");
+		btnAtras_1.setEnabled(true);
+		btnAtras_1.setVisible(true);
+		btnAlante.setEnabled(true);
+		btnAlante.setVisible(true);
+		
+		lblMatricula.setEnabled(true);
+		matriculaField.setEnabled(true);
+		lblKm.setEnabled(true);
+		kmField.setEnabled(true);
+		lblMarca.setEnabled(true);
+		marcaField.setEnabled(true);
+		lblModelo.setEnabled(true);
+		modeloField.setEnabled(true);
+		lblColor.setEnabled(true);
+		colorField.setEnabled(true);
+		lblMotor.setEnabled(true);
+		motorField.setEnabled(true);
+		btnGuardar.setEnabled(true);
+		btnCliente.setEnabled(true);
+		btnReparar.setEnabled(true);
+		btnAtras.setEnabled(true);
+		btnCerrar.setEnabled(true);
+		
+		indiceVehiculos=Listas.listaVehiculo.size()-1;
+		mostrarVehiculo();
+	}
+	
+	public void mostrarVehiculo(){
+		if(!Listas.listaVehiculo.isEmpty()){
+			Vehiculo ve = Listas.listaVehiculo.get(indiceVehiculos);
+			
+			matriculaField.setText(ve.getMatricula());
+			kmField.setText(String.valueOf(ve.getMatricula()));
+			marcaField.setText(ve.getMarca());
+			modeloField.setText(ve.getModelo());
+			colorField.setText(ve.getColor());
+			motorField.setText(String.valueOf(ve.getPotencia()));
+			
+		}
+		
+		
 	}
 }
