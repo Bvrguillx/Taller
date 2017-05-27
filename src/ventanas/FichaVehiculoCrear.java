@@ -143,7 +143,7 @@ public class FichaVehiculoCrear {
 		lblUsuario = new JLabel("Mecanico");
 		btnAtras_1 = new JButton("");
 		btnAlante = new JButton("");
-		//MENU
+		// MENU
 		mnMenu = new JMenu("");
 		mnCoches = new JMenu("");
 		mntmCocheLeer = new JMenuItem("");
@@ -152,6 +152,8 @@ public class FichaVehiculoCrear {
 		mnClientes = new JMenu("");
 		mntmClienteLeer = new JMenuItem("");
 		mntmClienteCrear = new JMenuItem("");
+		mntmClienteEditar = new JMenuItem("");
+		mnReparaciones = new JMenu("");
 		mntmReparacionCrear = new JMenuItem("");
 		mntmReparacionEditar = new JMenuItem("");
 		mntmReparacionLeer = new JMenuItem("");
@@ -160,7 +162,7 @@ public class FichaVehiculoCrear {
 
 	public void setPropiedades() {
 
-		frameCrearFichaVehiculo.setTitle("Crear Ficha Vehiculo");
+		frameCrearFichaVehiculo.setTitle("Vehiculos");
 		frameCrearFichaVehiculo.setBounds(100, 100, 679, 468);
 		frameCrearFichaVehiculo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCrearFichaVehiculo.getContentPane().setLayout(null);
@@ -294,7 +296,7 @@ public class FichaVehiculoCrear {
 		btnAlante.setBounds(543, 53, 65, 53);
 		frameCrearFichaVehiculo.getContentPane().add(btnAlante);
 
-		//MENU
+		// MENU
 		menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 157, 48);
 		frameCrearFichaVehiculo.getContentPane().add(menuBar);
@@ -330,7 +332,6 @@ public class FichaVehiculoCrear {
 				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
 		mnClientes.add(mntmClienteCrear);
 
-		mnReparaciones = new JMenu("");
 		mnReparaciones.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495928663_wrench.png")));
 		mnMenu.add(mnReparaciones);
 
@@ -391,46 +392,59 @@ public class FichaVehiculoCrear {
 			public void mouseClicked(MouseEvent arg0) {
 				String errores = "";
 				int contErrores = 6;
-
-				matricula_ = matriculaField.getText().trim();
-				km_ = Integer.parseInt(kmField.getText());
-				marca_ = marcaField.getText().trim();
-				modelo_ = modeloField.getText().trim();
-				color_ = colorField.getText().trim();
-				potencia_ = Integer.parseInt(motorField.getText());
-
+				String aux;
 				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
 				Matcher matricula3letras = tresLetrasFinal.matcher(matricula_);
-
-				// 1 o2 letras, 4 numeros, 2 letras
+				
 				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Z]{4}\\d{2}");
 				Matcher matricula4numeros = cuatroNumerosCentro.matcher(matricula_);
 
-				if (matricula_ == null || matricula_.equals("") || matricula3letras.matches()
-						|| matricula4numeros.matches()) {
-					errores += "La matricula no cumple con el modelo.\n";
-					contErrores--;
-				}
-				if (km_ <= 0) {
+				matricula_ = matriculaField.getText().trim();
+				marca_ = marcaField.getText();
+				modelo_ = modeloField.getText();
+				color_ = colorField.getText();
+
+				aux = kmField.getText().trim();
+				if (aux == null || aux.equals("") || aux.isEmpty()) {
 					errores += "Los Kms estan vacios.\n";
 					contErrores--;
+				} else {
+					km_ = Integer.parseInt(kmField.getText());
+					if (km_ <= 0) {
+						errores += "La cantidad de Km no es correcta.\n";
+						contErrores--;
+					}
 				}
-				if (marca_ == null || marca_.equals("")) {
+
+				aux = motorField.getText().trim();
+				if (aux == null || aux.equals("") || aux.isEmpty()) {
+					errores += "La potencia esta vacia.\n";
+					contErrores--;
+				} else {
+					potencia_ = Integer.parseInt(motorField.getText());
+					if (potencia_ <= 0) {
+						errores += "La cantidad de potencia no es correcta.\n";
+						contErrores--;
+					}
+				}
+				if (matricula_ == null || matricula_.equals("") || !matricula3letras.matches()
+						|| !matricula4numeros.matches()) {
+					errores += "La matricula no cumple con el modelo.\n";
+					contErrores--;
+				}				
+				if (marca_ == null || marca_.equals("") || marca_.isEmpty()) {
 					errores += "La marca esta vacia.\n";
 					contErrores--;
 				}
-				if (modelo_ == null || modelo_.equals("")) {
+				if (modelo_ == null || modelo_.equals("") || modelo_.isEmpty()) {
 					errores += "El modelo esta vacio.\n";
 					contErrores--;
 				}
-				if (color_ == null || color_.equals("")) {
+				if (color_ == null || color_.equals("") || color_.isEmpty()) {
 					errores += "El color esta vacio.\n";
 					contErrores--;
 				}
-				if (potencia_ <= 0) {
-					errores += "La potencia esta vacia.\n";
-					contErrores--;
-				}
+
 				if (contErrores == 6) {
 					crearVehiculo();
 				} else {
@@ -451,6 +465,18 @@ public class FichaVehiculoCrear {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nextVehiculo();
+			}
+		});
+
+		mntmCocheLeer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if (Listas.listaVehiculo.isEmpty() || Listas.listaVehiculo.get(0).getMarca() == null) {
+					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "No hay vehiculos en registrados",
+							"Error Lista Vehiculo", JOptionPane.ERROR_MESSAGE);
+				} else {
+					modoLeer();
+				}
 			}
 		});
 	}
