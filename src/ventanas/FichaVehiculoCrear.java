@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import container.Listas;
+import javax.swing.JMenuBar;
 
 public class FichaVehiculoCrear {
 
@@ -129,7 +130,7 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().setLayout(null);
 
 		lblModoInsertar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		lblModoInsertar.setBounds(10, 11, 360, 30);
+		lblModoInsertar.setBounds(144, 0, 360, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblModoInsertar);
 
 		lblMatricula.setHorizontalAlignment(SwingConstants.CENTER);
@@ -241,6 +242,10 @@ public class FichaVehiculoCrear {
 		usuarioField.setBounds(10, 293, 157, 30);
 		usuarioField.setText(Listas.usuario);
 		frameCrearFichaVehiculo.getContentPane().add(usuarioField);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 132, 22);
+		frameCrearFichaVehiculo.getContentPane().add(menuBar);
 
 	}
 
