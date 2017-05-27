@@ -238,7 +238,7 @@ public class FichaVehiculoCrear {
 		usuarioField.setEditable(false);
 		usuarioField.setColumns(10);
 		usuarioField.setBounds(10, 293, 157, 30);
-		usuarioField.setText("Mirar codigo");
+		usuarioField.setText(Listas.usuario);
 		frameCrearFichaVehiculo.getContentPane().add(usuarioField);
 
 
