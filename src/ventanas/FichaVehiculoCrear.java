@@ -46,6 +46,13 @@ public class FichaVehiculoCrear {
 	private JButton btnCerrar;
 	private JLabel lblOpciones;
 	private JLabel lblCliente;
+	private JLabel lblUsuario;
+	private JTextField usuarioField;
+	
+	private	JButton btnAlante;
+	private JButton btnAtras_1; 
+	private JMenuBar menuBar; 
+
 
 	// ATRIBUTOS VEHICULO
 	protected String matricula_;
@@ -55,8 +62,6 @@ public class FichaVehiculoCrear {
 	protected String color_;
 	protected int potencia_;
 	protected JTextField clienteField;
-	private JLabel lblUsuario;
-	private JTextField usuarioField;
 	// protected String dniCliente_;
 
 	/**
@@ -96,7 +101,7 @@ public class FichaVehiculoCrear {
 
 		frameCrearFichaVehiculo = new JFrame();
 		frameCrearFichaVehiculo.setResizable(false);
-		lblModoInsertar = new JLabel("Modo    Insertar    -    Crear    Vehiculo");
+		lblModoInsertar = new JLabel("Modo Insertar/Crear Vehiculo");
 		lblMatricula = new JLabel("Matricula");
 		matriculaField = new JTextField();
 		lblKm = new JLabel("KM");
@@ -119,6 +124,9 @@ public class FichaVehiculoCrear {
 		clienteField = new JTextField();
 		usuarioField = new JTextField();
 		lblUsuario = new JLabel("Mecanico");
+		btnAtras_1 = new JButton("");
+		btnAlante = new JButton("");
+		menuBar = new JMenuBar();
 
 	}
 
@@ -130,7 +138,7 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().setLayout(null);
 
 		lblModoInsertar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		lblModoInsertar.setBounds(144, 0, 360, 30);
+		lblModoInsertar.setBounds(200, 0, 293, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblModoInsertar);
 
 		lblMatricula.setHorizontalAlignment(SwingConstants.CENTER);
@@ -196,7 +204,7 @@ public class FichaVehiculoCrear {
 		btnCliente.setIcon(new ImageIcon(
 				FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
 		btnCliente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		btnCliente.setBounds(415, 93, 237, 81);
+		btnCliente.setBounds(415, 99, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnCliente);
 
 		btnReparar.setIcon(new ImageIcon(
@@ -217,7 +225,7 @@ public class FichaVehiculoCrear {
 
 		lblOpciones.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		lblOpciones.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOpciones.setBounds(415, 37, 238, 39);
+		lblOpciones.setBounds(414, 56, 238, 39);
 		frameCrearFichaVehiculo.getContentPane().add(lblOpciones);
 
 		lblCliente.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -243,9 +251,22 @@ public class FichaVehiculoCrear {
 		usuarioField.setText(Listas.usuario);
 		frameCrearFichaVehiculo.getContentPane().add(usuarioField);
 		
-		JMenuBar menuBar = new JMenuBar();
+		
 		menuBar.setBounds(0, 0, 132, 22);
 		frameCrearFichaVehiculo.getContentPane().add(menuBar);
+		
+		btnAtras_1.setEnabled(false);
+		btnAtras_1.setVisible(false);
+		btnAtras_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		btnAtras_1.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black.png")));
+		btnAtras_1.setBounds(531, 5, 65, 53);
+		frameCrearFichaVehiculo.getContentPane().add(btnAtras_1);
+		
+		btnAlante.setEnabled(false);
+		btnAlante.setVisible(false);
+		btnAlante.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black-rtl.png")));
+		btnAlante.setBounds(608, 5, 65, 53);
+		frameCrearFichaVehiculo.getContentPane().add(btnAlante);
 
 	}
 
