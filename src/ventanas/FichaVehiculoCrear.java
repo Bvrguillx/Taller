@@ -15,15 +15,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import container.Listas;
-import models.Reparacion;
 import models.Vehiculo;
-
-import javax.swing.JMenuBar;
 
 public class FichaVehiculoCrear {
 
@@ -51,11 +49,10 @@ public class FichaVehiculoCrear {
 	private JLabel lblCliente;
 	private JLabel lblUsuario;
 	private JTextField usuarioField;
-	private	JButton btnAlante;
-	private JButton btnAtras_1; 
-	private JMenuBar menuBar; 
+	private JButton btnAlante;
+	private JButton btnAtras_1;
+	private JMenuBar menuBar;
 	private int indiceVehiculos;
-
 
 	// ATRIBUTOS VEHICULO
 	protected String matricula_;
@@ -253,21 +250,22 @@ public class FichaVehiculoCrear {
 		usuarioField.setBounds(10, 293, 157, 30);
 		usuarioField.setText(Listas.usuario);
 		frameCrearFichaVehiculo.getContentPane().add(usuarioField);
-		
-		
+
 		menuBar.setBounds(0, 0, 132, 22);
 		frameCrearFichaVehiculo.getContentPane().add(menuBar);
-		
+
 		btnAtras_1.setEnabled(false);
 		btnAtras_1.setVisible(false);
 		btnAtras_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		btnAtras_1.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black.png")));
+		btnAtras_1.setIcon(new ImageIcon(FichaVehiculoCrear.class
+				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black.png")));
 		btnAtras_1.setBounds(531, 5, 65, 53);
 		frameCrearFichaVehiculo.getContentPane().add(btnAtras_1);
-		
+
 		btnAlante.setEnabled(false);
 		btnAlante.setVisible(false);
-		btnAlante.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black-rtl.png")));
+		btnAlante.setIcon(new ImageIcon(FichaVehiculoCrear.class
+				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black-rtl.png")));
 		btnAlante.setBounds(608, 5, 65, 53);
 		frameCrearFichaVehiculo.getContentPane().add(btnAlante);
 
@@ -366,6 +364,20 @@ public class FichaVehiculoCrear {
 				}
 			}
 		});
+
+		btnAtras_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				prevVehiculo();
+			}
+		});
+
+		btnAlante.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				nextVehiculo();
+			}
+		});
 	}
 
 	public void crearVehiculo() {
@@ -379,15 +391,15 @@ public class FichaVehiculoCrear {
 		Listas.listaVehiculo.get(indice).setModelo(modelo_);
 		Listas.listaVehiculo.get(indice).setPotencia(potencia_);
 	}
-	
-	public void modoLeer(){
-		
-		lblModoInsertar.setText("Modo leer vehiculo");
+
+	public void modoLeer() {
+
+		lblModoInsertar.setText("Modo Leer Vehiculo");
 		btnAtras_1.setEnabled(true);
 		btnAtras_1.setVisible(true);
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
-		
+
 		lblMatricula.setEnabled(false);
 		matriculaField.setEnabled(false);
 		lblKm.setEnabled(false);
@@ -405,19 +417,19 @@ public class FichaVehiculoCrear {
 		btnReparar.setEnabled(false);
 		btnAtras.setEnabled(false);
 		btnCerrar.setEnabled(false);
-		
-		indiceVehiculos=Listas.listaVehiculo.size()-1;
+
+		indiceVehiculos = Listas.listaVehiculo.size() - 1;
 		mostrarVehiculo();
 	}
-	
-public void modoEditar(){
-		
-		lblModoInsertar.setText("Modo editar/modificar vehiculo");
+
+	public void modoEditar() {
+
+		lblModoInsertar.setText("Modo Editar/Modificar Vehiculo");
 		btnAtras_1.setEnabled(true);
 		btnAtras_1.setVisible(true);
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
-		
+
 		lblMatricula.setEnabled(true);
 		matriculaField.setEnabled(true);
 		lblKm.setEnabled(true);
@@ -435,24 +447,64 @@ public void modoEditar(){
 		btnReparar.setEnabled(true);
 		btnAtras.setEnabled(true);
 		btnCerrar.setEnabled(true);
-		
-		indiceVehiculos=Listas.listaVehiculo.size()-1;
-		mostrarVehiculo();
+
 	}
-	
-	public void mostrarVehiculo(){
-		if(!Listas.listaVehiculo.isEmpty()){
+
+	public void modoCrear() {
+
+		lblModoInsertar.setText("Modo Crear/Insertar Vehiculo");
+		btnAtras_1.setEnabled(false);
+		btnAtras_1.setVisible(false);
+		btnAlante.setEnabled(false);
+		btnAlante.setVisible(false);
+
+		lblMatricula.setEnabled(true);
+		matriculaField.setEnabled(true);
+		lblKm.setEnabled(true);
+		kmField.setEnabled(true);
+		lblMarca.setEnabled(true);
+		marcaField.setEnabled(true);
+		lblModelo.setEnabled(true);
+		modeloField.setEnabled(true);
+		lblColor.setEnabled(true);
+		colorField.setEnabled(true);
+		lblMotor.setEnabled(true);
+		motorField.setEnabled(true);
+		btnGuardar.setEnabled(true);
+		btnCliente.setEnabled(true);
+		btnReparar.setEnabled(true);
+		btnAtras.setEnabled(true);
+		btnCerrar.setEnabled(true);
+
+	}
+
+	public void mostrarVehiculo() {
+		if (!Listas.listaVehiculo.isEmpty()) {
 			Vehiculo ve = Listas.listaVehiculo.get(indiceVehiculos);
-			
+
 			matriculaField.setText(ve.getMatricula());
 			kmField.setText(String.valueOf(ve.getMatricula()));
 			marcaField.setText(ve.getMarca());
 			modeloField.setText(ve.getModelo());
 			colorField.setText(ve.getColor());
 			motorField.setText(String.valueOf(ve.getPotencia()));
-			
+
 		}
-		
-		
+	}
+
+	private int nextVehiculo() {
+		++indiceVehiculos;
+		if (indiceVehiculos == Listas.listaVehiculo.size()) {
+			indiceVehiculos = 0;
+		}
+		return indiceVehiculos;
+	}
+
+	private int prevVehiculo() {
+		--indiceVehiculos;
+		if (indiceVehiculos < 0) {
+			indiceVehiculos = Listas.listaVehiculo.size() - 1;
+		}
+		return indiceVehiculos;
 	}
 }
