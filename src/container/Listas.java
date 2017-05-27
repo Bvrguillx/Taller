@@ -9,5 +9,5 @@ public class Listas {
 	
 	public static ArrayList <Cliente> listaClientes = new ArrayList <Cliente> ();
 	public static ArrayList <Vehiculo> listaVehiculo = new ArrayList <Vehiculo> ();
-
+	public static String usuario;
 }

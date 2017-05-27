@@ -1,21 +1,23 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
+import container.Listas;
 
 public class login {
 
@@ -185,13 +187,14 @@ public class login {
 	public void accion(JLabel lblTitulo) {
 		if (Credenciales.logeo(getUsuario(), getContrasenia())) {
 			exito = true;
-			JOptionPane.showMessageDialog(login, "Usuario & Contraseña Válidos", "Login",
+			Listas.usuario=getUsuario();
+			JOptionPane.showMessageDialog(login, "Usuario & Contraseï¿½a Vï¿½lidos", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
 			login.dispose();
 			Principal p = new Principal();
 			p.getFramePrincipal().setVisible(true);
 		} else {
-			JOptionPane.showMessageDialog(login, "Usuario ó Contraseña Incorrectos", "Login",
+			JOptionPane.showMessageDialog(login, "Usuario ï¿½ Contraseï¿½a Incorrectos", "Login",
 					JOptionPane.ERROR_MESSAGE);
 			contraseniaField.setText("");
 			exito = false;

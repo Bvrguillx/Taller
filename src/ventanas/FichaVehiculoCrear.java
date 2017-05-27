@@ -54,6 +54,8 @@ public class FichaVehiculoCrear {
 	protected String color_;
 	protected int potencia_;
 	protected JTextField clienteField;
+	private JLabel lblUsuario;
+	private JTextField usuarioField;
 	// protected String dniCliente_;
 
 	/**
@@ -114,7 +116,8 @@ public class FichaVehiculoCrear {
 		lblOpciones = new JLabel("OPCIONES");		
 		lblCliente = new JLabel("Cliente");	
 		clienteField = new JTextField();
-		clienteField.setEditable(false);
+		usuarioField = new JTextField();
+		lblUsuario = new JLabel("Mecanico");
 
 	}
 
@@ -217,15 +220,26 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().add(lblOpciones);
 		
 		lblCliente.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCliente.setBounds(55, 265, 81, 22);
+		lblCliente.setBounds(258, 265, 81, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblCliente);
 
-		clienteField.setBounds(10, 293, 157, 30);
-		clienteField.setColumns(10);
-		frameCrearFichaVehiculo.getContentPane().add(clienteField);
+		clienteField.setText("Mirar codigo");
 		//**************descomentar cuando el programa este terminado***************
 		//clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
-		clienteField.setText("Mirar codigo");
+		clienteField.setBounds(213, 293, 157, 30);
+		clienteField.setColumns(10);
+		clienteField.setEditable(false);
+		frameCrearFichaVehiculo.getContentPane().add(clienteField);
+		
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUsuario.setBounds(55, 265, 81, 22);
+		frameCrearFichaVehiculo.getContentPane().add(lblUsuario);
+		
+		usuarioField.setEditable(false);
+		usuarioField.setColumns(10);
+		usuarioField.setBounds(10, 293, 157, 30);
+		usuarioField.setText("Mirar codigo");
+		frameCrearFichaVehiculo.getContentPane().add(usuarioField);
 
 
 	}
