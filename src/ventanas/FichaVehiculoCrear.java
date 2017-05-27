@@ -44,6 +44,7 @@ public class FichaVehiculoCrear {
 	private JButton btnAtras;
 	private JButton btnCerrar;
 	private JLabel lblOpciones;
+	private JLabel lblCliente;
 	
 	// ATRIBUTOS VEHICULO
 	protected String matricula_;
@@ -52,6 +53,7 @@ public class FichaVehiculoCrear {
 	protected String modelo_;
 	protected String color_;
 	protected int potencia_;
+	protected JTextField clienteField;
 	// protected String dniCliente_;
 
 	/**
@@ -109,7 +111,10 @@ public class FichaVehiculoCrear {
 		btnReparar = new JButton("REPARAR");
 		btnAtras = new JButton("");
 		btnCerrar = new JButton("");
-		lblOpciones = new JLabel("OPCIONES");
+		lblOpciones = new JLabel("OPCIONES");		
+		lblCliente = new JLabel("Cliente");	
+		clienteField = new JTextField();
+		clienteField.setEditable(false);
 
 	}
 
@@ -129,7 +134,7 @@ public class FichaVehiculoCrear {
 		lblMatricula.setBounds(10, 52, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblMatricula);
 
-		matriculaField.setBounds(10, 93, 157, 30);
+		matriculaField.setBounds(10, 82, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(matriculaField);
 		matriculaField.setColumns(10);
 
@@ -139,43 +144,43 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().add(lblKm);
 
 		kmField.setColumns(10);
-		kmField.setBounds(213, 93, 157, 30);
+		kmField.setBounds(213, 82, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(kmField);
 
 		lblMarca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMarca.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMarca.setBounds(10, 134, 157, 30);
+		lblMarca.setBounds(10, 124, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblMarca);
 
 		marcaField.setColumns(10);
-		marcaField.setBounds(10, 175, 157, 30);
+		marcaField.setBounds(10, 153, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(marcaField);
 
 		lblModelo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblModelo.setBounds(213, 134, 157, 30);
+		lblModelo.setBounds(213, 124, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblModelo);
 
 		modeloField.setColumns(10);
-		modeloField.setBounds(213, 175, 157, 30);
+		modeloField.setBounds(213, 153, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(modeloField);
 
 		lblColor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblColor.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblColor.setBounds(10, 216, 157, 30);
+		lblColor.setBounds(10, 195, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblColor);
 
 		colorField.setColumns(10);
-		colorField.setBounds(10, 257, 157, 30);
+		colorField.setBounds(10, 223, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(colorField);
 
 		lblMotor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMotor.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMotor.setBounds(213, 216, 157, 30);
+		lblMotor.setBounds(213, 195, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblMotor);
 
 		motorField.setColumns(10);
-		motorField.setBounds(213, 257, 157, 30);
+		motorField.setBounds(213, 223, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(motorField);
 
 		btnGuardar.setIcon(
@@ -210,6 +215,18 @@ public class FichaVehiculoCrear {
 		lblOpciones.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOpciones.setBounds(415, 37, 238, 39);
 		frameCrearFichaVehiculo.getContentPane().add(lblOpciones);
+		
+		lblCliente.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCliente.setBounds(55, 265, 81, 22);
+		frameCrearFichaVehiculo.getContentPane().add(lblCliente);
+
+		clienteField.setBounds(10, 293, 157, 30);
+		clienteField.setColumns(10);
+		frameCrearFichaVehiculo.getContentPane().add(clienteField);
+		//**************descomentar cuando el programa este terminado***************
+		//clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
+		clienteField.setText("Mirar codigo");
+
 
 	}
 
