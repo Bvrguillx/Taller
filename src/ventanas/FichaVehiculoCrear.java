@@ -22,6 +22,8 @@ import javax.swing.SwingConstants;
 
 import container.Listas;
 import models.Vehiculo;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
 
 public class FichaVehiculoCrear {
 
@@ -51,7 +53,6 @@ public class FichaVehiculoCrear {
 	private JTextField usuarioField;
 	private JButton btnAlante;
 	private JButton btnAtras_1;
-	private JMenuBar menuBar;
 	private int indiceVehiculos;
 
 	// ATRIBUTOS VEHICULO
@@ -62,6 +63,7 @@ public class FichaVehiculoCrear {
 	protected String color_;
 	protected int potencia_;
 	protected JTextField clienteField;
+	private JMenu mnReparaciones;
 	// protected String dniCliente_;
 
 	/**
@@ -126,7 +128,6 @@ public class FichaVehiculoCrear {
 		lblUsuario = new JLabel("Mecanico");
 		btnAtras_1 = new JButton("");
 		btnAlante = new JButton("");
-		menuBar = new JMenuBar();
 
 	}
 
@@ -138,136 +139,150 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().setLayout(null);
 
 		lblModoInsertar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		lblModoInsertar.setBounds(200, 0, 293, 30);
+		lblModoInsertar.setBounds(380, 6, 293, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblModoInsertar);
 
 		lblMatricula.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMatricula.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMatricula.setBounds(10, 52, 157, 30);
+		lblMatricula.setBounds(10, 76, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblMatricula);
 
-		matriculaField.setBounds(10, 82, 157, 30);
+		matriculaField.setBounds(10, 106, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(matriculaField);
 		matriculaField.setColumns(10);
 
 		lblKm.setHorizontalAlignment(SwingConstants.CENTER);
 		lblKm.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblKm.setBounds(213, 52, 157, 30);
+		lblKm.setBounds(213, 76, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblKm);
 
 		kmField.setColumns(10);
-		kmField.setBounds(213, 82, 157, 30);
+		kmField.setBounds(213, 106, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(kmField);
 
 		lblMarca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMarca.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMarca.setBounds(10, 124, 157, 30);
+		lblMarca.setBounds(10, 148, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblMarca);
 
 		marcaField.setColumns(10);
-		marcaField.setBounds(10, 153, 157, 30);
+		marcaField.setBounds(10, 177, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(marcaField);
 
 		lblModelo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblModelo.setBounds(213, 124, 157, 30);
+		lblModelo.setBounds(213, 148, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblModelo);
 
 		modeloField.setColumns(10);
-		modeloField.setBounds(213, 153, 157, 30);
+		modeloField.setBounds(213, 177, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(modeloField);
 
 		lblColor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblColor.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblColor.setBounds(10, 195, 157, 30);
+		lblColor.setBounds(10, 219, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblColor);
 
 		colorField.setColumns(10);
-		colorField.setBounds(10, 223, 157, 30);
+		colorField.setBounds(10, 247, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(colorField);
 
 		lblMotor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMotor.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMotor.setBounds(213, 195, 157, 30);
+		lblMotor.setBounds(213, 219, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblMotor);
 
 		motorField.setColumns(10);
-		motorField.setBounds(213, 223, 157, 30);
+		motorField.setBounds(213, 247, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(motorField);
 
 		btnGuardar.setIcon(
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
 		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		btnGuardar.setBounds(78, 335, 237, 81);
+		btnGuardar.setBounds(78, 359, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnGuardar);
 
 		btnCliente.setIcon(new ImageIcon(
 				FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
 		btnCliente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		btnCliente.setBounds(415, 99, 237, 81);
+		btnCliente.setBounds(415, 159, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnCliente);
 
 		btnReparar.setIcon(new ImageIcon(
 				FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnReparar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		btnReparar.setBounds(415, 206, 237, 81);
+		btnReparar.setBounds(415, 266, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnReparar);
 
 		btnAtras.setIcon(new ImageIcon(
 				FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnAtras.setBounds(432, 335, 81, 81);
+		btnAtras.setBounds(436, 359, 81, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnAtras);
 
 		btnCerrar.setIcon(new ImageIcon(
 				FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
-		btnCerrar.setBounds(554, 335, 81, 81);
+		btnCerrar.setBounds(558, 359, 81, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnCerrar);
 
 		lblOpciones.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		lblOpciones.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOpciones.setBounds(414, 56, 238, 39);
+		lblOpciones.setBounds(414, 119, 238, 39);
 		frameCrearFichaVehiculo.getContentPane().add(lblOpciones);
 
 		lblCliente.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCliente.setBounds(258, 265, 81, 22);
+		lblCliente.setBounds(258, 289, 81, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblCliente);
 
 		clienteField.setText("Mirar codigo");
 		// **************descomentar cuando el programa este
 		// terminado***************
 		// clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
-		clienteField.setBounds(213, 293, 157, 30);
+		clienteField.setBounds(213, 317, 157, 30);
 		clienteField.setColumns(10);
 		clienteField.setEditable(false);
 		frameCrearFichaVehiculo.getContentPane().add(clienteField);
 
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblUsuario.setBounds(55, 265, 81, 22);
+		lblUsuario.setBounds(55, 289, 81, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblUsuario);
 
 		usuarioField.setEditable(false);
 		usuarioField.setColumns(10);
-		usuarioField.setBounds(10, 293, 157, 30);
+		usuarioField.setBounds(10, 317, 157, 30);
 		usuarioField.setText(Listas.usuario);
 		frameCrearFichaVehiculo.getContentPane().add(usuarioField);
-
-		menuBar.setBounds(0, 0, 132, 22);
-		frameCrearFichaVehiculo.getContentPane().add(menuBar);
 
 		btnAtras_1.setEnabled(false);
 		btnAtras_1.setVisible(false);
 		btnAtras_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		btnAtras_1.setIcon(new ImageIcon(FichaVehiculoCrear.class
 				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black.png")));
-		btnAtras_1.setBounds(531, 5, 65, 53);
+		btnAtras_1.setBounds(466, 53, 65, 53);
 		frameCrearFichaVehiculo.getContentPane().add(btnAtras_1);
 
 		btnAlante.setEnabled(false);
 		btnAlante.setVisible(false);
 		btnAlante.setIcon(new ImageIcon(FichaVehiculoCrear.class
 				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Outdent-Black-rtl.png")));
-		btnAlante.setBounds(608, 5, 65, 53);
+		btnAlante.setBounds(543, 53, 65, 53);
 		frameCrearFichaVehiculo.getContentPane().add(btnAlante);
+		
+		JMenu mnMenu = new JMenu("");
+		mnMenu.setBounds(0, 0, 167, 53);
+		frameCrearFichaVehiculo.getContentPane().add(mnMenu);
+		mnMenu.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495928384_dot-more-menu-hide.png")));
+		
+		JMenu mnCoches = new JMenu("");
+		mnCoches.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495927937_solid-travel-tourism-car.png")));
+		mnMenu.add(mnCoches);
+		
+		JMenu mnClientes = new JMenu("");
+		mnClientes.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495929007_104.png")));
+		mnMenu.add(mnClientes);
+		
+		mnReparaciones = new JMenu("");
+		mnReparaciones.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495928663_wrench.png")));
+		mnMenu.add(mnReparaciones);
 
 	}
 
