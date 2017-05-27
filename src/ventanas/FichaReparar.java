@@ -224,9 +224,9 @@ public class FichaReparar {
 				fechaEntradaDC.setDate(null);
 				fechaSalidaDC.setDate(null);
 				listEstado.setSelectedIndex(-1);
+				listEstado.clearSelection();
 				presupuestoField.setText("");
 				comentariosArea.setText("");
-				listEstado.clearSelection();
 
 			}
 		});
