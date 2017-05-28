@@ -165,7 +165,8 @@ public class FichaVehiculoCrear {
 
 	public void setPropiedades() {
 
-		frameCrearFichaVehiculo.setTitle("Vehiculos - ");// + Listas.listaVehiculo.get(indiceVehiculos).getDniCliente());
+		frameCrearFichaVehiculo.setTitle("Vehiculos - ");// +
+															// Listas.listaVehiculo.get(indiceVehiculos).getDniCliente());
 		frameCrearFichaVehiculo.setBounds(100, 100, 679, 468);
 		frameCrearFichaVehiculo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCrearFichaVehiculo.getContentPane().setLayout(null);
@@ -348,10 +349,11 @@ public class FichaVehiculoCrear {
 		mntmReparacionCrear
 				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
 		mnReparaciones.add(mntmReparacionCrear);
-		
+
 		btnEditar.setEnabled(false);
 		btnEditar.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnEditar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/java/swing/plaf/motif/icons/Warn.gif")));
+		btnEditar.setIcon(
+				new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/java/swing/plaf/motif/icons/Warn.gif")));
 		btnEditar.setBounds(253, 358, 117, 82);
 		frameCrearFichaVehiculo.getContentPane().add(btnEditar);
 
@@ -362,7 +364,10 @@ public class FichaVehiculoCrear {
 		btnCerrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				System.exit(0);
+
+				login l = new login();
+				l.getLogin().setVisible(true);
+				frameCrearFichaVehiculo.dispose();
 			}
 		});
 
@@ -380,16 +385,16 @@ public class FichaVehiculoCrear {
 		mnMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				
-				if(Listas.listaReparaciones.isEmpty()){
+
+				if (Listas.listaReparaciones.isEmpty()) {
 					mnReparaciones.setEnabled(false);
 				}
-				if(Listas.listaVehiculo.isEmpty()){
+				if (Listas.listaVehiculo.isEmpty()) {
 					mnCoches.setEnabled(false);
 				}
 			}
 		});
-		
+
 		kmField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
@@ -418,7 +423,7 @@ public class FichaVehiculoCrear {
 				String aux;
 
 				matricula_ = matriculaField.getText().trim().toUpperCase();
-				
+
 				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
 				Matcher matricula3letras = tresLetrasFinal.matcher(matricula_);
 				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Z]{4}\\d{2}");
@@ -454,8 +459,8 @@ public class FichaVehiculoCrear {
 				if (matricula_ == null || matricula_.equals("")) {
 					errores += "La matricula esta vacia.\n";
 					contErrores--;
-				}			
-				if ( (!matricula3letras.matches() && !matricula4numeros.matches())){
+				}
+				if ((!matricula3letras.matches() && !matricula4numeros.matches())) {
 					errores += "La matricula no cumple con el modelo.\n";
 					contErrores--;
 				}
@@ -518,16 +523,17 @@ public class FichaVehiculoCrear {
 		Listas.listaVehiculo.get(indice).setMarca(marca_);
 		Listas.listaVehiculo.get(indice).setModelo(modelo_);
 		Listas.listaVehiculo.get(indice).setPotencia(potencia_);
-		
-		
-		indiceVehiculos=indice;
+
+		indiceVehiculos = indice;
 	}
 
-	public void crearReparacion(){
-		Reparacion r = new Reparacion(Listas.usuario, matricula_, Listas.listaVehiculo.get(indiceVehiculos).getDniCliente());
+	public void crearReparacion() {
+		Reparacion r = new Reparacion(Listas.usuario, matricula_,
+				Listas.listaVehiculo.get(indiceVehiculos).getDniCliente());
 		Listas.listaReparaciones.add(r);
-		
+
 	}
+
 	public void modoLeer() {
 
 		lblModoInsertar.setText("Modo Leer Vehiculo");
@@ -553,7 +559,7 @@ public class FichaVehiculoCrear {
 		btnCliente.setEnabled(false);
 		btnReparar.setEnabled(false);
 		btnAtras.setEnabled(false);
-		btnCerrar.setEnabled(false);
+		btnCerrar.setEnabled(true);
 
 		indiceVehiculos = Listas.listaVehiculo.size() - 1;
 		mostrarVehiculo();
@@ -646,8 +652,8 @@ public class FichaVehiculoCrear {
 		}
 		return indiceVehiculos;
 	}
-	
-	private void clear(){
+
+	private void clear() {
 		matriculaField.setText("");
 		kmField.setText(String.valueOf(0));
 		marcaField.setText("");

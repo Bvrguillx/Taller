@@ -31,6 +31,12 @@ public class login {
 	private JButton btnNewButton;
 	private boolean exito;
 
+	
+	public JFrame getLogin() {
+		return login;
+	}
+	
+	
 	/**
 	 * Launch the application
 	 */
@@ -204,5 +210,5 @@ public class login {
 			contraseniaField.setText("");
 			exito = false;
 		}
-	}
+	}	
 }
