@@ -6,17 +6,17 @@ public class Reparacion {
 
 	protected String responsable;
 	protected String matricula;
-	protected String dniDueño;
+	protected String dniDuenio;
 	protected Date fechaEntrada;
 	protected Date fechaSalida;
 	protected String listEstado;
 	protected String presupuestoField;
 	protected String comentariosArea;
 
-	public Reparacion(String responsable, String matricula, String dniDueño) {
+	public Reparacion(String responsable, String matricula, String dniDuenio) {
 		this.responsable = responsable;
 		this.matricula = matricula;
-		this.dniDueño = dniDueño;
+		this.dniDuenio = dniDuenio;
 	}
 
 	public String getResponsable() {
