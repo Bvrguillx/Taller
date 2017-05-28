@@ -414,15 +414,16 @@ public class FichaVehiculoCrear {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String errores = "";
-				int contErrores = 6;
+				int contErrores = 7;
 				String aux;
+
+				matricula_ = matriculaField.getText().trim().toUpperCase();
+				
 				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
 				Matcher matricula3letras = tresLetrasFinal.matcher(matricula_);
-				
 				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Z]{4}\\d{2}");
 				Matcher matricula4numeros = cuatroNumerosCentro.matcher(matricula_);
 
-				matricula_ = matriculaField.getText().trim();
 				marca_ = marcaField.getText();
 				modelo_ = modeloField.getText();
 				color_ = colorField.getText();
@@ -450,11 +451,14 @@ public class FichaVehiculoCrear {
 						contErrores--;
 					}
 				}
-				if (matricula_ == null || matricula_.equals("") || !matricula3letras.matches()
-						|| !matricula4numeros.matches()) {
+				if (matricula_ == null || matricula_.equals("")) {
+					errores += "La matricula esta vacia.\n";
+					contErrores--;
+				}			
+				if ( (!matricula3letras.matches() && !matricula4numeros.matches())){
 					errores += "La matricula no cumple con el modelo.\n";
 					contErrores--;
-				}				
+				}
 				if (marca_ == null || marca_.equals("") || marca_.isEmpty()) {
 					errores += "La marca esta vacia.\n";
 					contErrores--;
@@ -468,7 +472,7 @@ public class FichaVehiculoCrear {
 					contErrores--;
 				}
 
-				if (contErrores == 6) {
+				if (contErrores == 7) {
 					crearVehiculo();
 				} else {
 					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, errores, "Error Campos Vehiculo",

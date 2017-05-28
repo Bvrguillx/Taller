@@ -201,9 +201,9 @@ public class fichaClienteCrear {
 		apellido_ = apellidoField.getText();
 		dni_ = dniField.getText();
 
-		Pattern patron = Pattern.compile("[^A-Za-z ]");
+		Pattern patron = Pattern.compile("[^A-Za-z]");
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
-		Pattern patronDNI = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");
+		Pattern patronDNI = Pattern.compile("^\\d{8}[A-Z]{1}");
 		Pattern patronTLFN = Pattern.compile("^(0034|\\+34)?(\\d\\d\\d)-? ?(\\d\\d)-? ?(\\d)-? ?(\\d)-? ?(\\d\\d)$");
 
 		Matcher nombre__ = patron.matcher(nombre_);
