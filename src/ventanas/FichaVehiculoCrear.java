@@ -165,7 +165,7 @@ public class FichaVehiculoCrear {
 
 	public void setPropiedades() {
 
-		frameCrearFichaVehiculo.setTitle("Vehiculos");
+		frameCrearFichaVehiculo.setTitle("Vehiculos - ");// + Listas.listaVehiculo.get(indiceVehiculos).getDniCliente());
 		frameCrearFichaVehiculo.setBounds(100, 100, 679, 468);
 		frameCrearFichaVehiculo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCrearFichaVehiculo.getContentPane().setLayout(null);
