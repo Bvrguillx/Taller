@@ -191,8 +191,13 @@ public class login {
 			JOptionPane.showMessageDialog(login, "Usuario & Contrase�a V�lidos", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
 			login.dispose();
+			if (Listas.listaClientes.isEmpty()){
+				fichaClienteCrear f = new fichaClienteCrear();
+				f.getFrameCliente().setVisible(true);
+			}else{
 			Principal p = new Principal();
 			p.getFramePrincipal().setVisible(true);
+			}
 		} else {
 			JOptionPane.showMessageDialog(login, "Usuario � Contrase�a Incorrectos", "Login",
 					JOptionPane.ERROR_MESSAGE);
