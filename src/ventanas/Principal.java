@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class Principal {
 
@@ -57,13 +58,15 @@ public class Principal {
 		framePrincipal.setTitle("Eleccion Principal");
 
 		// label
-		lbPrincipal = new JLabel("Principal");
+		lbPrincipal = new JLabel("Coches");
 
 		// boton buscar vehiculo
-		btnBuscarVehiculo = new JButton("BV");
+		btnBuscarVehiculo = new JButton("");
+		btnBuscarVehiculo.setIcon(new ImageIcon(Principal.class.getResource("/iconos/1495930663_67.png")));
 
 		// boton nuevo vehiculo
-		btnNuevoVehiculo = new JButton("NV");
+		btnNuevoVehiculo = new JButton("");
+		btnNuevoVehiculo.setIcon(new ImageIcon(Principal.class.getResource("/iconos/1495931018_new_product.png")));
 
 	}
 
@@ -75,7 +78,7 @@ public class Principal {
 
 		// Propiedades Label "Principal"
 		lbPrincipal.setFont(new Font("Tahoma", Font.PLAIN, 45));
-		lbPrincipal.setBounds(131, 11, 170, 74);
+		lbPrincipal.setBounds(147, 20, 170, 74);
 		framePrincipal.getContentPane().add(lbPrincipal);
 
 		// Propiedades Boton Buscar Vehiculo
