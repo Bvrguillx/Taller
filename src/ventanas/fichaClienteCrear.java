@@ -24,8 +24,8 @@ public class fichaClienteCrear {
 	protected JFrame frameCliente;
 	private JTextField nombreField;
 	private JTextField apellidoField;
-	private JTextField telefonoField;
 	private JTextField codpostalField;
+	private JTextField telefonoField;
 	private JTextField dniField;
 	private JLabel lblNombre;
 	private JLabel lblApellido;
@@ -34,6 +34,7 @@ public class fichaClienteCrear {
 	private JLabel lblDNI;
 	private JButton btnCrear;
 	private JButton btnAtras;
+	private JButton btnLimpiar;
 
 	protected String nombre_;
 	protected int cp_;
@@ -84,82 +85,88 @@ public class fichaClienteCrear {
 		apellidoField = new JTextField();
 		lblTelefono = new JLabel("Telefono");
 		lblCodPostal = new JLabel("Codigo Postal");
-		codpostalField = new JTextField();
+		telefonoField = new JTextField();
 		lblDNI = new JLabel("DNI");
 		dniField = new JTextField();
 		btnCrear = new JButton("CREAR");
 		btnAtras = new JButton("");
+		btnLimpiar = new JButton("");
 
 	}
 
 	public void setPropiedades() {
 
 		frameCliente.setTitle("Crear Ficha Cliente");
-		frameCliente.setBounds(100, 100, 491, 366);
+		frameCliente.setBounds(100, 100, 524, 377);
 		frameCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCliente.getContentPane().setLayout(null);
 
 		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNombre.setBounds(10, 11, 194, 42);
+		lblNombre.setBounds(10, 11, 227, 42);
 		frameCliente.getContentPane().add(lblNombre);
 
 		nombreField.setHorizontalAlignment(SwingConstants.CENTER);
-		nombreField.setBounds(10, 63, 194, 42);
+		nombreField.setBounds(10, 63, 227, 42);
 		frameCliente.getContentPane().add(nombreField);
 		nombreField.setColumns(10);
 
 		lblApellido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblApellido.setBounds(261, 11, 194, 42);
+		lblApellido.setBounds(261, 11, 227, 42);
 		frameCliente.getContentPane().add(lblApellido);
 
 		apellidoField.setHorizontalAlignment(SwingConstants.CENTER);
 		apellidoField.setColumns(10);
-		apellidoField.setBounds(261, 63, 194, 42);
+		apellidoField.setBounds(261, 63, 227, 42);
 		frameCliente.getContentPane().add(apellidoField);
 
 		lblTelefono.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTelefono.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblTelefono.setBounds(10, 116, 194, 42);
+		lblTelefono.setBounds(10, 116, 227, 42);
 		frameCliente.getContentPane().add(lblTelefono);
 
-		telefonoField = new JTextField();
-		telefonoField.setHorizontalAlignment(SwingConstants.CENTER);
-		telefonoField.setColumns(10);
-		telefonoField.setBounds(10, 169, 194, 42);
-		frameCliente.getContentPane().add(telefonoField);
+		codpostalField = new JTextField();
+		codpostalField.setHorizontalAlignment(SwingConstants.CENTER);
+		codpostalField.setColumns(10);
+		codpostalField.setBounds(261, 169, 227, 42);
+		frameCliente.getContentPane().add(codpostalField);
 
 		lblCodPostal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCodPostal.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCodPostal.setBounds(261, 116, 194, 42);
+		lblCodPostal.setBounds(261, 116, 227, 42);
 		frameCliente.getContentPane().add(lblCodPostal);
 
-		codpostalField.setHorizontalAlignment(SwingConstants.CENTER);
-		codpostalField.setColumns(10);
-		codpostalField.setBounds(261, 169, 194, 42);
-		frameCliente.getContentPane().add(codpostalField);
+		telefonoField.setHorizontalAlignment(SwingConstants.CENTER);
+		telefonoField.setColumns(10);
+		telefonoField.setBounds(10, 169, 227, 42);
+		frameCliente.getContentPane().add(telefonoField);
 
 		lblDNI.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDNI.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblDNI.setBounds(10, 222, 194, 42);
+		lblDNI.setBounds(10, 222, 227, 42);
 		frameCliente.getContentPane().add(lblDNI);
 
 		dniField.setHorizontalAlignment(SwingConstants.CENTER);
 		dniField.setColumns(10);
-		dniField.setBounds(10, 275, 194, 42);
+		dniField.setBounds(10, 275, 227, 42);
 		frameCliente.getContentPane().add(dniField);
 
 		btnCrear.setIcon(
 				new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnCrear.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
-		btnCrear.setBounds(261, 236, 116, 80);
+		btnCrear.setBounds(261, 236, 107, 80);
 		frameCliente.getContentPane().add(btnCrear);
 
 		btnAtras.setIcon(new ImageIcon(
 				fichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnAtras.setBounds(388, 236, 67, 80);
+		btnAtras.setBounds(444, 236, 49, 80);
 		frameCliente.getContentPane().add(btnAtras);
+
+		btnLimpiar.setIcon(new ImageIcon(
+				fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
+		btnLimpiar.setBounds(378, 236, 56, 81);
+		frameCliente.getContentPane().add(btnLimpiar);
 	}
 
 	public void setEventos() {
@@ -177,15 +184,27 @@ public class fichaClienteCrear {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				boolean seguir=false;
-				
-				seguir = crearCliente();
-				if (seguir){
-				FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
+				boolean seguir = false;
 
-				ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
-				frameCliente.dispose();
+				seguir = crearCliente();
+				if (seguir) {
+					FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
+
+					ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+					frameCliente.dispose();
 				}
+			}
+		});
+
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				nombreField.setText("");
+				dniField.setText("");
+				telefonoField.setText("");
+				apellidoField.setText("");
+				codpostalField.setText("");
+
 			}
 		});
 
@@ -194,53 +213,82 @@ public class fichaClienteCrear {
 	public boolean crearCliente() {
 
 		String errores = "";
-		boolean correcto=false;
-		String cp = codpostalField.getText();
+		boolean correcto = false;
 		String telefono = telefonoField.getText();
+		String cp = codpostalField.getText();
 		nombre_ = nombreField.getText();
 		apellido_ = apellidoField.getText();
 		dni_ = dniField.getText();
 
-		Pattern patron = Pattern.compile("[^A-Za-z]");
+		Pattern patron = Pattern.compile("^[A-Za-z]");
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
 		Pattern patronDNI = Pattern.compile("^\\d{8}[A-Z]{1}");
 		Pattern patronTLFN = Pattern.compile("^(0034|\\+34)?(\\d\\d\\d)-? ?(\\d\\d)-? ?(\\d)-? ?(\\d)-? ?(\\d\\d)$");
 
 		Matcher nombre__ = patron.matcher(nombre_);
-		Matcher apellido__ = patron.matcher(nombre_);
+		Matcher apellido__ = patron.matcher(apellido_);
 		Matcher cp__ = patronCP.matcher(cp);
 		Matcher dni__ = patronDNI.matcher(dni_);
 		Matcher telefono__ = patronTLFN.matcher(telefono);
 
-		if (!nombre__.matches()) {
-			errores+= "El nombre no acepta numeros.\n";
-					
+		if (nombre_.isEmpty()) {
+			errores += "Introduzca nombre \n";
+
+		} else {
+			if (!nombre__.matches()) {
+
+				errores += "El nombre no acepta numeros.\n";
+
+			}
 		}
-		if (!apellido__.matches()) {
-			errores+= "El apellido no acepta numeros.\n";
+
+		if (apellido_.isEmpty()) {
+			errores += "Introduzca apellido \n";
+
+		} else {
+			if (!apellido__.matches()) {
+				errores += "El apellido no acepta numeros.\n";
+			}
 		}
-		if (!cp__.matches()) {
-			errores+= "El CP no cumple con el modelo NNNNN.\n";
-		}else cp_ = Integer.parseInt(cp);
-		
-		if (!dni__.matches()) {
-			errores+= "El DNI no cumple con el modelo NNNNNNNNL.\n";
+
+		if (cp.isEmpty()) {
+			errores += "Introduzca codigo postal \n";
+		} else {
+			if (!cp__.matches()) {
+				errores += "El CP no cumple con el modelo NNNNN.\n";
+			} else
+				cp_ = Integer.parseInt(cp);
+
 		}
-		if (!telefono__.matches()) {
-			errores+= "El telefono no cumple con el modelo.\n";
-		}else telefono_ = Integer.parseInt(telefono);
-		
-		if (nombre__.matches() && apellido__.matches() && cp__.matches() && dni__.matches() && telefono__.matches()){
-			correcto=true;
-			
-			Cliente c = new Cliente (nombre_, cp_ ,apellido_, dni_, telefono_);
+
+		if (dni_.isEmpty()) {
+			errores += "Introduzca DNI \n";
+		} else {
+			if (!dni__.matches()) {
+				errores += "El DNI no cumple con el modelo NNNNNNNNL.\n";
+			}
+		}
+
+		if (telefono.isEmpty()) {
+			errores += "Introduzca telefono \n";
+		} else {
+			if (!telefono__.matches()) {
+				errores += "El telefono no cumple con el modelo.\n";
+			} else
+				telefono_ = Integer.parseInt(telefono);
+
+		}
+
+		if (nombre__.matches() && apellido__.matches() && cp__.matches() && dni__.matches() && telefono__.matches()) {
+			correcto = true;
+
+			Cliente c = new Cliente(nombre_, cp_, apellido_, dni_, telefono_);
 			Vehiculo v = new Vehiculo(dni_);
 			Listas.listaClientes.add(c);
 			Listas.listaVehiculo.add(v);
-			
-		}else{
-			JOptionPane.showMessageDialog(frameCliente, errores, "Error del trVp",
-					JOptionPane.ERROR_MESSAGE);
+
+		} else {
+			JOptionPane.showMessageDialog(frameCliente, errores, "Error del trVp", JOptionPane.ERROR_MESSAGE);
 		}
 		return correcto;
 	}
