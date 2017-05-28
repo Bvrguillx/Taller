@@ -15,15 +15,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import container.Listas;
+import models.Reparacion;
 import models.Vehiculo;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
 
 public class FichaVehiculoCrear {
 
@@ -54,6 +55,7 @@ public class FichaVehiculoCrear {
 	private JButton btnAlante;
 	private JButton btnAtras_1;
 	private int indiceVehiculos;
+	private JButton btnEditar;
 
 	// MENU
 	private JMenu mnMenu;
@@ -143,6 +145,7 @@ public class FichaVehiculoCrear {
 		lblUsuario = new JLabel("Mecanico");
 		btnAtras_1 = new JButton("");
 		btnAlante = new JButton("");
+		btnEditar = new JButton("EDITAR");
 		// MENU
 		mnMenu = new JMenu("");
 		mnCoches = new JMenu("");
@@ -168,7 +171,7 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().setLayout(null);
 
 		lblModoInsertar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		lblModoInsertar.setBounds(380, 6, 293, 30);
+		lblModoInsertar.setBounds(213, 11, 293, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblModoInsertar);
 
 		lblMatricula.setHorizontalAlignment(SwingConstants.CENTER);
@@ -228,7 +231,7 @@ public class FichaVehiculoCrear {
 		btnGuardar.setIcon(
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
 		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		btnGuardar.setBounds(78, 359, 237, 81);
+		btnGuardar.setBounds(10, 359, 237, 81);
 		frameCrearFichaVehiculo.getContentPane().add(btnGuardar);
 
 		btnCliente.setIcon(new ImageIcon(
@@ -241,6 +244,7 @@ public class FichaVehiculoCrear {
 				FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnReparar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		btnReparar.setBounds(415, 266, 237, 81);
+		btnReparar.setEnabled(false);
 		frameCrearFichaVehiculo.getContentPane().add(btnReparar);
 
 		btnAtras.setIcon(new ImageIcon(
@@ -344,6 +348,12 @@ public class FichaVehiculoCrear {
 		mntmReparacionCrear
 				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
 		mnReparaciones.add(mntmReparacionCrear);
+		
+		btnEditar.setEnabled(false);
+		btnEditar.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnEditar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/java/swing/plaf/motif/icons/Warn.gif")));
+		btnEditar.setBounds(253, 358, 117, 82);
+		frameCrearFichaVehiculo.getContentPane().add(btnEditar);
 
 	}
 
@@ -367,6 +377,19 @@ public class FichaVehiculoCrear {
 			}
 		});
 
+		mnMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				if(Listas.listaReparaciones.isEmpty()){
+					mnReparaciones.setEnabled(false);
+				}
+				if(Listas.listaVehiculo.isEmpty()){
+					mnCoches.setEnabled(false);
+				}
+			}
+		});
+		
 		kmField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
@@ -491,8 +514,16 @@ public class FichaVehiculoCrear {
 		Listas.listaVehiculo.get(indice).setMarca(marca_);
 		Listas.listaVehiculo.get(indice).setModelo(modelo_);
 		Listas.listaVehiculo.get(indice).setPotencia(potencia_);
+		
+		
+		indiceVehiculos=indice;
 	}
 
+	public void crearReparacion(){
+		Reparacion r = new Reparacion(Listas.usuario, matricula_, Listas.listaVehiculo.get(indiceVehiculos).getDniCliente());
+		Listas.listaReparaciones.add(r);
+		
+	}
 	public void modoLeer() {
 
 		lblModoInsertar.setText("Modo Leer Vehiculo");
@@ -500,6 +531,7 @@ public class FichaVehiculoCrear {
 		btnAtras_1.setVisible(true);
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
+		btnEditar.setEnabled(true);
 
 		lblMatricula.setEnabled(false);
 		matriculaField.setEnabled(false);
@@ -530,6 +562,7 @@ public class FichaVehiculoCrear {
 		btnAtras_1.setVisible(true);
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
+		btnEditar.setEnabled(false);
 
 		lblMatricula.setEnabled(true);
 		matriculaField.setEnabled(true);
@@ -554,10 +587,12 @@ public class FichaVehiculoCrear {
 	public void modoCrear() {
 
 		lblModoInsertar.setText("Modo Crear/Insertar Vehiculo");
+		clear();
 		btnAtras_1.setEnabled(false);
 		btnAtras_1.setVisible(false);
 		btnAlante.setEnabled(false);
 		btnAlante.setVisible(false);
+		btnEditar.setEnabled(false);
 
 		lblMatricula.setEnabled(true);
 		matriculaField.setEnabled(true);
@@ -573,7 +608,7 @@ public class FichaVehiculoCrear {
 		motorField.setEnabled(true);
 		btnGuardar.setEnabled(true);
 		btnCliente.setEnabled(true);
-		btnReparar.setEnabled(true);
+		btnReparar.setEnabled(false);
 		btnAtras.setEnabled(true);
 		btnCerrar.setEnabled(true);
 
@@ -589,7 +624,6 @@ public class FichaVehiculoCrear {
 			modeloField.setText(ve.getModelo());
 			colorField.setText(ve.getColor());
 			motorField.setText(String.valueOf(ve.getPotencia()));
-
 		}
 	}
 
@@ -607,5 +641,14 @@ public class FichaVehiculoCrear {
 			indiceVehiculos = Listas.listaVehiculo.size() - 1;
 		}
 		return indiceVehiculos;
+	}
+	
+	private void clear(){
+		matriculaField.setText("");
+		kmField.setText(String.valueOf(0));
+		marcaField.setText("");
+		modeloField.setText("");
+		colorField.setText("");
+		motorField.setText(String.valueOf(0));
 	}
 }

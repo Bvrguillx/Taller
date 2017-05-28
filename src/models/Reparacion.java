@@ -6,21 +6,17 @@ public class Reparacion {
 
 	protected String responsable;
 	protected String matricula;
+	protected String dniDueño;
 	protected Date fechaEntrada;
-	protected Date fechaSalida;	
+	protected Date fechaSalida;
 	protected String listEstado;
 	protected String presupuestoField;
 	protected String comentariosArea;
 
-	public Reparacion(String responsable, String matricula, Date fechaEntrada, Date fechaSalida, String listEstado,
-			String presupuestoField, String comentariosArea) {
+	public Reparacion(String responsable, String matricula, String dniDueño) {
 		this.responsable = responsable;
 		this.matricula = matricula;
-		this.fechaEntrada = fechaEntrada;
-		this.fechaSalida = fechaSalida;
-		this.listEstado = listEstado;
-		this.presupuestoField = presupuestoField;
-		this.comentariosArea = comentariosArea;
+		this.dniDueño = dniDueño;
 	}
 
 	public String getResponsable() {
@@ -78,5 +74,5 @@ public class Reparacion {
 	public void setComentariosArea(String comentariosArea) {
 		this.comentariosArea = comentariosArea;
 	}
-	
+
 }
