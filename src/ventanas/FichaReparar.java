@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
@@ -16,6 +17,8 @@ import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import com.toedter.calendar.JDateChooser;
+
+import container.Listas;
 
 public class FichaReparar {
 
@@ -40,6 +43,13 @@ public class FichaReparar {
 	private JTextArea comentariosArea;
 	private JDateChooser fechaEntradaDC;
 	private JDateChooser fechaSalidaDC;
+	protected login g;
+	private JButton btnEditar;
+	private JButton btnSiguiente;
+	private JButton btnAnterior;
+	private JButton btnPrincipal;
+	private JButton btnGuardar;
+	private JButton btnLeer;
 	
 	/**
 	 * Launch the application.
@@ -99,7 +109,12 @@ public class FichaReparar {
 		comentariosArea = new JTextArea();
 		fechaEntradaDC = new JDateChooser();
 		fechaSalidaDC = new JDateChooser();
-		
+		btnLeer = new JButton("LEER");
+		btnEditar = new JButton("EDITAR");
+		btnSiguiente = new JButton("SIGUIENTE");
+		btnAnterior = new JButton("ANTERIOR");
+		btnGuardar = new JButton("GUARDAR");
+		btnPrincipal = new JButton("");
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "serial" })
@@ -124,6 +139,9 @@ public class FichaReparar {
 		responsableField.setBounds(10, 51, 209, 46);
 		frameFichaReparar.getContentPane().add(responsableField);
 		responsableField.setColumns(10);
+		// ESTO ES NUEVO, EL TEXTFIELD ESTARA VISIBLE PERO NO EDITABLE
+		responsableField.setText(Listas.usuario);
+		responsableField.setEditable(false);
 
 		lblMatricula.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMatricula.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -133,6 +151,9 @@ public class FichaReparar {
 		matriculaField.setColumns(10);
 		matriculaField.setBounds(10, 133, 209, 46);
 		frameFichaReparar.getContentPane().add(matriculaField);
+		// ESTO ES NUEVO, EL TEXTFIELD ESTARA VISIBLE PERO NO EDITABLE
+		matriculaField.setText("1234-ABC");
+		matriculaField.setEditable(false);
 
 		lblFechaEntrada.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFechaEntrada.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -189,7 +210,7 @@ public class FichaReparar {
 		frameFichaReparar.getContentPane().add(lblOpciones);
 
 		btnAtras.setIcon(
-				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
 		btnAtras.setBounds(628, 11, 82, 46);
 		frameFichaReparar.getContentPane().add(btnAtras);
 
@@ -211,6 +232,43 @@ public class FichaReparar {
 		
 		fechaSalidaDC.setBounds(249, 218, 199, 46);
 		frameFichaReparar.getContentPane().add(fechaSalidaDC);
+ 
+		btnLeer.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Copy_16x16_JFX.png")));
+		btnLeer.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
+		btnLeer.setBounds(270, 402, 169, 54);
+		frameFichaReparar.getContentPane().add(btnLeer);
+		
+		btnEditar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
+		btnEditar.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
+		btnEditar.setBounds(270, 337, 169, 54);
+		frameFichaReparar.getContentPane().add(btnEditar);
+		
+		btnSiguiente.setEnabled(false);
+		btnSiguiente.setVisible(false);
+		btnSiguiente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
+		btnSiguiente.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
+		btnSiguiente.setBounds(451, 321, 257, 57);
+		frameFichaReparar.getContentPane().add(btnSiguiente);
+		
+		btnAnterior.setEnabled(false);
+		btnAnterior.setVisible(false);
+		btnAnterior.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
+		btnAnterior.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnAnterior.setBounds(451, 389, 259, 54);
+		frameFichaReparar.getContentPane().add(btnAnterior);
+		
+		btnPrincipal.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Paste_16x16_JFX.png")));
+		btnPrincipal.setEnabled(false);
+		btnPrincipal.setVisible(false);
+		btnPrincipal.setBounds(572, 11, 46, 46);
+		frameFichaReparar.getContentPane().add(btnPrincipal);
+		
+		btnGuardar.setEnabled(false);
+		btnGuardar.setVisible(false);
+		btnGuardar.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/java/swing/plaf/windows/icons/UpFolder.gif")));
+		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
+		btnGuardar.setBounds(270, 281, 169, 46);
+		frameFichaReparar.getContentPane().add(btnGuardar);
 	}
 
 	public void setEventos() {
@@ -218,18 +276,114 @@ public class FichaReparar {
 		btnVaciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-
-				responsableField.setText("");
-				matriculaField.setText("");
+				// responsableField.setText("");
+				// matriculaField.setText("");
 				fechaEntradaDC.setDate(null);
 				fechaSalidaDC.setDate(null);
 				listEstado.setSelectedIndex(-1);
 				listEstado.clearSelection();
 				presupuestoField.setText("");
 				comentariosArea.setText("");
-
+				listEstado.setEnabled(false);	
 			}
 		});
-
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				JOptionPane.showMessageDialog(frameFichaReparar, "Adios " + responsableField.getText() +
+						"! Hasta la proxima! Gracias por su trabajo!", "Volviendo al LogIn",
+						JOptionPane.INFORMATION_MESSAGE);
+				frameFichaReparar.dispose();
+				g = new login();
+				g.getLogin().setVisible(true);
+			}
+		});
+		btnLeer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				presupuestoField.setEnabled(false);
+				presupuestoField.setEditable(false);
+				fechaEntradaDC.setEnabled(false);
+				fechaSalidaDC.setEnabled(false);
+				comentariosArea.setEnabled(false);
+				comentariosArea.setEditable(false);
+				btnCrearFicha.setEnabled(false);
+				btnCrearFicha.setVisible(false);
+				btnVaciar.setEnabled(false);
+				btnVaciar.setVisible(false);
+				btnSiguiente.setEnabled(true);
+				btnSiguiente.setVisible(true);
+				btnAnterior.setEnabled(true);
+				btnAnterior.setVisible(true);
+				btnPrincipal.setEnabled(true);
+				btnPrincipal.setVisible(true);
+				lblClientesicosDelTrvpller.setText("Clientesicos del Trvpller - LECTVRA");
+				// FALTA AÑADIR LOS SETTEXT A LOS CAMPOS DE LAS REPARACIONES DISPONIBLES
+				btnGuardar.setEnabled(false);
+				btnGuardar.setVisible(false);
+			}
+		});
+		btnEditar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				presupuestoField.setEnabled(true);
+				presupuestoField.setEditable(true);
+				fechaEntradaDC.setEnabled(true);
+				fechaSalidaDC.setEnabled(true);
+				comentariosArea.setEnabled(true);
+				comentariosArea.setEditable(true);
+				btnCrearFicha.setEnabled(false);
+				btnCrearFicha.setVisible(false);
+				btnVaciar.setEnabled(false);
+				btnVaciar.setVisible(false);
+				btnSiguiente.setEnabled(true);
+				btnSiguiente.setVisible(true);
+				btnAnterior.setEnabled(true);
+				btnAnterior.setVisible(true);
+				lblClientesicosDelTrvpller.setText("Clientesicos del Trvpller - EDITAR");
+				btnPrincipal.setEnabled(true);
+				btnPrincipal.setVisible(true);
+				// FALTA RECORRER LA LISTA CON LAS REPARACIONES, Y PONER LOS SETTERS DEL MODELO REPARACION
+				btnGuardar.setEnabled(true);
+				btnGuardar.setVisible(true);
+			}
+		});
+		btnPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				presupuestoField.setEnabled(true);
+				presupuestoField.setEditable(true);
+				presupuestoField.setText("");
+				fechaEntradaDC.setEnabled(true);
+				// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
+				fechaSalidaDC.setEnabled(true);
+				// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
+				comentariosArea.setEnabled(true);
+				comentariosArea.setEditable(true);
+				comentariosArea.setText("");
+				listEstado.setSelectedIndex(-1);
+				listEstado.clearSelection();
+				btnCrearFicha.setEnabled(true);
+				btnCrearFicha.setVisible(true);
+				btnVaciar.setEnabled(true);
+				btnVaciar.setVisible(true);
+				btnSiguiente.setEnabled(false);
+				btnSiguiente.setVisible(false);
+				btnAnterior.setEnabled(false);
+				btnAnterior.setVisible(false);
+				lblClientesicosDelTrvpller.setText("Clientesicos del Trvpller");
+				btnPrincipal.setEnabled(false);
+				btnPrincipal.setVisible(false);
+				btnGuardar.setEnabled(false);
+				btnGuardar.setVisible(false);
+			}
+		});
+		btnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(frameFichaReparar, "¡¡ Cambios Aplicados con Exito !!", "GUARDANDO",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 	}
 }
