@@ -139,6 +139,7 @@ public class fichaDni {
 							fichaClienteCrear ventana = new fichaClienteCrear();
 							
 							ventana.getFrameCliente().setVisible(true);
+							//ventana.mostrarCliente(c);
 							
 							frameDni.dispose();
 						}
@@ -146,9 +147,7 @@ public class fichaDni {
 					if (!esCorrecto) {
 						JOptionPane.showMessageDialog(frameDni, "El dni " + dnientrada + " no se encuentra registrado.",
 								"Error del trVp", JOptionPane.ERROR_MESSAGE);					
-						 fichaClienteCrear ventanaCliente = new fichaClienteCrear();
-						 ventanaCliente.getFrameCliente().setVisible(true);
-						 frameDni.dispose();	
+						 
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Formato Dni  Incorrecto");
