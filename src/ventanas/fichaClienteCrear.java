@@ -333,6 +333,7 @@ public class fichaClienteCrear {
 		nombre_ = nombreField.getText().toUpperCase();
 		apellido_ = apellidoField.getText().toUpperCase();
 		dni_ = dniField.getText().toUpperCase();
+		int contErrores=0;
 
 		Pattern patron = Pattern.compile("/^[a-zA-ZñÑ]+$/");
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
@@ -347,19 +348,21 @@ public class fichaClienteCrear {
 
 		if (nombre_.isEmpty()) {
 			errores += "Introduzca nombre \n";
-
+			contErrores++;
 		}
 
 		if (apellido_.isEmpty()) {
 			errores += "Introduzca apellido \n";
-
+			contErrores++;
 		}
 
 		if (cp.isEmpty()) {
 			errores += "Introduzca codigo postal \n";
+			contErrores++;
 		} else {
 			if (!cp__.matches()) {
 				errores += "El CP no cumple con el modelo NNNNN.\n";
+				contErrores++;
 			} else
 				cp_ = Integer.parseInt(cp);
 
@@ -367,23 +370,27 @@ public class fichaClienteCrear {
 
 		if (dni_.isEmpty()) {
 			errores += "Introduzca DNI \n";
+			contErrores++;
 		} else {
 			if (!dni__.matches()) {
 				errores += "El DNI no cumple con el modelo NNNNNNNNL.\n";
+				contErrores++;
 			}
 		}
 
 		if (telefono.isEmpty()) {
 			errores += "Introduzca telefono \n";
+			contErrores++;
 		} else {
 			if (!telefono__.matches()) {
 				errores += "El telefono no cumple con el modelo.\n";
+				contErrores++;
 			} else
 				telefono_ = Integer.parseInt(telefono);
 
 		}
  
-		if (nombre__.matches() && apellido__.matches() && cp__.matches() && dni__.matches() && telefono__.matches()) {
+		if (contErrores==0) {
 			correcto = true;
 
 			Cliente c = new Cliente(nombre_, cp_, apellido_, dni_, telefono_);
