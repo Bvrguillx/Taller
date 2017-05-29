@@ -16,6 +16,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
+
 import com.toedter.calendar.JDateChooser;
 
 import container.Listas;
@@ -52,7 +54,8 @@ public class FichaReparar {
 	private JButton btnLeer;
 	private JTextField txtCliente;
 	private JLabel lblCliente;
-	
+	private int indiceLista;
+
 	/**
 	 * Launch the application.
 	 */
@@ -69,13 +72,11 @@ public class FichaReparar {
 		});
 	}
 
-	
-	//get BuscarMatricula
-		public JFrame getframeFichaReparar() {
-			return frameFichaReparar;
-		}
-	
-	
+	// get BuscarMatricula
+	public JFrame getframeFichaReparar() {
+		return frameFichaReparar;
+	}
+
 	/**
 	 * Create the application.
 	 */
@@ -103,6 +104,7 @@ public class FichaReparar {
 		lblEstado = new JLabel("Estado");
 		listEstado = new JList();
 		btnCrearFicha = new JButton("CREAR FICHA");
+
 		btnVaciar = new JButton("VACIAR");
 		lblOpciones = new JLabel("Opciones");
 		btnAtras = new JButton("");
@@ -156,7 +158,7 @@ public class FichaReparar {
 		matriculaField.setBounds(6, 164, 209, 46);
 		frameFichaReparar.getContentPane().add(matriculaField);
 		// ESTO ES NUEVO, EL TEXTFIELD ESTARA VISIBLE PERO NO EDITABLE
-		matriculaField.setText(Listas.listaReparaciones.get(Listas.listaReparaciones.size()-1).getMatricula());
+		matriculaField.setText(Listas.listaReparaciones.get(Listas.listaReparaciones.size() - 1).getMatricula());
 		matriculaField.setEditable(false);
 
 		lblFechaEntrada.setHorizontalAlignment(SwingConstants.CENTER);
@@ -213,8 +215,8 @@ public class FichaReparar {
 		lblOpciones.setBounds(448, 308, 256, 36);
 		frameFichaReparar.getContentPane().add(lblOpciones);
 
-		btnAtras.setIcon(
-				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
+		btnAtras.setIcon(new ImageIcon(
+				FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
 		btnAtras.setBounds(624, 20, 82, 68);
 		frameFichaReparar.getContentPane().add(btnAtras);
 
@@ -230,60 +232,64 @@ public class FichaReparar {
 		comentariosArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		comentariosArea.setBounds(464, 138, 249, 157);
 		frameFichaReparar.getContentPane().add(comentariosArea);
-		
+
 		fechaEntradaDC.setBounds(16, 249, 199, 46);
 		frameFichaReparar.getContentPane().add(fechaEntradaDC);
-		
+
 		fechaSalidaDC.setBounds(245, 249, 199, 46);
 		frameFichaReparar.getContentPane().add(fechaSalidaDC);
- 
-		btnLeer.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Copy_16x16_JFX.png")));
+
+		btnLeer.setIcon(
+				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Copy_16x16_JFX.png")));
 		btnLeer.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnLeer.setBounds(266, 433, 169, 54);
 		frameFichaReparar.getContentPane().add(btnLeer);
-		
+
 		btnEditar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
-		btnEditar.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
+		btnEditar.setIcon(
+				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnEditar.setBounds(266, 368, 169, 54);
 		frameFichaReparar.getContentPane().add(btnEditar);
-		
+
 		btnSiguiente.setEnabled(false);
 		btnSiguiente.setVisible(false);
 		btnSiguiente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
-		btnSiguiente.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
-		btnSiguiente.setBounds(451, 321, 257, 57);
+		btnSiguiente.setIcon(
+				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
+		btnSiguiente.setBounds(447, 348, 257, 57);
 		frameFichaReparar.getContentPane().add(btnSiguiente);
-		
+
 		btnAnterior.setEnabled(false);
 		btnAnterior.setVisible(false);
 		btnAnterior.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
-		btnAnterior.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnAnterior.setBounds(451, 389, 259, 54);
+		btnAnterior.setIcon(
+				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		btnAnterior.setBounds(447, 416, 259, 54);
 		frameFichaReparar.getContentPane().add(btnAnterior);
-		
-		btnPrincipal.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Paste_16x16_JFX.png")));
+
+		btnPrincipal.setIcon(
+				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Paste_16x16_JFX.png")));
 		btnPrincipal.setEnabled(false);
 		btnPrincipal.setVisible(false);
 		btnPrincipal.setBounds(544, 20, 70, 68);
 		frameFichaReparar.getContentPane().add(btnPrincipal);
-		
+
 		btnGuardar.setEnabled(false);
 		btnGuardar.setVisible(false);
-		btnGuardar.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/java/swing/plaf/windows/icons/UpFolder.gif")));
+		btnGuardar.setIcon(
+				new ImageIcon(FichaReparar.class.getResource("/com/sun/java/swing/plaf/windows/icons/UpFolder.gif")));
 		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnGuardar.setBounds(266, 312, 169, 46);
 		frameFichaReparar.getContentPane().add(btnGuardar);
-		
-		
+
 		lblCliente.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCliente.setBounds(294, 46, 111, 36);
 		frameFichaReparar.getContentPane().add(lblCliente);
-		
-		
+
 		txtCliente.setBounds(235, 82, 201, 46);
 		frameFichaReparar.getContentPane().add(txtCliente);
 		txtCliente.setColumns(10);
-		txtCliente.setText(Listas.listaReparaciones.get(Listas.listaReparaciones.size()-1).getDniDuenio());
+		txtCliente.setText(Listas.listaReparaciones.get(Listas.listaReparaciones.size() - 1).getDniDuenio());
 	}
 
 	public void setEventos() {
@@ -299,15 +305,15 @@ public class FichaReparar {
 				listEstado.clearSelection();
 				presupuestoField.setText("");
 				comentariosArea.setText("");
-				listEstado.setEnabled(false);	
+				listEstado.setEnabled(false);
 			}
 		});
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				JOptionPane.showMessageDialog(frameFichaReparar, "Adios " + responsableField.getText() +
-						"! Hasta la proxima! Gracias por su trabajo!", "Volviendo al LogIn",
-						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(frameFichaReparar,
+						"Adios " + responsableField.getText() + "! Hasta la proxima! Gracias por su trabajo!",
+						"Volviendo al LogIn", JOptionPane.INFORMATION_MESSAGE);
 				frameFichaReparar.dispose();
 				g = new login();
 				g.getLogin().setVisible(true);
@@ -333,7 +339,8 @@ public class FichaReparar {
 				btnPrincipal.setEnabled(true);
 				btnPrincipal.setVisible(true);
 				lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - LECTVRA");
-				// FALTA A�ADIR LOS SETTEXT A LOS CAMPOS DE LAS REPARACIONES DISPONIBLES
+				// FALTA A�ADIR LOS SETTEXT A LOS CAMPOS DE LAS REPARACIONES
+				// DISPONIBLES
 				btnGuardar.setEnabled(false);
 				btnGuardar.setVisible(false);
 			}
@@ -358,7 +365,8 @@ public class FichaReparar {
 				lblClientesicosDelTrvpller.setText("Clientesicos del Trvpller - EDITAR");
 				btnPrincipal.setEnabled(true);
 				btnPrincipal.setVisible(true);
-				// FALTA RECORRER LA LISTA CON LAS REPARACIONES, Y PONER LOS SETTERS DEL MODELO REPARACION
+				// FALTA RECORRER LA LISTA CON LAS REPARACIONES, Y PONER LOS
+				// SETTERS DEL MODELO REPARACION
 				btnGuardar.setEnabled(true);
 				btnGuardar.setVisible(true);
 			}
@@ -370,8 +378,10 @@ public class FichaReparar {
 				presupuestoField.setEditable(true);
 				presupuestoField.setText("");
 				fechaEntradaDC.setEnabled(true);
+				fechaEntradaDC.setDate(null);
 				// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
 				fechaSalidaDC.setEnabled(true);
+				fechaSalidaDC.setDate(null);
 				// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
 				comentariosArea.setEnabled(true);
 				comentariosArea.setEditable(true);
@@ -393,6 +403,31 @@ public class FichaReparar {
 				btnGuardar.setVisible(false);
 			}
 		});
+
+		btnCrearFicha.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				indiceLista=Listas.listaReparaciones.size()-1;
+				
+				Date fechaEntrada=fechaEntradaDC.getDate();
+				Date fechaSalida=fechaSalidaDC.getDate();
+				int Estado= listEstado.getSelectedIndex();
+				String presupuesto = presupuestoField.toString();
+				String comentarios = comentariosArea.getText();
+				
+				Listas.listaReparaciones.get(indiceLista).setFechaEntrada(fechaEntrada);
+				Listas.listaReparaciones.get(indiceLista).setFechaSalida(fechaSalida);
+				Listas.listaReparaciones.get(indiceLista).setListEstado(Estado);
+				Listas.listaReparaciones.get(indiceLista).setPresupuestoField(presupuesto);
+				Listas.listaReparaciones.get(indiceLista).setComentariosArea(comentarios);
+				
+				frameFichaReparar.dispose();
+				Principal p =new Principal();
+				p.getFramePrincipal().setVisible(true);
+			}
+		});
+
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

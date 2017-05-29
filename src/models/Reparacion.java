@@ -9,7 +9,7 @@ public class Reparacion {
 	protected String dniDuenio;
 	protected Date fechaEntrada;
 	protected Date fechaSalida;
-	protected String listEstado;
+	protected int listEstado;
 	protected String presupuestoField;
 	protected String comentariosArea;
 
@@ -20,7 +20,7 @@ public class Reparacion {
 	}
 
 	public Reparacion(String responsable, String matricula, String dniDuenio, Date fechaEntrada, Date fechaSalida,
-			String listEstado, String presupuestoField, String comentariosArea) {
+			int listEstado, String presupuestoField, String comentariosArea) {
 		this.responsable = responsable;
 		this.matricula = matricula;
 		this.dniDuenio = dniDuenio;
@@ -63,11 +63,11 @@ public class Reparacion {
 		this.fechaSalida = fechaSalida;
 	}
 
-	public String getListEstado() {
+	public int getListEstado() {
 		return listEstado;
 	}
 
-	public void setListEstado(String listEstado) {
+	public void setListEstado(int listEstado) {
 		this.listEstado = listEstado;
 	}
 
