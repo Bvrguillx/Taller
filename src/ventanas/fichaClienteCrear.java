@@ -335,13 +335,12 @@ public class fichaClienteCrear {
 		dni_ = dniField.getText().toUpperCase();
 		int contErrores=0;
 
-		Pattern patron = Pattern.compile("/^[a-zA-ZñÑ]+$/");
+		
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
 		Pattern patronDNI = Pattern.compile("^\\d{8}[A-Z]{1}");
 		Pattern patronTLFN = Pattern.compile("^(0034|\\+34)?(\\d\\d\\d)-? ?(\\d\\d)-? ?(\\d)-? ?(\\d)-? ?(\\d\\d)$");
 
-		Matcher nombre__ = patron.matcher(nombre_);
-		Matcher apellido__ = patron.matcher(apellido_);
+		
 		Matcher cp__ = patronCP.matcher(cp);
 		Matcher dni__ = patronDNI.matcher(dni_);
 		Matcher telefono__ = patronTLFN.matcher(telefono);
