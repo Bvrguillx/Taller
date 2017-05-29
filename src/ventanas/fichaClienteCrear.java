@@ -284,10 +284,11 @@ public class fichaClienteCrear {
 		frameCliente.getContentPane().add(lblFlechas);
 
 		lblModo.setBounds(168, 14, 89, 40);
-		lblModo.setVisible(false);
+		lblModo.setText("Modo Crear");
 		frameCliente.getContentPane().add(lblModo);
 
 		btnEditar.setBounds(271, 350, 89, 23);
+		btnEditar.setEnabled(false);
 		frameCliente.getContentPane().add(btnEditar);
 
 	}
@@ -358,6 +359,44 @@ public class fichaClienteCrear {
 			}
 		});
 
+		
+		mntmClienteEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (Listas.listaClientes.isEmpty()) {
+					JOptionPane.showMessageDialog(frameCliente, "No hay clientes  registrados para editar", "Error Lista Clientes",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					modoEditar();
+
+				}
+			}
+		});
+		
+
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (Listas.listaClientes.isEmpty()) {
+					JOptionPane.showMessageDialog(frameCliente, "No hay clientes registrados para editar", "Error Lista Clientes",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					modoEditar();
+
+				}
+			}
+		});
+		
+		
+
+		mntmClienteCrear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+				btnLimpiar.doClick();
+				modoCrear();
+
+				
+			}
+		});
+		
 	}
 
 	public void modoLeer() {
@@ -382,7 +421,7 @@ public class fichaClienteCrear {
 		telefonoField.setEnabled(false);
 		btnLimpiar.setEnabled(false);
 		btnAtras.setEnabled(false);
-
+		
 		indiceClientes = Listas.listaClientes.size() - 1;
 		mostrarCliente();
 	}
@@ -420,18 +459,75 @@ public class fichaClienteCrear {
 
 	
 	
-	public void crearCliente1() {
+	public void modoEditar() {
+		lblModo.setVisible(true);
+		lblModo.setText("Modo Editar");
+		btnAtras_1.setEnabled(false);
+		btnAtras_1.setVisible(false);
+		lblFlechas.setVisible(false);
+		btnAlante.setEnabled(false);
+		btnAlante.setVisible(false);
+		btnEditar.setEnabled(false);
 
-		int indice = Listas.listaClientes.size() - 1;
+		lblNombre.setEnabled(true);
+		nombreField.setEnabled(true);
+		lblApellido.setEnabled(true);
+		apellidoField.setEnabled(true);
+		codpostalField.setEnabled(true);
+		lblCodPostal.setEnabled(true);
+		lblDNI.setEnabled(true);
+		dniField.setEnabled(true);
+		lblTelefono.setEnabled(true);
+		telefonoField.setEnabled(true);
+		btnLimpiar.setEnabled(true);
+		btnAtras.setEnabled(true);
 
-		Listas.listaClientes.get(indice).setNombre(nombre_);
-		Listas.listaClientes.get(indice).setApellido(apellido_);
-		Listas.listaClientes.get(indice).setCp(cp_);
-		Listas.listaClientes.get(indice).setDni(dni_);
-		Listas.listaClientes.get(indice).setTelefono(telefono_);
-
-		indiceClientes = indice;
+		indiceClientes = Listas.listaClientes.size() - 1;
+		mostrarCliente();
 	}
+	
+	
+	
+	public void modoCrear() {
+		
+		lblModo.setVisible(true);
+		lblModo.setText("Modo Crear");
+		btnAtras_1.setEnabled(false);
+		btnAtras_1.setVisible(false);
+		lblFlechas.setVisible(false);
+		btnAlante.setEnabled(false);
+		btnAlante.setVisible(false);
+		btnEditar.setEnabled(false);
+
+		lblNombre.setEnabled(true);
+		nombreField.setEnabled(true);
+		lblApellido.setEnabled(true);
+		apellidoField.setEnabled(true);
+		codpostalField.setEnabled(true);
+		lblCodPostal.setEnabled(true);
+		lblDNI.setEnabled(true);
+		dniField.setEnabled(true);
+		lblTelefono.setEnabled(true);
+		telefonoField.setEnabled(true);
+		btnLimpiar.setEnabled(true);
+		btnAtras.setEnabled(true);
+	
+	}
+	
+	
+	
+//	public void crearCliente1() {
+//
+//		int indice = Listas.listaClientes.size() - 1;
+//
+//		Listas.listaClientes.get(indice).setNombre(nombre_);
+//		Listas.listaClientes.get(indice).setApellido(apellido_);
+//		Listas.listaClientes.get(indice).setCp(cp_);
+//		Listas.listaClientes.get(indice).setDni(dni_);
+//		Listas.listaClientes.get(indice).setTelefono(telefono_);
+//
+//		indiceClientes = indice;
+//	}
 
 	
 	
