@@ -462,11 +462,11 @@ public class fichaClienteCrear {
 	public void modoEditar() {
 		lblModo.setVisible(true);
 		lblModo.setText("Modo Editar");
-		btnAtras_1.setEnabled(false);
-		btnAtras_1.setVisible(false);
-		lblFlechas.setVisible(false);
-		btnAlante.setEnabled(false);
-		btnAlante.setVisible(false);
+		btnAtras_1.setEnabled(true);
+		btnAtras_1.setVisible(true);
+		lblFlechas.setVisible(true);
+		btnAlante.setEnabled(true);
+		btnAlante.setVisible(true);
 		btnEditar.setEnabled(false);
 
 		lblNombre.setEnabled(true);
