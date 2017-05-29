@@ -496,6 +496,7 @@ public class FichaVehiculoCrear {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				prevVehiculo();
+				mostrarVehiculo();
 			}
 		});
 
@@ -503,6 +504,7 @@ public class FichaVehiculoCrear {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nextVehiculo();
+				mostrarVehiculo();
 			}
 		});
 

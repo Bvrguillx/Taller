@@ -135,7 +135,9 @@ public class FichaReparar {
 		btnLeer = new JButton("LEER");
 		btnEditar = new JButton("EDITAR");
 		btnSiguiente = new JButton("SIGUIENTE");
+		
 		btnAnterior = new JButton("ANTERIOR");
+		
 		btnGuardar = new JButton("GUARDAR");
 		btnPrincipal = new JButton("");
 		lblCliente = new JLabel("Cliente");
@@ -390,6 +392,23 @@ public class FichaReparar {
 				listEstado.setEnabled(false);
 			}
 		});
+		
+		btnAnterior.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				prevReparacion();
+				mostrarReparacion();
+			}
+		});
+		
+		btnSiguiente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+			nextReparacion();
+			mostrarReparacion();
+			}
+		});
+		
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -518,4 +537,30 @@ public class FichaReparar {
 			}
 		});
 	}
-}
+		private int nextReparacion() {
+			++indiceLista;
+			if (indiceLista == Listas.listaReparaciones.size()) {
+				indiceLista = 0;
+			}
+			return indiceLista;
+		}
+
+		private int prevReparacion() {
+			--indiceLista;
+			if (indiceLista < 0) {
+				indiceLista = Listas.listaReparaciones.size() - 1;
+			}
+			return indiceLista;
+		}
+		public void mostrarReparacion(){
+			fechaEntradaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaEntrada());
+			fechaSalidaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaSalida());
+			listEstado.setSelectedIndex(Listas.listaReparaciones.get(indiceLista).getListEstado());
+			presupuestoField.setText(Listas.listaReparaciones.get(indiceLista).getPresupuestoField());
+			comentariosArea.setText(Listas.listaReparaciones.get(indiceLista).getComentariosArea());
+			txtCliente.setText(Listas.listaReparaciones.get(indiceLista).getDniDuenio());
+			matriculaField.setText(Listas.listaReparaciones.get(indiceLista).getMatricula());
+			
+		}
+	}
+
