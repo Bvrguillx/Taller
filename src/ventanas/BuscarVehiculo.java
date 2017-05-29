@@ -25,6 +25,7 @@ public class BuscarVehiculo {
 	private JButton btnBack;
 	private JLabel lblMatricula;
 	private JLabel lblIntroducirMatricula;
+	private JButton btnNuevo;
 
 	/**
 	 * Launch the application.
@@ -80,6 +81,10 @@ public class BuscarVehiculo {
 
 		// boton atras
 		btnBack = new JButton("");
+		
+		btnNuevo = new JButton("Nuevo");
+		btnNuevo.setVisible(false);
+		
 
 	}
 
@@ -97,13 +102,13 @@ public class BuscarVehiculo {
 		frameBuscarMatricula.getContentPane().add(lblMatricula);
 
 		// Propiedades texto
-		textField.setBounds(164, 61, 170, 43);
+		textField.setBounds(119, 61, 170, 43);
 		frameBuscarMatricula.getContentPane().add(textField);
 		textField.setColumns(10);
 
 		// Propiedades label matricula
 		lblIntroducirMatricula.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		lblIntroducirMatricula.setBounds(55, 73, 99, 23);
+		lblIntroducirMatricula.setBounds(10, 73, 99, 23);
 		frameBuscarMatricula.getContentPane().add(lblIntroducirMatricula);
 
 		// Propiedades Boton ok
@@ -117,6 +122,11 @@ public class BuscarVehiculo {
 				new ImageIcon(BuscarVehiculo.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnBack.setBounds(249, 136, 114, 98);
 		frameBuscarMatricula.getContentPane().add(btnBack);
+		
+		
+		
+		btnNuevo.setBounds(302, 57, 122, 50);
+		frameBuscarMatricula.getContentPane().add(btnNuevo);
 	}
 
 	private void setEventos() {
@@ -172,6 +182,7 @@ public class BuscarVehiculo {
 							ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
 
 							frameBuscarMatricula.dispose();
+							btnNuevo.setVisible(true);
 
 						}
 
@@ -180,11 +191,25 @@ public class BuscarVehiculo {
 				} else {
 					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto",
 							"Error de formato", JOptionPane.ERROR_MESSAGE);
+					
+					
 				}
 
 			}
 		});
 
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				fichaClienteCrear ventana = new fichaClienteCrear();
+
+				ventana.getFrameCliente().setVisible(true);
+
+				frameBuscarMatricula.dispose();
+			}
+		});
+		
+		
 	}
 
 }
