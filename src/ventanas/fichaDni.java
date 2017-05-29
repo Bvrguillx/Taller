@@ -26,6 +26,7 @@ public class fichaDni {
 	private JLabel lblDni;
 	private JButton btnOk;
 	private JButton btnAtras;
+	private JButton btnNuevo;
 	private String dnientrada;
 	private boolean esCorrecto;
 
@@ -69,7 +70,8 @@ public class fichaDni {
 		lblDni = new JLabel("DNI :");
 		btnOk = new JButton("OK");
 		btnAtras = new JButton("");
-
+		btnNuevo = new JButton("Nuevo");
+		btnNuevo.setVisible(false);
 	}
 
 	public void setPropiedades() {
@@ -82,12 +84,12 @@ public class fichaDni {
 		lblTitulo.setBounds(127, 0, 186, 43);
 		frameDni.getContentPane().add(lblTitulo);
 
-		dniField.setBounds(164, 61, 170, 43);
+		dniField.setBounds(88, 64, 170, 43);
 		frameDni.getContentPane().add(dniField);
 		dniField.setColumns(10);
 
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		lblDni.setBounds(99, 73, 55, 23);
+		lblDni.setBounds(23, 76, 55, 23);
 		frameDni.getContentPane().add(lblDni);
 
 		btnOk.setFont(new Font("Tahoma", Font.PLAIN, 60));
@@ -100,6 +102,11 @@ public class fichaDni {
 				new ImageIcon(fichaDni.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnAtras.setBounds(249, 136, 114, 98);
 		frameDni.getContentPane().add(btnAtras);
+		
+		btnNuevo.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		
+		btnNuevo.setBounds(278, 54, 146, 60);
+		frameDni.getContentPane().add(btnNuevo);
 
 	}
 
@@ -146,7 +153,8 @@ public class fichaDni {
 					}
 					if (!esCorrecto) {
 						JOptionPane.showMessageDialog(frameDni, "El dni " + dnientrada + " no se encuentra registrado.",
-								"Error del trVp", JOptionPane.ERROR_MESSAGE);					
+								"Error del trVp", JOptionPane.ERROR_MESSAGE);
+						btnNuevo.setVisible(true);
 						 
 					}
 				} else {
@@ -157,6 +165,7 @@ public class fichaDni {
 
 			}
 		});
+		
 
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -167,6 +176,19 @@ public class fichaDni {
 			}
 
 		});
+		
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				fichaClienteCrear ventana = new fichaClienteCrear();
+
+				ventana.getFrameCliente().setVisible(true);
+
+				frameDni.dispose();
+			}
+		});
+		
+		
 
 	}
 }
