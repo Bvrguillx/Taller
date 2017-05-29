@@ -382,7 +382,7 @@ public class fichaClienteCrear {
 				telefono_ = Integer.parseInt(telefono);
 
 		}
-
+ 
 		if (nombre__.matches() && apellido__.matches() && cp__.matches() && dni__.matches() && telefono__.matches()) {
 			correcto = true;
 
