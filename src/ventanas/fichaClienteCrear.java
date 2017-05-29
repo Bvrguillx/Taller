@@ -264,11 +264,13 @@ public class fichaClienteCrear {
 			}
 		});
 		btnFlechaIzq.setBounds(261, 14, 49, 34);
+		btnFlechaIzq.setVisible(false);
 		frameCliente.getContentPane().add(btnFlechaIzq);
 		
 		btnFlechaDer = new JButton("");
 		btnFlechaDer.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black.png")));
 		btnFlechaDer.setBounds(439, 14, 49, 34);
+		btnFlechaDer.setVisible(false);
 		frameCliente.getContentPane().add(btnFlechaDer);
 		
 		JLabel lblFlechas = new JLabel("Cliente");
@@ -276,14 +278,7 @@ public class fichaClienteCrear {
 		lblFlechas.setBounds(320, 14, 110, 34);
 		frameCliente.getContentPane().add(lblFlechas);
 
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 	}
@@ -335,11 +330,11 @@ public class fichaClienteCrear {
 		boolean correcto = false;
 		String telefono = telefonoField.getText();
 		String cp = codpostalField.getText();
-		nombre_ = nombreField.getText();
-		apellido_ = apellidoField.getText();
-		dni_ = dniField.getText();
+		nombre_ = nombreField.getText().toUpperCase();
+		apellido_ = apellidoField.getText().toUpperCase();
+		dni_ = dniField.getText().toUpperCase();
 
-		Pattern patron = Pattern.compile("^[A-Za-z]");
+		Pattern patron = Pattern.compile("/^[a-zA-ZñÑ]+$/");
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
 		Pattern patronDNI = Pattern.compile("^\\d{8}[A-Z]{1}");
 		Pattern patronTLFN = Pattern.compile("^(0034|\\+34)?(\\d\\d\\d)-? ?(\\d\\d)-? ?(\\d)-? ?(\\d)-? ?(\\d\\d)$");
@@ -353,21 +348,11 @@ public class fichaClienteCrear {
 		if (nombre_.isEmpty()) {
 			errores += "Introduzca nombre \n";
 
-		} else {
-			if (!nombre__.matches()) {
-
-				errores += "El nombre no acepta numeros.\n";
-
-			}
 		}
 
 		if (apellido_.isEmpty()) {
 			errores += "Introduzca apellido \n";
 
-		} else {
-			if (!apellido__.matches()) {
-				errores += "El apellido no acepta numeros.\n";
-			}
 		}
 
 		if (cp.isEmpty()) {

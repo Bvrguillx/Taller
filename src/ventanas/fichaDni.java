@@ -136,16 +136,16 @@ public class fichaDni {
 							Vehiculo v = new Vehiculo(c.getDni());
 							Listas.listaVehiculo.add(v);
 							esCorrecto = true;
+							fichaClienteCrear ventana = new fichaClienteCrear();
+							
+							ventana.getFrameCliente().setVisible(true);
+							
+							frameDni.dispose();
 						}
 					}
 					if (!esCorrecto) {
 						JOptionPane.showMessageDialog(frameDni, "El dni " + dnientrada + " no se encuentra registrado.",
 								"Error del trVp", JOptionPane.ERROR_MESSAGE);
-						fichaClienteCrear ventana = new fichaClienteCrear();
-
-						ventana.getFrameCliente().setVisible(true);
-
-						frameDni.dispose();
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Formato Dni  Incorrecto");
