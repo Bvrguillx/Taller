@@ -132,10 +132,10 @@ public class fichaDni {
 
 				if (dni1letra.matches()) {
 					for (Cliente c : Listas.listaClientes) {
-						if (c.getDni().equals(dnientrada)) {
-							Vehiculo v = new Vehiculo(c.getDni());
-							Listas.listaVehiculo.add(v);
+						if (c.getDni().contains(dnientrada)) {
 							esCorrecto = true;
+							JOptionPane.showMessageDialog(null, "El dni " + dnientrada + "  esta guardada");
+														
 							fichaClienteCrear ventana = new fichaClienteCrear();
 							
 							ventana.getFrameCliente().setVisible(true);
@@ -146,8 +146,7 @@ public class fichaDni {
 					if (!esCorrecto) {
 						JOptionPane.showMessageDialog(frameDni, "El dni " + dnientrada + " no se encuentra registrado.",
 								"Error del trVp", JOptionPane.ERROR_MESSAGE);					
-						 fichaClienteCrear ventanaCliente = new
-						 fichaClienteCrear();
+						 fichaClienteCrear ventanaCliente = new fichaClienteCrear();
 						 ventanaCliente.getFrameCliente().setVisible(true);
 						 frameDni.dispose();	
 					}
