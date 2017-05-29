@@ -8,7 +8,7 @@ INTRODUCCIÓN
 A continuación se incluyen las instrucciones para desempaquetar sqljdbc_<versión>_enu.exe y sqljdbc_<versión>_enu.tar.gz.
 
 
-WINDOWS
+WINDOWS Y/O LINUX, MAC
 -------
 1. Lea el archivo license.txt. La descarga y el uso de Microsoft JDBC Driver 6.0 para SQL Server implican la aceptación de esta licencia.
 
@@ -34,3 +34,6 @@ este archivo zip en %ProgramFiles% con el directorio predeterminado:
 10-Si tenemos una versión anterior, debemos elminarla seleccionando y marcamos remove.
 
 11-Apply y Ok
+
+
+***Para Evitar tener que ir modificando y añadiendo la libreria en la ruta correspondiente, no debemos hacer nunca commit de >.classpath***
