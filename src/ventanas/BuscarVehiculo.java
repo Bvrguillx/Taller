@@ -178,8 +178,8 @@ public class BuscarVehiculo {
 					}
 
 				} else {
-					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto");
-
+					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto",
+							"Error de formato", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}

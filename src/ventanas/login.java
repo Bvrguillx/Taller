@@ -19,6 +19,8 @@ import javax.swing.SwingConstants;
 
 import DAO.loginDAO;
 import container.Listas;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class login {
 
@@ -134,7 +136,6 @@ public class login {
 		contraseniaField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				contraseniaField.setText("");
 			}
 		});
 		contraseniaField.addKeyListener(new KeyAdapter() {
@@ -145,6 +146,15 @@ public class login {
 				}
 			}
 		});
+
+		contraseniaField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				contraseniaField.setText("");
+
+			}
+		});
+
 		textFieldUsuario.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -234,6 +244,7 @@ public class login {
 			exito = false;
 		}
 	}
+
 	public void run() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -245,5 +256,5 @@ public class login {
 				}
 			}
 		});
-}
+	}
 }
