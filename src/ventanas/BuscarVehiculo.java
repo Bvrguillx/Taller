@@ -82,6 +82,7 @@ public class BuscarVehiculo {
 		// boton atras
 		btnBack = new JButton("");
 		
+		//boton Nuevo
 		btnNuevo = new JButton("Nuevo");
 		btnNuevo.setVisible(false);
 		
