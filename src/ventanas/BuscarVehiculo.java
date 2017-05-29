@@ -137,36 +137,25 @@ public class BuscarVehiculo {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String entrada = textField.getText().toUpperCase().replaceAll(" ", "");
-				boolean esCorrecto=false;
-				
-				
+				String entrada = textField.getText().replaceAll(" ", "");
+				boolean esCorrecto = false;
+
 				// 4 numeros, 3 letras al final
-				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Z]{3}");
+				Pattern tresLetrasFinal = Pattern.compile("^\\d{4}[A-Za-z]{3}");
 				Matcher matricula3letras = tresLetrasFinal.matcher(entrada);
 
 				// 1 o2 letras, 4 numeros, 2 letras
-				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Z]{4}\\d{2}");
+				Pattern cuatroNumerosCentro = Pattern.compile("^\\d{1,2}[A-Za-z]{4}\\d{2}");
 				Matcher matricula4numeros = cuatroNumerosCentro.matcher(entrada);
 
-				
-				
-				
 				if (matricula3letras.matches() || matricula4numeros.matches()) {
-					JOptionPane.showMessageDialog(null, entrada+"  Formato Matricula correcto");
+					JOptionPane.showMessageDialog(null, entrada + "  Formato Matricula correcto");
 
-				esCorrecto=true;	
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto");
-
-				}
-				
-				if(!esCorrecto){
 					for (Vehiculo c : Listas.listaVehiculo) {
 
-						if (c.getMatricula().contains(entrada)){
-							JOptionPane.showMessageDialog(null, "La matricula "+entrada+ "  esta guardada");
+						if (c.getMatricula().contains(entrada)) {
+							esCorrecto = true;
+							JOptionPane.showMessageDialog(null, "La matricula " + entrada + "  esta guardada");
 
 							FichaReparar ventanaReparar = new FichaReparar();
 
@@ -174,47 +163,24 @@ public class BuscarVehiculo {
 
 							frameBuscarMatricula.dispose();
 						}
-						
-						
+						if (!esCorrecto) {
 
-						/*
-						 * if(c.getMatricula().equals(matricula4numeros)||
-						 * c.getMatricula().equals(matricula3letras)) {
-						 * 
-						 * JOptionPane.showMessageDialog(null,
-						 * "La matricula esta guardada");
-						 * 
-						 * 
-						 * // Si existe la matricula ir a reparar
-						 * 
-						 * FichaReparar ventanaReparar = new FichaReparar();
-						 * 
-						 * ventanaReparar.getframeFichaReparar().setVisible(true
-						 * );
-						 * 
-						 * frameBuscarMatricula.dispose();
-						*/
-						
-						
-						// si NO existe la matricula ir a crear vehiculo
-					else{
-						  
-						  JOptionPane.showMessageDialog(null, "La matricula "+entrada+ " no esta guardada"); 
-						  
-						 
-						 FichaVehiculoCrear ventanaVehiculo = new
-						  FichaVehiculoCrear();
-						  
-						  ventanaVehiculo.getFrameCrearFichaVehiculo().
-						  setVisible(true);
-						 
-						  frameBuscarMatricula.dispose();
-						  
-						  }
-						
+							JOptionPane.showMessageDialog(null, "La matricula " + entrada + " no esta guardada");
+
+							FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
+
+							ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+
+							frameBuscarMatricula.dispose();
+
+						}
+
 					}
 
-				} 
+				} else {
+					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto");
+
+				}
 
 			}
 		});
