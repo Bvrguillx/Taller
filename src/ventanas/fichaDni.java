@@ -124,10 +124,10 @@ public class fichaDni {
 
 				/* Comprobar formato DNI */
 
-				dnientrada = dniField.getText().toUpperCase().replaceAll(" ", "");
+				dnientrada = dniField.getText().replaceAll(" ", "");
 				esCorrecto = false;
 
-				Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Z]{1}");
+				Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Za-z]{1}");
 				Matcher dni1letra = dniunaletra8numeros.matcher(dnientrada);
 
 				if (dni1letra.matches()) {
@@ -145,15 +145,16 @@ public class fichaDni {
 					}
 					if (!esCorrecto) {
 						JOptionPane.showMessageDialog(frameDni, "El dni " + dnientrada + " no se encuentra registrado.",
-								"Error del trVp", JOptionPane.ERROR_MESSAGE);
+								"Error del trVp", JOptionPane.ERROR_MESSAGE);					
+						 fichaClienteCrear ventanaCliente = new
+						 fichaClienteCrear();
+						 ventanaCliente.getFrameCliente().setVisible(true);
+						 frameDni.dispose();	
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Formato Dni  Incorrecto");
 
-					// fichaClienteCrear ventanaCliente = new
-					// fichaClienteCrear();
-					// ventanaCliente.getFrameCliente().setVisible(true);
-					// frameDni.dispose();
+					
 				}
 
 			}
