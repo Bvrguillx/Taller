@@ -361,9 +361,11 @@ public class fichaClienteCrear {
 	}
 
 	public void modoLeer() {
+		lblModo.setVisible(true);
 		lblModo.setText("Modo Leer Cliente");
 		btnAtras_1.setEnabled(true);
 		btnAtras_1.setVisible(true);
+		lblFlechas.setVisible(true);
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(true);
@@ -390,10 +392,13 @@ public class fichaClienteCrear {
 			Cliente c = Listas.listaClientes.get(indiceClientes);
 
 			nombreField.setText(c.getNombre());
+			lblFlechas.setText(c.getNombre());
+
 			telefonoField.setText(String.valueOf(c.getTelefono()));
 			apellidoField.setText(c.getApellido());
 			dniField.setText(c.getDni());
 			codpostalField.setText(String.valueOf(c.getTelefono()));
+			
 		}
 	}
 
@@ -413,12 +418,13 @@ public class fichaClienteCrear {
 		return indiceClientes;
 	}
 
+	
+	
 	public void crearCliente1() {
 
 		int indice = Listas.listaClientes.size() - 1;
 
 		Listas.listaClientes.get(indice).setNombre(nombre_);
-		;
 		Listas.listaClientes.get(indice).setApellido(apellido_);
 		Listas.listaClientes.get(indice).setCp(cp_);
 		Listas.listaClientes.get(indice).setDni(dni_);
@@ -427,6 +433,11 @@ public class fichaClienteCrear {
 		indiceClientes = indice;
 	}
 
+	
+	
+	
+	
+	
 	public boolean crearCliente() {
 
 		String errores = "";
