@@ -141,6 +141,11 @@ public class fichaDni {
 					if (!esCorrecto) {
 						JOptionPane.showMessageDialog(frameDni, "El dni " + dnientrada + " no se encuentra registrado.",
 								"Error del trVp", JOptionPane.ERROR_MESSAGE);
+						fichaClienteCrear ventana = new fichaClienteCrear();
+
+						ventana.getFrameCliente().setVisible(true);
+
+						frameDni.dispose();
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Formato Dni  INcorrecto");
