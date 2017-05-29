@@ -22,8 +22,11 @@ este archivo zip en %ProgramFiles% con el directorio predeterminado:
 
 	Microsoft JDBC DRIVER 6.0 para SQL Server
 5-Abrimos eclipse
+
 6-En el proyecto que queremos usar, lo seleccionamos, boton derecho "Build Path"
+
 7-Configure Build Patch
+
 8-Add External JarS
 
 9-Buscamos la carpeta y el archivo seleccionado sqljdbc42  (seleccionamos carpeta jre8 o 7 segun versión)
