@@ -38,15 +38,18 @@ public class fichaClienteCrear {
 	private JButton btnCrear;
 	private JButton btnAtras;
 	private JButton btnLimpiar;
+	private JLabel lblModo;
+	private JButton btnEditar;
+	private int indiceClientes;
+	private JLabel lblFlechas;
 
+	// ATRIBUTOS Cliente
 	protected String nombre_;
 	protected int cp_;
 	protected String apellido_;
 	protected String dni_;
 	protected int telefono_;
 
-	
-	
 	// MENU
 	private JMenu mnMenu;
 	private JMenu mnCoches;
@@ -62,10 +65,9 @@ public class fichaClienteCrear {
 	private JMenuItem mntmClienteEditar;
 	private JMenu mnReparaciones;
 	private JMenuBar menuBar;
-	private JButton btnFlechaIzq;
-	private JButton btnFlechaDer;
-	
-	
+	private JButton btnAtras_1;
+	private JButton btnAlante;
+
 	/**
 	 * Launch the application.
 	 */
@@ -115,7 +117,14 @@ public class fichaClienteCrear {
 		btnCrear = new JButton("CREAR");
 		btnAtras = new JButton("");
 		btnLimpiar = new JButton("");
-	
+		btnEditar = new JButton("Editar");
+		btnAtras_1 = new JButton("");
+
+		btnAlante = new JButton("");
+		lblFlechas = new JLabel("Cliente");
+		lblModo = new JLabel("Modo");
+
+			
 		// MENU
 		mnMenu = new JMenu("");
 		mnCoches = new JMenu("");
@@ -124,6 +133,7 @@ public class fichaClienteCrear {
 		mntmCocheCrear = new JMenuItem("");
 		mnClientes = new JMenu("");
 		mntmClienteLeer = new JMenuItem("");
+
 		mntmClienteCrear = new JMenuItem("");
 		mntmClienteEditar = new JMenuItem("");
 		mnReparaciones = new JMenu("");
@@ -142,7 +152,7 @@ public class fichaClienteCrear {
 
 		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNombre.setBounds(10, 50, 227, 42);
+		lblNombre.setBounds(10, 65, 227, 42);
 		frameCliente.getContentPane().add(lblNombre);
 
 		nombreField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -152,7 +162,7 @@ public class fichaClienteCrear {
 
 		lblApellido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblApellido.setBounds(261, 50, 227, 42);
+		lblApellido.setBounds(261, 65, 227, 42);
 		frameCliente.getContentPane().add(lblApellido);
 
 		apellidoField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -194,7 +204,7 @@ public class fichaClienteCrear {
 		btnCrear.setIcon(
 				new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnCrear.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
-		btnCrear.setBounds(261, 291, 107, 80);
+		btnCrear.setBounds(261, 291, 107, 48);
 		frameCliente.getContentPane().add(btnCrear);
 
 		btnAtras.setIcon(new ImageIcon(
@@ -206,11 +216,9 @@ public class fichaClienteCrear {
 				fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
 		btnLimpiar.setBounds(378, 291, 56, 81);
 		frameCliente.getContentPane().add(btnLimpiar);
-		
-		
-		
+
 		menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 157, 48);
+		menuBar.setBounds(0, 0, 142, 48);
 		frameCliente.getContentPane().add(menuBar);
 
 		menuBar.add(mnMenu);
@@ -256,31 +264,32 @@ public class fichaClienteCrear {
 		mntmReparacionCrear
 				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
 		mnReparaciones.add(mntmReparacionCrear);
-		
-		btnFlechaIzq = new JButton("");
-		btnFlechaIzq.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black-rtl.png")));
-		btnFlechaIzq.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnFlechaIzq.setBounds(261, 14, 49, 34);
-		btnFlechaIzq.setVisible(false);
-		frameCliente.getContentPane().add(btnFlechaIzq);
-		
-		btnFlechaDer = new JButton("");
-		btnFlechaDer.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black.png")));
-		btnFlechaDer.setBounds(439, 14, 49, 34);
-		btnFlechaDer.setVisible(false);
-		frameCliente.getContentPane().add(btnFlechaDer);
-		
-		JLabel lblFlechas = new JLabel("Cliente");
+
+		btnAtras_1.setIcon(new ImageIcon(fichaClienteCrear.class
+				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black-rtl.png")));
+
+		btnAtras_1.setBounds(277, 14, 49, 34);
+		btnAtras_1.setVisible(false);
+		frameCliente.getContentPane().add(btnAtras_1);
+
+		btnAlante.setIcon(new ImageIcon(fichaClienteCrear.class
+				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black.png")));
+		btnAlante.setBounds(439, 14, 49, 34);
+		btnAlante.setVisible(false);
+		frameCliente.getContentPane().add(btnAlante);
+
 		lblFlechas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFlechas.setBounds(320, 14, 110, 34);
+		lblFlechas.setVisible(false);
+		lblFlechas.setBounds(334, 14, 101, 34);
 		frameCliente.getContentPane().add(lblFlechas);
 
-	
-		
-		
+		lblModo.setBounds(168, 14, 89, 40);
+		lblModo.setVisible(false);
+		frameCliente.getContentPane().add(lblModo);
+
+		btnEditar.setBounds(271, 350, 89, 23);
+		frameCliente.getContentPane().add(btnEditar);
+
 	}
 
 	public void setEventos() {
@@ -322,6 +331,100 @@ public class fichaClienteCrear {
 			}
 		});
 
+		// Botones modo Lectura
+		mntmClienteLeer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (Listas.listaClientes.isEmpty()) {
+					JOptionPane.showMessageDialog(frameCliente, "No hay clientes  registrados", "Error Lista Clientes",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					modoLeer();
+
+				}
+			}
+		});
+
+		btnAtras_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				prevCliente();
+				mostrarCliente();
+			}
+		});
+
+		btnAlante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				nextCliente();
+				mostrarCliente();
+			}
+		});
+
+	}
+
+	public void modoLeer() {
+		lblModo.setText("Modo Leer Cliente");
+		btnAtras_1.setEnabled(true);
+		btnAtras_1.setVisible(true);
+		btnAlante.setEnabled(true);
+		btnAlante.setVisible(true);
+		btnEditar.setEnabled(true);
+
+		lblNombre.setEnabled(false);
+		nombreField.setEnabled(false);
+		lblApellido.setEnabled(false);
+		apellidoField.setEnabled(false);
+		codpostalField.setEnabled(false);
+		lblCodPostal.setEnabled(false);
+		lblDNI.setEnabled(false);
+		dniField.setEnabled(false);
+		lblTelefono.setEnabled(false);
+		telefonoField.setEnabled(false);
+		btnLimpiar.setEnabled(false);
+		btnAtras.setEnabled(false);
+
+		indiceClientes = Listas.listaClientes.size() - 1;
+		mostrarCliente();
+	}
+
+	public void mostrarCliente() {
+		if (!Listas.listaClientes.isEmpty()) {
+			Cliente c = Listas.listaClientes.get(indiceClientes);
+
+			nombreField.setText(c.getNombre());
+			telefonoField.setText(String.valueOf(c.getTelefono()));
+			apellidoField.setText(c.getApellido());
+			dniField.setText(c.getDni());
+			codpostalField.setText(String.valueOf(c.getTelefono()));
+		}
+	}
+
+	private int nextCliente() {
+		++indiceClientes;
+		if (indiceClientes == Listas.listaClientes.size()) {
+			indiceClientes = 0;
+		}
+		return indiceClientes;
+	}
+
+	private int prevCliente() {
+		--indiceClientes;
+		if (indiceClientes < 0) {
+			indiceClientes = Listas.listaClientes.size() - 1;
+		}
+		return indiceClientes;
+	}
+
+	public void crearCliente1() {
+
+		int indice = Listas.listaClientes.size() - 1;
+
+		Listas.listaClientes.get(indice).setNombre(nombre_);
+		;
+		Listas.listaClientes.get(indice).setApellido(apellido_);
+		Listas.listaClientes.get(indice).setCp(cp_);
+		Listas.listaClientes.get(indice).setDni(dni_);
+		Listas.listaClientes.get(indice).setTelefono(telefono_);
+
+		indiceClientes = indice;
 	}
 
 	public boolean crearCliente() {
@@ -333,14 +436,12 @@ public class fichaClienteCrear {
 		nombre_ = nombreField.getText().toUpperCase();
 		apellido_ = apellidoField.getText().toUpperCase();
 		dni_ = dniField.getText().toUpperCase();
-		int contErrores=0;
+		int contErrores = 0;
 
-		
 		Pattern patronCP = Pattern.compile("^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$");
 		Pattern patronDNI = Pattern.compile("^\\d{8}[A-Z]{1}");
 		Pattern patronTLFN = Pattern.compile("^(0034|\\+34)?(\\d\\d\\d)-? ?(\\d\\d)-? ?(\\d)-? ?(\\d)-? ?(\\d\\d)$");
 
-		
 		Matcher cp__ = patronCP.matcher(cp);
 		Matcher dni__ = patronDNI.matcher(dni_);
 		Matcher telefono__ = patronTLFN.matcher(telefono);
@@ -388,8 +489,8 @@ public class fichaClienteCrear {
 				telefono_ = Integer.parseInt(telefono);
 
 		}
- 
-		if (contErrores==0) {
+
+		if (contErrores == 0) {
 			correcto = true;
 
 			Cliente c = new Cliente(nombre_, cp_, apellido_, dni_, telefono_);
