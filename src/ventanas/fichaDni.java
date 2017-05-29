@@ -148,7 +148,7 @@ public class fichaDni {
 						frameDni.dispose();
 					}
 				} else {
-					JOptionPane.showMessageDialog(null, "Formato Dni  INcorrecto");
+					JOptionPane.showMessageDialog(null, "Formato Dni  Incorrecto");
 
 					// fichaClienteCrear ventanaCliente = new
 					// fichaClienteCrear();
