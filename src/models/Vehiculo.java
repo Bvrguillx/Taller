@@ -38,7 +38,7 @@ public class Vehiculo {
 		
 		if (matricula == null || matricula.equals("")) throw new RuntimeException("Campo Matricula Vacio");
 		// ESTO TENEMOS QUE MIRARLO MA�ANA TRIBOGA
-		if (!comprobarString(matricula)) throw new RuntimeException("Matricula Introducida No Valida");
+		// if (!comprobarString(matricula)) throw new RuntimeException("Matricula Introducida No Valida");
 		
 		this.matricula = matricula;
 		

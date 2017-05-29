@@ -19,6 +19,18 @@ public class Reparacion {
 		this.dniDuenio = dniDuenio;
 	}
 
+	public Reparacion(String responsable, String matricula, String dniDuenio, Date fechaEntrada, Date fechaSalida,
+			String listEstado, String presupuestoField, String comentariosArea) {
+		this.responsable = responsable;
+		this.matricula = matricula;
+		this.dniDuenio = dniDuenio;
+		this.fechaEntrada = fechaEntrada;
+		this.fechaSalida = fechaSalida;
+		this.listEstado = listEstado;
+		this.presupuestoField = presupuestoField;
+		this.comentariosArea = comentariosArea;
+	}
+
 	public String getResponsable() {
 		return responsable;
 	}

@@ -152,7 +152,7 @@ public class FichaReparar {
 		matriculaField.setBounds(10, 133, 209, 46);
 		frameFichaReparar.getContentPane().add(matriculaField);
 		// ESTO ES NUEVO, EL TEXTFIELD ESTARA VISIBLE PERO NO EDITABLE
-		matriculaField.setText("1234-ABC");
+		matriculaField.setText("1234ABC");
 		matriculaField.setEditable(false);
 
 		lblFechaEntrada.setHorizontalAlignment(SwingConstants.CENTER);

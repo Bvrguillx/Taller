@@ -17,6 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import DAO.loginDAO;
 import container.Listas;
 
 public class login {
@@ -31,12 +32,10 @@ public class login {
 	private JButton btnNewButton;
 	private boolean exito;
 
-	
 	public JFrame getLogin() {
 		return login;
 	}
-	
-	
+
 	/**
 	 * Launch the application
 	 */
@@ -191,24 +190,60 @@ public class login {
 	}
 
 	public void accion(JLabel lblTitulo) {
+
+		// if ( loginDAO.login(getUsuario(), getContrasenia()) ){
+		// exito = true;
+		//
+		// JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Validos",
+		// "Login",
+		// JOptionPane.INFORMATION_MESSAGE);
+		// login.dispose();
+		// if (Listas.listaClientes.isEmpty()){
+		// fichaClienteCrear f = new fichaClienteCrear();
+		// f.getFrameCliente().setVisible(true);
+		// }else{
+		// Principal p = new Principal();
+		// p.getFramePrincipal().setVisible(true);
+		// }
+		// } else {
+		// JOptionPane.showMessageDialog(login, "Usuario y Contrasenia
+		// Incorrectos", "Login",
+		// JOptionPane.ERROR_MESSAGE);
+		// contraseniaField.setText("");
+		// exito = false;
+		// }
+		//
+
 		if (Credenciales.logeo(getUsuario(), getContrasenia())) {
 			exito = true;
 			Listas.usuario = getUsuario();
-			JOptionPane.showMessageDialog(login, "Usuario & Contrase�a V�lidos", "Login",
+			JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Validos", "Login",
 					JOptionPane.INFORMATION_MESSAGE);
 			login.dispose();
-			if (Listas.listaClientes.isEmpty()){
+			if (Listas.listaClientes.isEmpty()) {
 				fichaClienteCrear f = new fichaClienteCrear();
 				f.getFrameCliente().setVisible(true);
-			}else{
-			Principal p = new Principal();
-			p.getFramePrincipal().setVisible(true);
+			} else {
+				Principal p = new Principal();
+				p.getFramePrincipal().setVisible(true);
 			}
 		} else {
-			JOptionPane.showMessageDialog(login, "Usuario � Contrase�a Incorrectos", "Login",
+			JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Incorrectos", "Login",
 					JOptionPane.ERROR_MESSAGE);
 			contraseniaField.setText("");
 			exito = false;
 		}
-	}	
+	}
+	public void run() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					login window = new login();
+					window.login.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+}
 }
