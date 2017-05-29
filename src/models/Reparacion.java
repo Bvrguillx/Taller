@@ -87,4 +87,12 @@ public class Reparacion {
 		this.comentariosArea = comentariosArea;
 	}
 
+	public String getDniDuenio() {
+		return dniDuenio;
+	}
+
+	public void setDniDuenio(String dniDuenio) {
+		this.dniDuenio = dniDuenio;
+	}
+
 }
