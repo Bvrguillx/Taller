@@ -34,3 +34,6 @@ este archivo zip en %ProgramFiles% con el directorio predeterminado:
 10-Si tenemos una versión anterior, debemos elminarla seleccionando y marcamos remove.
 
 11-Apply y Ok
+
+
+***Para Evitar tener que ir modificando y añadiendo la libreria en la ruta correspondiente, no debemos hacer nunca commit de >.classpath***
