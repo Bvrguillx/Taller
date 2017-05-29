@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,7 +38,7 @@ public class fichaClienteCrear {
 	private JLabel lblCodPostal;
 	private JLabel lblDNI;
 	private JButton btnCrear;
-	private JButton btnAtras;
+	private JButton btnCerrar;
 	private JButton btnLimpiar;
 	private JLabel lblModo;
 	private JButton btnEditar;
@@ -115,7 +117,7 @@ public class fichaClienteCrear {
 		lblDNI = new JLabel("DNI");
 		dniField = new JTextField();
 		btnCrear = new JButton("CREAR");
-		btnAtras = new JButton("");
+		btnCerrar = new JButton("");
 		btnLimpiar = new JButton("");
 		btnEditar = new JButton("Editar");
 		btnAtras_1 = new JButton("");
@@ -206,13 +208,11 @@ public class fichaClienteCrear {
 		btnCrear.setBounds(261, 291, 107, 48);
 		frameCliente.getContentPane().add(btnCrear);
 
-		btnAtras.setIcon(new ImageIcon(
-				fichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnAtras.setBounds(444, 291, 49, 80);
-		frameCliente.getContentPane().add(btnAtras);
+		btnCerrar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
+		btnCerrar.setBounds(444, 291, 74, 80);
+		frameCliente.getContentPane().add(btnCerrar);
 
-		btnLimpiar.setIcon(new ImageIcon(
-				fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
+		btnLimpiar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/iconos/1496111513_erase.png")));
 		btnLimpiar.setBounds(378, 291, 56, 81);
 		frameCliente.getContentPane().add(btnLimpiar);
 
@@ -293,12 +293,11 @@ public class fichaClienteCrear {
 	}
 
 	public void setEventos() {
-		btnAtras.addActionListener(new ActionListener() {
+		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				ClienteExistente ClienteExistente1 = new ClienteExistente();
-
-				ClienteExistente1.getFrameExistente().setVisible(true);
+				login l = new login();
+				l.getLogin().setVisible(true);
 				frameCliente.dispose();
 
 			}
@@ -369,6 +368,13 @@ public class fichaClienteCrear {
 				}
 			}
 		});
+		mntmCocheCrear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				FichaVehiculoCrear fv =new FichaVehiculoCrear ();
+				fv.frameCrearFichaVehiculo.setVisible(true);
+			}
+		});
 
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -390,7 +396,52 @@ public class fichaClienteCrear {
 
 			}
 		});
+		mnMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
 
+				if (Listas.listaReparaciones.isEmpty()) {
+					mnReparaciones.setEnabled(false);
+				}
+				if (Listas.listaVehiculo.isEmpty()) {
+					mnCoches.setEnabled(false);
+				}
+				if(Listas.listaClientes.isEmpty()){
+					mnClientes.setEnabled(false);
+				}
+			}
+		});
+		mntmCocheLeer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if (Listas.listaVehiculo.isEmpty() || Listas.listaVehiculo.get(0).getMarca().isEmpty()) {
+					JOptionPane.showMessageDialog(frameCliente, "No hay vehiculos en registrados",
+							"Error Lista Vehiculo", JOptionPane.ERROR_MESSAGE);
+				} else {
+					modoLeer();
+				}
+			}
+		});
+		mntmReparacionLeer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				FichaReparar fr = new FichaReparar();
+				fr.getframeFichaReparar().setVisible(true);
+				fr.modoLeer();
+				fr.mostrarReparacion();
+				frameCliente.dispose();
+			}
+		});
+		
+		mntmReparacionCrear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				FichaReparar fr = new FichaReparar();
+				fr.getframeFichaReparar().setVisible(true);
+				fr.modoCrear();
+				frameCliente.dispose();
+			}
+		});
 	}
 
 	public void modoLeer() {
@@ -414,7 +465,7 @@ public class fichaClienteCrear {
 		lblTelefono.setEnabled(false);
 		telefonoField.setEnabled(false);
 		btnLimpiar.setEnabled(false);
-		btnAtras.setEnabled(false);
+		btnCerrar.setEnabled(false);
 
 		indiceClientes = Listas.listaClientes.size() - 1;
 		mostrarCliente();
@@ -472,7 +523,7 @@ public class fichaClienteCrear {
 		lblTelefono.setEnabled(true);
 		telefonoField.setEnabled(true);
 		btnLimpiar.setEnabled(true);
-		btnAtras.setEnabled(true);
+		btnCerrar.setEnabled(true);
 
 		indiceClientes = Listas.listaClientes.size() - 1;
 		mostrarCliente();
@@ -500,7 +551,7 @@ public class fichaClienteCrear {
 		lblTelefono.setEnabled(true);
 		telefonoField.setEnabled(true);
 		btnLimpiar.setEnabled(true);
-		btnAtras.setEnabled(true);
+		btnCerrar.setEnabled(true);
 
 	}
 

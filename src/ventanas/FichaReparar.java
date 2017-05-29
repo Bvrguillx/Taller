@@ -381,15 +381,7 @@ public class FichaReparar {
 		btnVaciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				// responsableField.setText("");
-				// matriculaField.setText("");
-				fechaEntradaDC.setDate(null);
-				fechaSalidaDC.setDate(null);
-				listEstado.setSelectedIndex(-1);
-				listEstado.clearSelection();
-				presupuestoField.setText("");
-				comentariosArea.setText("");
-				listEstado.setEnabled(false);
+				clear();
 			}
 		});
 
@@ -423,85 +415,23 @@ public class FichaReparar {
 		btnLeer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				presupuestoField.setEnabled(false);
-				presupuestoField.setEditable(false);
-				fechaEntradaDC.setEnabled(false);
-				fechaSalidaDC.setEnabled(false);
-				comentariosArea.setEnabled(false);
-				comentariosArea.setEditable(false);
-				btnCrearFicha.setEnabled(false);
-				btnCrearFicha.setVisible(false);
-				btnVaciar.setEnabled(false);
-				btnVaciar.setVisible(false);
-				btnSiguiente.setEnabled(true);
-				btnSiguiente.setVisible(true);
-				btnAnterior.setEnabled(true);
-				btnAnterior.setVisible(true);
-				btnPrincipal.setEnabled(true);
-				btnPrincipal.setVisible(true);
-				lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - LECTVRA");
-				// FALTA A�ADIR LOS SETTEXT A LOS CAMPOS DE LAS REPARACIONES
-				// DISPONIBLES
-				btnGuardar.setEnabled(false);
-				btnGuardar.setVisible(false);
+				modoLeer();
+				indiceLista=Listas.listaReparaciones.size()-1;
+				mostrarReparacion();
 			}
 		});
 		btnEditar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				presupuestoField.setEnabled(true);
-				presupuestoField.setEditable(true);
-				fechaEntradaDC.setEnabled(true);
-				fechaSalidaDC.setEnabled(true);
-				comentariosArea.setEnabled(true);
-				comentariosArea.setEditable(true);
-				btnCrearFicha.setEnabled(false);
-				btnCrearFicha.setVisible(false);
-				btnVaciar.setEnabled(false);
-				btnVaciar.setVisible(false);
-				btnSiguiente.setEnabled(true);
-				btnSiguiente.setVisible(true);
-				btnAnterior.setEnabled(true);
-				btnAnterior.setVisible(true);
-				lblClientesicosDelTrvpller.setText("Clientesicos del Trvpller - EDITAR");
-				btnPrincipal.setEnabled(true);
-				btnPrincipal.setVisible(true);
-				// FALTA RECORRER LA LISTA CON LAS REPARACIONES, Y PONER LOS
-				// SETTERS DEL MODELO REPARACION
-				btnGuardar.setEnabled(true);
-				btnGuardar.setVisible(true);
+				modoEditar();
 			}
 		});
 		btnPrincipal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				presupuestoField.setEnabled(true);
-				presupuestoField.setEditable(true);
-				presupuestoField.setText("");
-				fechaEntradaDC.setEnabled(true);
-				fechaEntradaDC.setDate(null);
-				// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
-				fechaSalidaDC.setEnabled(true);
-				fechaSalidaDC.setDate(null);
-				// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
-				comentariosArea.setEnabled(true);
-				comentariosArea.setEditable(true);
-				comentariosArea.setText("");
-				listEstado.setSelectedIndex(-1);
-				listEstado.clearSelection();
-				btnCrearFicha.setEnabled(true);
-				btnCrearFicha.setVisible(true);
-				btnVaciar.setEnabled(true);
-				btnVaciar.setVisible(true);
-				btnSiguiente.setEnabled(false);
-				btnSiguiente.setVisible(false);
-				btnAnterior.setEnabled(false);
-				btnAnterior.setVisible(false);
-				lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller");
-				btnPrincipal.setEnabled(false);
-				btnPrincipal.setVisible(false);
-				btnGuardar.setEnabled(false);
-				btnGuardar.setVisible(false);
+				modoCrear();
+				clear();
+				
 			}
 		});
 
@@ -543,6 +473,94 @@ public class FichaReparar {
 
 				JOptionPane.showMessageDialog(frameFichaReparar, "�� Cambios Aplicados con Exito !!", "GUARDANDO",
 						JOptionPane.INFORMATION_MESSAGE);
+				
+				Principal p = new Principal();
+				p.getFramePrincipal().setVisible(true);
+				frameFichaReparar.dispose();
+			}
+		});
+		
+		mntmCocheLeer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if (Listas.listaVehiculo.isEmpty() || Listas.listaVehiculo.get(0).getMarca() == null) {
+					JOptionPane.showMessageDialog(frameFichaReparar, "No hay vehiculos en registrados",
+							"Error Lista Vehiculo", JOptionPane.ERROR_MESSAGE);
+				} else {
+					FichaVehiculoCrear fv =new FichaVehiculoCrear ();
+					fv.frameCrearFichaVehiculo.setVisible(true);
+					fv.modoLeer();
+					frameFichaReparar.dispose();
+				}
+			}
+		});
+		
+		mntmCocheCrear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				FichaVehiculoCrear fv =new FichaVehiculoCrear ();
+				fv.frameCrearFichaVehiculo.setVisible(true);
+				fv.modoCrear();
+				frameFichaReparar.dispose();
+
+			}
+		});
+		
+		mntmClienteLeer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				fichaClienteCrear fc = new fichaClienteCrear();
+				fc.frameCliente.setVisible(true);
+				fc.modoLeer();
+				frameFichaReparar.dispose();
+
+			}
+		});
+		mntmClienteCrear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				fichaClienteCrear fc = new fichaClienteCrear();
+				fc.frameCliente.setVisible(true);
+				fc.modoCrear();
+				frameFichaReparar.dispose();
+
+			}
+		});
+		
+		mnMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				if (Listas.listaReparaciones.isEmpty()|| Listas.listaReparaciones.get(0).getPresupuestoField().isEmpty()) {
+					mnReparaciones.setEnabled(false);
+				}
+				if (Listas.listaVehiculo.isEmpty()|| Listas.listaVehiculo.get(0).getMarca() == null) {
+					mnCoches.setEnabled(false);
+				}
+				if(Listas.listaClientes.isEmpty()){
+					mnClientes.setEnabled(false);
+				}
+			}
+		});
+		
+		mntmReparacionLeer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				FichaReparar fr = new FichaReparar();
+				fr.getframeFichaReparar().setVisible(true);
+				fr.modoLeer();
+				fr.mostrarReparacion();
+				frameFichaReparar.dispose();
+			}
+		});
+		
+		mntmReparacionCrear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				FichaReparar fr = new FichaReparar();
+				fr.getframeFichaReparar().setVisible(true);
+				fr.modoCrear();
+				frameFichaReparar.dispose();
 			}
 		});
 	}
@@ -572,5 +590,96 @@ public class FichaReparar {
 		txtCliente.setText(Listas.listaReparaciones.get(indiceLista).getDniDuenio());
 		matriculaField.setText(Listas.listaReparaciones.get(indiceLista).getMatricula());
 
+	}
+	public void modoLeer(){
+		presupuestoField.setEnabled(false);
+		presupuestoField.setEditable(false);
+		fechaEntradaDC.setEnabled(false);
+		fechaSalidaDC.setEnabled(false);
+		comentariosArea.setEnabled(false);
+		comentariosArea.setEditable(false);
+		btnCrearFicha.setEnabled(false);
+		btnCrearFicha.setVisible(false);
+		btnVaciar.setEnabled(false);
+		btnVaciar.setVisible(false);
+		btnSiguiente.setEnabled(true);
+		btnSiguiente.setVisible(true);
+		btnAnterior.setEnabled(true);
+		btnAnterior.setVisible(true);
+		btnPrincipal.setEnabled(true);
+		btnPrincipal.setVisible(true);
+		lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - LECTVRA");
+		// FALTA A�ADIR LOS SETTEXT A LOS CAMPOS DE LAS REPARACIONES
+		// DISPONIBLES
+		btnGuardar.setEnabled(false);
+		btnGuardar.setVisible(false);
+		
+		
+	}
+	
+	public void modoEditar(){
+		presupuestoField.setEnabled(true);
+		presupuestoField.setEditable(true);
+		fechaEntradaDC.setEnabled(true);
+		fechaSalidaDC.setEnabled(true);
+		comentariosArea.setEnabled(true);
+		comentariosArea.setEditable(true);
+		btnCrearFicha.setEnabled(false);
+		btnCrearFicha.setVisible(false);
+		btnVaciar.setEnabled(false);
+		btnVaciar.setVisible(false);
+		btnSiguiente.setEnabled(true);
+		btnSiguiente.setVisible(true);
+		btnAnterior.setEnabled(true);
+		btnAnterior.setVisible(true);
+		lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - EDITAR");
+		btnPrincipal.setEnabled(true);
+		btnPrincipal.setVisible(true);
+		// FALTA RECORRER LA LISTA CON LAS REPARACIONES, Y PONER LOS
+		// SETTERS DEL MODELO REPARACION
+		btnGuardar.setEnabled(true);
+		btnGuardar.setVisible(true);
+	}
+	
+	public void modoCrear(){
+		presupuestoField.setEnabled(true);
+		presupuestoField.setEditable(true);
+		presupuestoField.setText("");
+		fechaEntradaDC.setEnabled(true);
+		fechaEntradaDC.setDate(null);
+		// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
+		fechaSalidaDC.setEnabled(true);
+		fechaSalidaDC.setDate(null);
+		// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
+		comentariosArea.setEnabled(true);
+		comentariosArea.setEditable(true);
+		comentariosArea.setText("");
+		listEstado.setSelectedIndex(-1);
+		listEstado.clearSelection();
+		btnCrearFicha.setEnabled(true);
+		btnCrearFicha.setVisible(true);
+		btnVaciar.setEnabled(true);
+		btnVaciar.setVisible(true);
+		btnSiguiente.setEnabled(false);
+		btnSiguiente.setVisible(false);
+		btnAnterior.setEnabled(false);
+		btnAnterior.setVisible(false);
+		lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - Modo Crear");
+		btnPrincipal.setEnabled(false);
+		btnPrincipal.setVisible(false);
+		btnGuardar.setEnabled(false);
+		btnGuardar.setVisible(false);
+	}
+	
+	public void clear(){
+		// responsableField.setText("");
+		// matriculaField.setText("");
+		fechaEntradaDC.setDate(null);
+		fechaSalidaDC.setDate(null);
+		listEstado.setSelectedIndex(-1);
+		listEstado.clearSelection();
+		presupuestoField.setText("");
+		comentariosArea.setText("");
+		listEstado.setEnabled(false);
 	}
 }
