@@ -267,10 +267,10 @@ public class FichaVehiculoCrear {
 		lblCliente.setBounds(258, 289, 81, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblCliente);
 
-		clienteField.setText("Mirar codigo");
+		//clienteField.setText("Mirar codigo");
 		// **************descomentar cuando el programa este
 		// terminado***************
-		// clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
+		clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
 		clienteField.setBounds(213, 317, 157, 30);
 		clienteField.setColumns(10);
 		clienteField.setEditable(false);
@@ -479,6 +479,12 @@ public class FichaVehiculoCrear {
 
 				if (contErrores == 7) {
 					crearVehiculo();
+					
+					FichaReparar fr = new FichaReparar();
+					fr.getframeFichaReparar().setVisible(true);
+					
+					frameCrearFichaVehiculo.dispose();
+					
 				} else {
 					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, errores, "Error Campos Vehiculo",
 							JOptionPane.ERROR_MESSAGE);
