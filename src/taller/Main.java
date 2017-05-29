@@ -16,8 +16,8 @@ public class Main {
 //	Vehiculo v1 = new Vehiculo("1234ABC", 11, "aa", "aa", "aa", 11, "77777777l");
 //	Vehiculo v2 = new Vehiculo("1233abc", 22, "bb", "bb", "bb", 22, "66666666l");
 //	
-//	Reparacion r1 = new Reparacion("Demo", "1234ABC", "77777777l", null, null, "ent", "111", "aaaaa");
-//	Reparacion r2 = new Reparacion("Demo", "1233abc", "66666666l", null, null, "pen", "222", "bbbbb");
+//	Reparacion r1 = new Reparacion("Demo", "1234ABC", "77777777l", null, null, 1, "111", "aaaaa");
+//	Reparacion r2 = new Reparacion("Demo", "1233abc", "66666666l", null, null, 2, "222", "bbbbb");
 //	
 //	Listas.listaClientes.add(c1);
 //	Listas.listaClientes.add(c2);
@@ -27,7 +27,7 @@ public class Main {
 //	
 //	Listas.listaReparaciones.add(r1);
 //	Listas.listaReparaciones.add(r2);	
-	
+//	
 	login g = new login();
 	g.run();
 
