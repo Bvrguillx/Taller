@@ -9,6 +9,7 @@ public class Vehiculo {
 	protected String modelo;
 	protected String color;
 	protected int potencia;
+	protected String tipoVehiculo;
 	protected String dniCliente;
 	
 	public Vehiculo(String dniCliente) {
@@ -16,9 +17,9 @@ public class Vehiculo {
 		this.dniCliente = dniCliente;
 		
 	}
-	
+
 	public Vehiculo(String matricula, int km, String marca, String modelo, String color, int potencia,
-			String dniCliente) {
+			String tipoVehiculo, String dniCliente) {
 		
 		setMatricula(matricula);
 		setKm(km);
@@ -26,8 +27,19 @@ public class Vehiculo {
 		setModelo(modelo);
 		setColor(color);
 		setPotencia(potencia);
+		setTipoVehiculo(tipoVehiculo);
 		this.dniCliente = dniCliente;
 		
+	}
+
+
+	public String getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+	public void setTipoVehiculo(String tipoVehiculo) {
+		if (tipoVehiculo == null || tipoVehiculo.equals("")) throw new RuntimeException("Campo TipoVehiculo Vacio");
+		this.tipoVehiculo = tipoVehiculo;
 	}
 
 	public String getMatricula() {
