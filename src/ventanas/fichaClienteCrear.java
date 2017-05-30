@@ -407,7 +407,10 @@ public class fichaClienteCrear {
 					JOptionPane.showMessageDialog(frameCliente, "No hay vehiculos en registrados",
 							"Error Lista Vehiculo", JOptionPane.ERROR_MESSAGE);
 				} else {
-					modoLeer();
+					FichaVehiculoCrear fv = new FichaVehiculoCrear();
+					fv.frameCrearFichaVehiculo.setVisible(true);
+					frameCliente.dispose();
+					fv.modoLeer();
 				}
 			}
 		});

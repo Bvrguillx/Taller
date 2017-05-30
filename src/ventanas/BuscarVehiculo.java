@@ -149,7 +149,7 @@ public class BuscarVehiculo {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String entrada = textField.getText().replaceAll(" ", "");
+				String entrada = textField.getText().replaceAll(" ", "").toUpperCase();
 				boolean esCorrecto = false;
 
 				// 4 numeros, 3 letras al final

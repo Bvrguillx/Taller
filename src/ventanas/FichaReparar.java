@@ -448,7 +448,6 @@ public class FichaReparar {
 
 			matriculaField.setText(String.valueOf(c.getMatricula()));
 			txtCliente.setText(c.getDniDuenio());
-			presupuestoField.setText(String.valueOf(c.getPresupuestoField()));
 			textField.setText(c.getTipoVehiculo());
 
 			// si guarda el presupuesto en piezas a�adirlo aqui, si se crea en
@@ -696,6 +695,12 @@ public class FichaReparar {
 		comentariosArea.setText(Listas.listaReparaciones.get(indiceLista).getComentariosArea());
 		txtCliente.setText(Listas.listaReparaciones.get(indiceLista).getDniDuenio());
 		matriculaField.setText(Listas.listaReparaciones.get(indiceLista).getMatricula());
+		txtHoraentrada.setText(Listas.listaReparaciones.get(indiceLista).getFechaEntrada());
+		txtHorasalida.setText(Listas.listaReparaciones.get(indiceLista).getFechaSalida());
+		responsableField.setText(Listas.usuario);
+		txtCliente.setText(Listas.listaReparaciones.get(indiceLista).getDniDuenio());
+		matriculaField.setText(Listas.listaReparaciones.get(indiceLista).getMatricula());
+		textField.setText(Listas.listaReparaciones.get(indiceLista).getTipoVehiculo());
 
 	}
 
@@ -748,6 +753,9 @@ public class FichaReparar {
 		
 		btnEditar.setEnabled(true);
 		btnBorrar.setEnabled(true);
+		
+		indiceLista=Listas.listaReparaciones.size()-1;
+		mostrarReparacion();
 	}
 
 	public void modoCrear() {

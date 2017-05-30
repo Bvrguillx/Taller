@@ -131,7 +131,7 @@ public class fichaDni {
 
 				/* Comprobar formato DNI */
 
-				dnientrada = dniField.getText().replaceAll(" ", "");
+				dnientrada = dniField.getText().replaceAll(" ", "").toUpperCase();
 				esCorrecto = false;
 
 				Pattern dniunaletra8numeros = Pattern.compile("^\\d{8}[A-Za-z]{1}");

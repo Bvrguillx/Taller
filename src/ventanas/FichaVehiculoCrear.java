@@ -133,6 +133,7 @@ public class FichaVehiculoCrear {
 		btnGuardar = new JButton("GUARDAR");
 		btnCliente = new JButton("CLIENTE");
 		btnReparar = new JButton("REPARAR");
+		
 		btnClear = new JButton("");
 		btnCerrar = new JButton("");
 		lblOpciones = new JLabel("OPCIONES");
@@ -152,7 +153,6 @@ public class FichaVehiculoCrear {
 		lblTipoVehicul = new JLabel("Tipo Vehiculo");
 		menuBar = new JMenuBar();
 		tipoVehiculoField = new JTextField();
-		
 
 	}
 
@@ -259,7 +259,7 @@ public class FichaVehiculoCrear {
 		lblCliente.setBounds(253, 367, 81, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblCliente);
 
-		//clienteField.setText("Mirar codigo");
+		// clienteField.setText("Mirar codigo");
 		// **************descomentar cuando el programa este
 		// terminado***************
 		clienteField.setText(Listas.dniCliente);
@@ -300,21 +300,21 @@ public class FichaVehiculoCrear {
 		menuBar.add(mnMenu);
 		mnMenu.setIcon(
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495928384_dot-more-menu-hide.png")));
-		
+
 		mnClientes = new JMenu("");
 		mntmClienteLeer = new JMenuItem("");
-		
+
 		mntmClienteCrear = new JMenuItem("");
-		
-				mnClientes.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495929007_104.png")));
-				mnMenu.add(mnClientes);
-				
-						mntmClienteLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
-						mnClientes.add(mntmClienteLeer);
-								
-										mntmClienteCrear
-												.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
-										mnClientes.add(mntmClienteCrear);
+
+		mnClientes.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495929007_104.png")));
+		mnMenu.add(mnClientes);
+
+		mntmClienteLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
+		mnClientes.add(mntmClienteLeer);
+
+		mntmClienteCrear
+				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
+		mnClientes.add(mntmClienteCrear);
 
 		mnCoches.setIcon(
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495927937_solid-travel-tourism-car.png")));
@@ -335,13 +335,13 @@ public class FichaVehiculoCrear {
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/com/sun/java/swing/plaf/motif/icons/Warn.gif")));
 		btnEditar.setBounds(253, 451, 117, 82);
 		frameCrearFichaVehiculo.getContentPane().add(btnEditar);
-		
+
 		lblTipoVehicul.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTipoVehicul.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTipoVehicul.setBounds(213, 52, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblTipoVehicul);
-		
-		tipoVehiculoField.setText(Listas.listaReparaciones.get(Listas.listaReparaciones.size()-1).getTipoVehiculo());
+
+		tipoVehiculoField.setText(Listas.listaReparaciones.get(Listas.listaReparaciones.size() - 1).getTipoVehiculo());
 		tipoVehiculoField.setEditable(false);
 		tipoVehiculoField.setColumns(10);
 		tipoVehiculoField.setBounds(213, 93, 157, 30);
@@ -351,6 +351,18 @@ public class FichaVehiculoCrear {
 
 	public void setEventos() {
 
+		btnReparar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				crearReparacion();
+
+				FichaReparar fr = new FichaReparar();
+				fr.getframeFichaReparar().setVisible(true);
+
+				frameCrearFichaVehiculo.dispose();
+			}
+		});
+		
 		btnCerrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -369,10 +381,6 @@ public class FichaVehiculoCrear {
 
 			}
 		});
-
-		
-		
-		
 
 		kmField.addKeyListener(new KeyAdapter() {
 			@Override
@@ -459,12 +467,12 @@ public class FichaVehiculoCrear {
 				if (contErrores == 7) {
 					crearVehiculo();
 					crearReparacion();
-					
+
 					FichaReparar fr = new FichaReparar();
 					fr.getframeFichaReparar().setVisible(true);
-					
+
 					frameCrearFichaVehiculo.dispose();
-					
+
 				} else {
 					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, errores, "Error Campos Vehiculo",
 							JOptionPane.ERROR_MESSAGE);
@@ -495,14 +503,14 @@ public class FichaVehiculoCrear {
 					JOptionPane.showMessageDialog(frameCrearFichaVehiculo, "No hay vehiculos en registrados",
 							"Error Lista Vehiculo", JOptionPane.ERROR_MESSAGE);
 				} else {
-					FichaVehiculoCrear fv =new FichaVehiculoCrear ();
+					FichaVehiculoCrear fv = new FichaVehiculoCrear();
 					fv.frameCrearFichaVehiculo.setVisible(true);
 					fv.modoLeer();
 					frameCrearFichaVehiculo.dispose();
 				}
 			}
 		});
-		
+
 		mntmClienteLeer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -523,23 +531,24 @@ public class FichaVehiculoCrear {
 
 			}
 		});
-		
+
 		mnMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 
-				if (Listas.listaReparaciones.isEmpty()|| Listas.listaReparaciones.get(0).getPresupuestoField().isEmpty()) {
+				if (Listas.listaReparaciones.isEmpty()
+						|| Listas.listaReparaciones.get(0).getPresupuestoField().isEmpty()) {
 					mnReparaciones.setEnabled(false);
 				}
-				if (Listas.listaVehiculo.isEmpty()|| Listas.listaVehiculo.get(0).getMarca() == null) {
+				if (Listas.listaVehiculo.isEmpty() || Listas.listaVehiculo.get(0).getMarca() == null) {
 					mnCoches.setEnabled(false);
 				}
-				if(Listas.listaClientes.isEmpty()){
+				if (Listas.listaClientes.isEmpty()) {
 					mnClientes.setEnabled(false);
 				}
 			}
 		});
-		
+
 		mntmReparacionLeer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -550,9 +559,8 @@ public class FichaVehiculoCrear {
 				frameCrearFichaVehiculo.dispose();
 			}
 		});
-		
+
 	}
-	
 
 	public void crearVehiculo() {
 
@@ -570,7 +578,8 @@ public class FichaVehiculoCrear {
 
 	public void crearReparacion() {
 		Reparacion r = new Reparacion(Listas.usuario, matricula_,
-				Listas.listaVehiculo.get(indiceVehiculos).getDniCliente(), Listas.listaVehiculo.get(indiceVehiculos).getTipoVehiculo());
+				Listas.listaVehiculo.get(indiceVehiculos).getDniCliente(),
+				Listas.listaVehiculo.get(indiceVehiculos).getTipoVehiculo());
 		Listas.listaReparaciones.add(r);
 
 	}
@@ -598,7 +607,7 @@ public class FichaVehiculoCrear {
 		motorField.setEnabled(false);
 		btnGuardar.setEnabled(false);
 		btnCliente.setEnabled(false);
-		btnReparar.setEnabled(false);
+		btnReparar.setEnabled(true);
 		btnClear.setEnabled(false);
 		btnCerrar.setEnabled(true);
 
@@ -675,6 +684,7 @@ public class FichaVehiculoCrear {
 			modeloField.setText(ve.getModelo());
 			colorField.setText(ve.getColor());
 			motorField.setText(String.valueOf(ve.getPotencia()));
+			clienteField.setText(ve.getDniCliente());
 		}
 	}
 
