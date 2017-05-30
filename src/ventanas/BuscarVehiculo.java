@@ -15,7 +15,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import container.Listas;
+import models.Reparacion;
 import models.Vehiculo;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BuscarVehiculo {
 
@@ -25,7 +28,7 @@ public class BuscarVehiculo {
 	private JButton btnBack;
 	private JLabel lblMatricula;
 	private JLabel lblIntroducirMatricula;
-	private JButton btnNuevo;
+	private JButton btnNuevoVehiculo;
 
 	/**
 	 * Launch the application.
@@ -81,11 +84,11 @@ public class BuscarVehiculo {
 
 		// boton atras
 		btnBack = new JButton("");
-		
-		//boton Nuevo
-		btnNuevo = new JButton("Nuevo");
-		btnNuevo.setVisible(false);
-		
+
+		// boton Nuevo
+		btnNuevoVehiculo = new JButton("Crear Vehiculo");
+
+		btnNuevoVehiculo.setVisible(false);
 
 	}
 
@@ -123,11 +126,9 @@ public class BuscarVehiculo {
 				new ImageIcon(BuscarVehiculo.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		btnBack.setBounds(249, 136, 114, 98);
 		frameBuscarMatricula.getContentPane().add(btnBack);
-		
-		
-		
-		btnNuevo.setBounds(302, 57, 122, 50);
-		frameBuscarMatricula.getContentPane().add(btnNuevo);
+
+		btnNuevoVehiculo.setBounds(302, 57, 122, 50);
+		frameBuscarMatricula.getContentPane().add(btnNuevoVehiculo);
 	}
 
 	private void setEventos() {
@@ -162,7 +163,7 @@ public class BuscarVehiculo {
 				if (matricula3letras.matches() || matricula4numeros.matches()) {
 					JOptionPane.showMessageDialog(null, entrada + "  Formato Matricula correcto");
 
-					for (Vehiculo c : Listas.listaVehiculo) {
+					for (Reparacion c : Listas.listaReparaciones) {
 
 						if (c.getMatricula().contains(entrada)) {
 							esCorrecto = true;
@@ -172,45 +173,38 @@ public class BuscarVehiculo {
 
 							ventanaReparar.getframeFichaReparar().setVisible(true);
 
-							frameBuscarMatricula.dispose();
-						}
-						if (!esCorrecto) {
-
-							JOptionPane.showMessageDialog(null, "La matricula " + entrada + " no esta guardada");
-
-							FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
-
-							ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+							ventanaReparar.mostrarVehiculo(c);
 
 							frameBuscarMatricula.dispose();
-							btnNuevo.setVisible(true);
 
 						}
-
 					}
-
 				} else {
-					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto",
-							"Error de formato", JOptionPane.ERROR_MESSAGE);
-					
-					
+					JOptionPane.showMessageDialog(null, "Formato Matricula INcorrecto", "Error de formato",
+							JOptionPane.ERROR_MESSAGE);
+
+				}
+				// Si la matricula no esta guardada ir a tipoVehiculo
+				if (!esCorrecto) {
+
+					JOptionPane.showMessageDialog(null, "La matricula " + entrada + " no esta guardada");
+
+					btnNuevoVehiculo.setVisible(true);
+
 				}
 
 			}
 		});
 
-		btnNuevo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNuevoVehiculo.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
 				
-				fichaClienteCrear ventana = new fichaClienteCrear();
-
-				ventana.getFrameCliente().setVisible(true);
-
+				fichaDni ventana = new fichaDni();
+				ventana.getFrameDni().setVisible(true);
 				frameBuscarMatricula.dispose();
 			}
 		});
-		
-		
+
 	}
 
 }

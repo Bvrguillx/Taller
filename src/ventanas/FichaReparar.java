@@ -28,6 +28,8 @@ import javax.swing.border.BevelBorder;
 import com.toedter.calendar.JDateChooser;
 
 import container.Listas;
+import models.Reparacion;
+import models.Vehiculo;
 
 public class FichaReparar {
  
@@ -414,6 +416,23 @@ public class FichaReparar {
 		txtPiezas.setBounds(233, 249, 209, 46);
 		frameFichaReparar.getContentPane().add(txtPiezas);
 		txtPiezas.setColumns(10);
+	}
+	
+	public void mostrarVehiculo(Reparacion c) {
+		if (!Listas.listaVehiculo.isEmpty()) {
+			//Borrar si tira bien.
+			//Vehiculo ve = Listas.listaVehiculo.get(indiceVehiculos);
+			
+			matriculaField.setText(String.valueOf(c.getMatricula()));
+			txtCliente.setText(c.getDniDuenio());
+			presupuestoField.setText(String.valueOf(c.getPresupuestoField()));
+			textField.setText(c.getTipoVehiculo());
+			
+			//si guarda el presupuesto en piezas añadirlo aqui, si se crea en directo no.
+		//	txtPiezas.
+			comentariosArea.setText(c.getComentariosArea());
+			
+		}
 	}
 
 	public void setEventos() {
