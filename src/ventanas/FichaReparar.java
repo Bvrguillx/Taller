@@ -1,7 +1,9 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -68,6 +70,8 @@ public class FichaReparar {
 	private Calendar calendario2;
 	private int hora1, minutos1, segundos1;
 	private int hora2, minutos2, segundos2;
+	
+	private JLabel lblManodeobra;
 
 	// start y stop
 	private JButton btnStart;
@@ -78,6 +82,9 @@ public class FichaReparar {
 	private JTextField txtPiezas;
 	private long time_start;
 	private long time_end;
+	private JTextField txtManodeobra;
+	private JTextField txtHoraentrada;
+	private JTextField txtHorasalida;
 
 	// menu
 	private JMenu mnMenu;
@@ -94,9 +101,6 @@ public class FichaReparar {
 	private JMenuItem mntmClienteEditar;
 	private JMenu mnReparaciones;
 	private JMenuBar menuBar;
-	private JTextField txtManodeobra;
-	private JTextField txtHoraentrada;
-	private JTextField txtHorasalida;
 
 	/**
 	 * Launch the application.
@@ -190,6 +194,7 @@ public class FichaReparar {
 		mntmReparacionCrear = new JMenuItem("");
 		mntmReparacionEditar = new JMenuItem("");
 		mntmReparacionLeer = new JMenuItem("");
+		lblManodeobra= new JLabel("Mano De Obra");
 
 		// Start y stop
 		btnStart = new JButton("");
@@ -440,7 +445,7 @@ public class FichaReparar {
 		frameFichaReparar.getContentPane().add(txtPiezas);
 		txtPiezas.setColumns(10);
 
-		JLabel lblManodeobra = new JLabel("Mano De Obra");
+		
 		lblManodeobra.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblManodeobra.setBounds(266, 275, 146, 36);
 		frameFichaReparar.getContentPane().add(lblManodeobra);
@@ -682,6 +687,9 @@ public class FichaReparar {
 				segundos1 = calendario1.get(Calendar.SECOND);
 				
 				txtHoraentrada.setText(hora1 + ":" + minutos1 + ":" + segundos1);
+				
+				btnStop.setBackground(Color.RED);
+				btnStop.setBackground(java.awt.Color.red);
 			}
 		});
 
@@ -706,6 +714,7 @@ public class FichaReparar {
 				segundos2 = calendario2.get(Calendar.SECOND);
 				
 				txtHorasalida.setText(hora2 + ":" + minutos2 + ":" + segundos2);
+				btnStop.setBackground(null);
 				
 				modoLeer();
 			}
@@ -832,19 +841,40 @@ public class FichaReparar {
 		comentariosArea.setEditable(false);
 		btnCrearFicha.setEnabled(false);
 		btnCrearFicha.setVisible(false);
+		btnGuardar.setEnabled(false);
 		btnVaciar.setEnabled(false);
 		btnVaciar.setVisible(false);
 		btnSiguiente.setEnabled(false);
 		btnSiguiente.setVisible(false);
 		btnAnterior.setEnabled(false);
 		btnAnterior.setVisible(false);
-		lblClientesicosDelTrvpller.setText("Crono del Trvpller - EDITAR");
 		btnPrincipal.setEnabled(false);
-		btnPrincipal.setVisible(false);
-		btnGuardar.setEnabled(false);
-		btnGuardar.setVisible(false);
-		
-		
+		lblClientesicosDelTrvpller.setText("Crono del Trvpller - EDITAR");
+		lblPiezas.setEnabled(false);
+		txtPiezas.setEnabled(false);
+		lblCliente.setEnabled(false);
+		lblComentarios.setEnabled(false);
+		lblEstado.setEnabled(false);
+		lblFechaEntrada.setEnabled(false);
+		lblFechaSalida.setEnabled(false);
+		lblManodeobra.setEnabled(false);
+		lblMatricula.setEnabled(false);
+		lblOpciones.setEnabled(false);
+		presupuestoField.setEnabled(false);
+		lblPresupuesto.setEnabled(false);
+		listEstado.setEnabled(false);
+		lblTipoVehiculo.setEnabled(false);
+		btnStart.setEnabled(false);
+		menuBar.setEnabled(false);
+		responsableField.setEnabled(false);
+		lblResponsable.setEnabled(false);
+		btnEditar.setEnabled(false);
+		btnLeer.setEnabled(false);
+		btnAtras.setEnabled(false);
+		mnMenu.setEnabled(false);
+		txtCliente.setEnabled(false);
+		textField.setEnabled(false);
+		matriculaField.setEnabled(false);
 		
 	}
 
