@@ -503,8 +503,8 @@ public class FichaReparar {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				fechaEntradaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaEntrada());
-				fechaSalidaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaSalida());
+				//fechaEntradaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaEntrada());
+				//fechaSalidaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaSalida());
 				listEstado.setSelectedIndex(Listas.listaReparaciones.get(indiceLista).getListEstado());
 				presupuestoField.setText(Listas.listaReparaciones.get(indiceLista).getPresupuestoField());
 				comentariosArea.setText(Listas.listaReparaciones.get(indiceLista).getComentariosArea());
@@ -622,8 +622,8 @@ public class FichaReparar {
 	}
 
 	public void mostrarReparacion() {
-		fechaEntradaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaEntrada());
-		fechaSalidaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaSalida());
+		//fechaEntradaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaEntrada());
+		//fechaSalidaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaSalida());
 		listEstado.setSelectedIndex(Listas.listaReparaciones.get(indiceLista).getListEstado());
 		presupuestoField.setText(Listas.listaReparaciones.get(indiceLista).getPresupuestoField());
 		comentariosArea.setText(Listas.listaReparaciones.get(indiceLista).getComentariosArea());
@@ -634,8 +634,8 @@ public class FichaReparar {
 	public void modoLeer(){
 		presupuestoField.setEnabled(false);
 		presupuestoField.setEditable(false);
-		fechaEntradaDC.setEnabled(false);
-		fechaSalidaDC.setEnabled(false);
+		//fechaEntradaDC.setEnabled(false);
+		//fechaSalidaDC.setEnabled(false);
 		comentariosArea.setEnabled(false);
 		comentariosArea.setEditable(false);
 		btnCrearFicha.setEnabled(false);
@@ -660,8 +660,8 @@ public class FichaReparar {
 	public void modoEditar(){
 		presupuestoField.setEnabled(true);
 		presupuestoField.setEditable(true);
-		fechaEntradaDC.setEnabled(true);
-		fechaSalidaDC.setEnabled(true);
+		//fechaEntradaDC.setEnabled(true);
+		//fechaSalidaDC.setEnabled(true);
 		comentariosArea.setEnabled(true);
 		comentariosArea.setEditable(true);
 		btnCrearFicha.setEnabled(false);
@@ -685,11 +685,11 @@ public class FichaReparar {
 		presupuestoField.setEnabled(true);
 		presupuestoField.setEditable(true);
 		presupuestoField.setText("");
-		fechaEntradaDC.setEnabled(true);
-		fechaEntradaDC.setDate(null);
+		//fechaEntradaDC.setEnabled(true);
+		//fechaEntradaDC.setDate(null);
 		// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
-		fechaSalidaDC.setEnabled(true);
-		fechaSalidaDC.setDate(null);
+		//fechaSalidaDC.setEnabled(true);
+		//fechaSalidaDC.setDate(null);
 		// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
 		comentariosArea.setEnabled(true);
 		comentariosArea.setEditable(true);
@@ -714,8 +714,8 @@ public class FichaReparar {
 	public void clear(){
 		// responsableField.setText("");
 		// matriculaField.setText("");
-		fechaEntradaDC.setDate(null);
-		fechaSalidaDC.setDate(null);
+		//fechaEntradaDC.setDate(null);
+		//fechaSalidaDC.setDate(null);
 		listEstado.setSelectedIndex(-1);
 		listEstado.clearSelection();
 		presupuestoField.setText("");
