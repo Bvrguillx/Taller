@@ -86,6 +86,14 @@ public class TipoVehiculo {
 	private void setEventos(){
 		btnCoche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				FichaVehiculoCrear ventanaFichaVehiculo= new FichaVehiculoCrear();
+				
+				
+				
+				ventanaFichaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+				frameTipoVehiculo.dispose();	
+				
+				
 			}
 		});
 		

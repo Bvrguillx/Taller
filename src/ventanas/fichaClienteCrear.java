@@ -44,6 +44,7 @@ public class fichaClienteCrear {
 	private JButton btnEditar;
 	private int indiceClientes;
 	private JLabel lblFlechas;
+	private JButton btnNuevoVehiculo;
 
 	// ATRIBUTOS Cliente
 	protected String nombre_;
@@ -121,6 +122,7 @@ public class fichaClienteCrear {
 		btnLimpiar = new JButton("");
 		btnEditar = new JButton("Editar");
 		btnAtras_1 = new JButton("");
+		btnNuevoVehiculo = new JButton("Nuevo Vehiculo");
 
 		btnAlante = new JButton("");
 		lblFlechas = new JLabel("Cliente");
@@ -291,6 +293,13 @@ public class fichaClienteCrear {
 		btnEditar.setEnabled(false);
 		frameCliente.getContentPane().add(btnEditar);
 
+		btnNuevoVehiculo.setVerticalAlignment(SwingConstants.TOP);
+		btnNuevoVehiculo.setVisible(false);
+		
+		btnNuevoVehiculo.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNuevoVehiculo.setBounds(204, 65, 101, 23);
+		frameCliente.getContentPane().add(btnNuevoVehiculo);
+
 	}
 
 	public void setEventos() {
@@ -453,6 +462,18 @@ public class fichaClienteCrear {
 				frameCliente.dispose();
 			}
 		});
+
+		btnNuevoVehiculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FichaVehiculoCrear ventanaCrearVehiculo = new FichaVehiculoCrear();
+				
+				
+				
+				ventanaCrearVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+				frameCliente.dispose();
+				
+			}
+		});
 	}
 
 	public void modoLeer() {
@@ -464,6 +485,8 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(true);
+		btnNuevoVehiculo.setEnabled(true);
+		btnNuevoVehiculo.setVisible(true);
 
 		lblNombre.setEnabled(false);
 		nombreField.setEnabled(false);
@@ -522,6 +545,8 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(false);
+		btnNuevoVehiculo.setEnabled(false);
+		btnNuevoVehiculo.setVisible(false);
 
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
@@ -550,6 +575,8 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(false);
 		btnAlante.setVisible(false);
 		btnEditar.setEnabled(false);
+		btnNuevoVehiculo.setEnabled(false);
+		btnNuevoVehiculo.setVisible(false);
 
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
