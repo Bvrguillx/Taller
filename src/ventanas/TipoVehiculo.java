@@ -94,28 +94,28 @@ import java.awt.event.ActionEvent;
  	private void setEventos(){
  		btnCoche.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
- 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Coche"); 
+ 				Vehiculo v = new Vehiculo(Listas.dniCliente, "Coche"); 
  				Listas.listaVehiculo.add(v);
  			}
  		});
  		
  		btnBici.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
- 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Bici"); 
+ 				Vehiculo v = new Vehiculo(Listas.dniCliente, "Bici"); 
  				Listas.listaVehiculo.add(v);
  			}
  		});
  		
  		btnCamion.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
- 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Camion"); 
+ 				Vehiculo v = new Vehiculo(Listas.dniCliente, "Camion"); 
  				Listas.listaVehiculo.add(v);
  			}
  		});
  		
  		btnMoto.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
- 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Moto"); 
+ 				Vehiculo v = new Vehiculo(Listas.dniCliente, "Moto"); 
  				Listas.listaVehiculo.add(v);
  			}
  		});
