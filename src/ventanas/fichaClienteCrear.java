@@ -673,9 +673,9 @@ public class fichaClienteCrear {
 			correcto = true;
 
 			Cliente c = new Cliente(nombre_, cp_, apellido_, dni_, telefono_);
-			Vehiculo v = new Vehiculo(dni_);
+			//Vehiculo v = new Vehiculo(dni_);
 			Listas.listaClientes.add(c);
-			Listas.listaVehiculo.add(v);
+			//Listas.listaVehiculo.add(v);
 
 		} else {
 			JOptionPane.showMessageDialog(frameCliente, errores, "Error del trVp", JOptionPane.ERROR_MESSAGE);

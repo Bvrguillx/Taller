@@ -12,9 +12,10 @@ public class Vehiculo {
 	protected String tipoVehiculo;
 	protected String dniCliente;
 	
-	public Vehiculo(String dniCliente) {
+	public Vehiculo(String dniCliente, String tipoVehiculo) {
 		
 		this.dniCliente = dniCliente;
+		this.tipoVehiculo=tipoVehiculo;
 		
 	}
 

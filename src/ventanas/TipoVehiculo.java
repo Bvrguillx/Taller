@@ -2,6 +2,9 @@ package ventanas;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import container.Listas;
+import models.Vehiculo;
+
 import java.awt.event.ActionListener;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -91,21 +94,29 @@ import java.awt.event.ActionEvent;
  	private void setEventos(){
  		btnCoche.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
+ 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Coche"); 
+ 				Listas.listaVehiculo.add(v);
  			}
  		});
  		
  		btnBici.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
+ 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Bici"); 
+ 				Listas.listaVehiculo.add(v);
  			}
  		});
  		
  		btnCamion.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
+ 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Camion"); 
+ 				Listas.listaVehiculo.add(v);
  			}
  		});
  		
  		btnMoto.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent arg0) {
+ 				Vehiculo v = new Vehiculo(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni(), "Moto"); 
+ 				Listas.listaVehiculo.add(v);
  			}
  		});
  	}
