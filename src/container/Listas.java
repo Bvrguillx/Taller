@@ -12,5 +12,8 @@ public class Listas {
 	public static ArrayList<Vehiculo> listaVehiculo = new ArrayList<Vehiculo>();
 	public static ArrayList<Reparacion> listaReparaciones = new ArrayList<Reparacion>();
 	public static String usuario = "Demo";
-	public static String dniCliente="demoDni";
+	public static String dniCliente = "demoDni";
+	public static String matricula = "demoMatri";
+	public static String tipoVehiculo = "demoTipo";
+	
 }
