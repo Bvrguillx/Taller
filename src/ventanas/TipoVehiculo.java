@@ -11,6 +11,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class TipoVehiculo {
 
@@ -57,9 +58,13 @@ public class TipoVehiculo {
 		frameTipoVehiculo = new JFrame();
 
 		btnBici = new JButton("BICI");
+		btnBici.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1496159682_solid-travel-tourism-bicycle.png")));
 		btnCamion = new JButton("CAMION");
-		btnMoto = new JButton("MOTO");
+		btnCamion.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1496159319_solid-travel-tourism-truck.png")));
+		btnMoto = new JButton("");
+		btnMoto.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1496159631_solid-travel-tourism-scooter.png")));
 		btnCoche = new JButton("COCHE");
+		btnCoche.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1495927937_solid-travel-tourism-car.png")));
 
 	}
 
