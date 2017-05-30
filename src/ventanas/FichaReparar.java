@@ -30,7 +30,7 @@ import com.toedter.calendar.JDateChooser;
 import container.Listas;
 
 public class FichaReparar {
-
+ 
 	private JFrame frameFichaReparar;
 	private JTextField responsableField;
 	private JTextField matriculaField;
