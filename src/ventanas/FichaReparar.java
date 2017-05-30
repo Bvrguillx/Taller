@@ -57,12 +57,9 @@ public class FichaReparar {
 	private JLabel lblPresupuesto;
 	private JTextArea comentariosArea;
 	protected login g;
-	private JButton btnEditar;
 	private JButton btnSiguiente;
 	private JButton btnAnterior;
-	private JButton btnPrincipal;
 	private JButton btnGuardar;
-	private JButton btnLeer;
 	private JTextField txtCliente;
 	private JLabel lblCliente;
 	private int indiceLista;
@@ -70,6 +67,7 @@ public class FichaReparar {
 	private Calendar calendario2;
 	private int hora1, minutos1, segundos1;
 	private int hora2, minutos2, segundos2;
+	private JButton btnEditar; 
 	
 	private JLabel lblManodeobra;
 
@@ -101,6 +99,7 @@ public class FichaReparar {
 	private JMenuItem mntmClienteEditar;
 	private JMenu mnReparaciones;
 	private JMenuBar menuBar;
+	private JButton btnBorrar;
 
 	/**
 	 * Launch the application.
@@ -167,19 +166,24 @@ public class FichaReparar {
 		presupuestoField.setEditable(false);
 		lblPresupuesto = new JLabel("Presupuesto");
 		comentariosArea = new JTextArea();
-		btnLeer = new JButton("LEER");
-		btnEditar = new JButton("EDITAR");
 		btnSiguiente = new JButton("SIGUIENTE");
 
 		btnAnterior = new JButton("ANTERIOR");
 
 		btnGuardar = new JButton("GUARDAR");
-		btnPrincipal = new JButton("");
 		lblCliente = new JLabel("Cliente");
 		txtCliente = new JTextField();
 		txtCliente.setEditable(false);
 		calendario1 = new GregorianCalendar();
 		calendario2 = new GregorianCalendar();
+		btnEditar = new JButton("Editar");
+		btnBorrar = new JButton("Eliminar");
+		btnBorrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+		});
+		
 		// MENU
 		mnMenu = new JMenu("");
 		mnCoches = new JMenu("");
@@ -318,24 +322,12 @@ public class FichaReparar {
 		comentariosArea.setBounds(464, 121, 249, 157);
 		frameFichaReparar.getContentPane().add(comentariosArea);
 
-		btnLeer.setIcon(
-				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Copy_16x16_JFX.png")));
-		btnLeer.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
-		btnLeer.setBounds(266, 519, 169, 54);
-		frameFichaReparar.getContentPane().add(btnLeer);
-
-		btnEditar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
-		btnEditar.setIcon(
-				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
-		btnEditar.setBounds(266, 454, 169, 54);
-		frameFichaReparar.getContentPane().add(btnEditar);
-
 		btnSiguiente.setEnabled(false);
 		btnSiguiente.setVisible(false);
 		btnSiguiente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnSiguiente.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
-		btnSiguiente.setBounds(462, 25, 70, 57);
+		btnSiguiente.setBounds(495, 27, 70, 57);
 		frameFichaReparar.getContentPane().add(btnSiguiente);
 
 		btnAnterior.setEnabled(false);
@@ -343,15 +335,8 @@ public class FichaReparar {
 		btnAnterior.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnAnterior.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnAnterior.setBounds(638, 28, 70, 54);
+		btnAnterior.setBounds(607, 28, 70, 54);
 		frameFichaReparar.getContentPane().add(btnAnterior);
-
-		btnPrincipal.setIcon(
-				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Paste_16x16_JFX.png")));
-		btnPrincipal.setEnabled(false);
-		btnPrincipal.setVisible(false);
-		btnPrincipal.setBounds(544, 20, 70, 68);
-		frameFichaReparar.getContentPane().add(btnPrincipal);
 
 		btnGuardar.setEnabled(false);
 		btnGuardar.setVisible(false);
@@ -468,6 +453,20 @@ public class FichaReparar {
 		txtHorasalida.setBounds(16, 342, 201, 46);
 		frameFichaReparar.getContentPane().add(txtHorasalida);
 		txtHorasalida.setColumns(10);
+		
+		btnEditar.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/FontBackgroundColor_16x16_JFX.png")));
+		btnEditar.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
+		btnEditar.setBounds(266, 459, 174, 46);
+		frameFichaReparar.getContentPane().add(btnEditar);
+		btnEditar.setEnabled(false);
+		
+		
+		btnBorrar.setIcon(new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
+		btnBorrar.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
+		btnBorrar.setBounds(266, 519, 174, 46);
+		frameFichaReparar.getContentPane().add(btnBorrar);
+		btnBorrar.setEnabled(false);
+
 	}
 
 	public void mostrarVehiculo(Reparacion c) {
@@ -490,6 +489,15 @@ public class FichaReparar {
 
 	public void setEventos() {
 
+		btnBorrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Listas.listaReparaciones.remove(indiceLista);
+				nextReparacion();
+				mostrarReparacion();
+			}
+		});
+		
 		btnVaciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -524,28 +532,7 @@ public class FichaReparar {
 				g.getLogin().setVisible(true);
 			}
 		});
-		btnLeer.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				modoLeer();
-				indiceLista = Listas.listaReparaciones.size() - 1;
-				mostrarReparacion();
-			}
-		});
-		btnEditar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				modoEditar();
-			}
-		});
-		btnPrincipal.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				modoCrear();
-				clear();
-
-			}
-		});
+		
 
 		btnCrearFicha.addMouseListener(new MouseAdapter() {
 			@Override
@@ -716,7 +703,7 @@ public class FichaReparar {
 				txtHorasalida.setText(hora2 + ":" + minutos2 + ":" + segundos2);
 				btnStop.setBackground(null);
 				
-				modoLeer();
+				modoCrear();
 			}
 		});
 		
@@ -772,44 +759,46 @@ public class FichaReparar {
 		btnSiguiente.setVisible(true);
 		btnAnterior.setEnabled(true);
 		btnAnterior.setVisible(true);
-		btnPrincipal.setEnabled(true);
-		btnPrincipal.setVisible(true);
+		
 		lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - LECTVRA");
 		// FALTA A�ADIR LOS SETTEXT A LOS CAMPOS DE LAS REPARACIONES
 		// DISPONIBLES
 		btnGuardar.setEnabled(false);
 		btnGuardar.setVisible(false);
-
-	}
-
-	public void modoEditar() {
-		presupuestoField.setEnabled(true);
-		presupuestoField.setEditable(true);
-		// fechaEntradaDC.setEnabled(true);
-		// fechaSalidaDC.setEnabled(true);
-		comentariosArea.setEnabled(true);
-		comentariosArea.setEditable(true);
-		btnCrearFicha.setEnabled(false);
-		btnCrearFicha.setVisible(false);
-		btnVaciar.setEnabled(false);
-		btnVaciar.setVisible(false);
-		btnSiguiente.setEnabled(true);
-		btnSiguiente.setVisible(true);
-		btnAnterior.setEnabled(true);
-		btnAnterior.setVisible(true);
-		lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - EDITAR");
-		btnPrincipal.setEnabled(true);
-		btnPrincipal.setVisible(true);
-		// FALTA RECORRER LA LISTA CON LAS REPARACIONES, Y PONER LOS
-		// SETTERS DEL MODELO REPARACION
-		btnGuardar.setEnabled(true);
-		btnGuardar.setVisible(true);
+		lblPiezas.setEnabled(false);
+		txtPiezas.setEnabled(false);
+		lblCliente.setEnabled(false);
+		lblComentarios.setEnabled(false);
+		lblEstado.setEnabled(false);
+		lblFechaEntrada.setEnabled(false);
+		lblFechaSalida.setEnabled(false);
+		lblManodeobra.setEnabled(false);
+		lblMatricula.setEnabled(false);
+		lblOpciones.setEnabled(false);
+		presupuestoField.setEnabled(false);
+		lblPresupuesto.setEnabled(false);
+		listEstado.setEnabled(false);
+		lblTipoVehiculo.setEnabled(false);
+		btnStart.setEnabled(false);
+		menuBar.setEnabled(false);
+		responsableField.setEnabled(false);
+		lblResponsable.setEnabled(false);
+		
+		btnAtras.setEnabled(false);
+		mnMenu.setEnabled(false);
+		txtCliente.setEnabled(false);
+		textField.setEnabled(false);
+		matriculaField.setEnabled(false);
+		txtHoraentrada.setEnabled(false);
+		txtHorasalida.setEnabled(false);
+		
+		btnEditar.setEnabled(true);
+		btnBorrar.setEnabled(true);
 	}
 
 	public void modoCrear() {
 		presupuestoField.setEnabled(true);
-		presupuestoField.setEditable(true);
-		presupuestoField.setText("");
+		
 		comentariosArea.setEnabled(true);
 		comentariosArea.setEditable(true);
 		comentariosArea.setText("");
@@ -824,10 +813,37 @@ public class FichaReparar {
 		btnAnterior.setEnabled(false);
 		btnAnterior.setVisible(false);
 		lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - Modo Crear");
-		btnPrincipal.setEnabled(false);
-		btnPrincipal.setVisible(false);
+		
 		btnGuardar.setEnabled(false);
 		btnGuardar.setVisible(false);
+		lblPiezas.setEnabled(true);
+		txtPiezas.setEnabled(true);
+		lblCliente.setEnabled(false);
+		lblComentarios.setEnabled(true);
+		lblEstado.setEnabled(true);
+		lblFechaEntrada.setEnabled(true);
+		lblFechaSalida.setEnabled(true);
+		lblManodeobra.setEnabled(true);
+		lblMatricula.setEnabled(true);
+		lblOpciones.setEnabled(true);
+		lblPresupuesto.setEnabled(true);
+		listEstado.setEnabled(true);
+		lblTipoVehiculo.setEnabled(true);
+		btnStart.setEnabled(true);
+		menuBar.setEnabled(true);
+		responsableField.setEnabled(true);
+		lblResponsable.setEnabled(true);
+		
+		btnEditar.setEnabled(false);
+		btnBorrar.setEnabled(false);
+		
+		btnAtras.setEnabled(true);
+		mnMenu.setEnabled(true);
+		txtCliente.setEnabled(true);
+		textField.setEnabled(true);
+		matriculaField.setEnabled(true);
+		txtHoraentrada.setEnabled(true);
+		txtHorasalida.setEnabled(true);
 	}
 	public void modoCrono() {
 		presupuestoField.setEnabled(false);
@@ -842,7 +858,6 @@ public class FichaReparar {
 		btnSiguiente.setVisible(false);
 		btnAnterior.setEnabled(false);
 		btnAnterior.setVisible(false);
-		btnPrincipal.setEnabled(false);
 		lblClientesicosDelTrvpller.setText("Crono del Trvpller - EDITAR");
 		lblPiezas.setEnabled(false);
 		txtPiezas.setEnabled(false);
@@ -862,8 +877,7 @@ public class FichaReparar {
 		menuBar.setEnabled(false);
 		responsableField.setEnabled(false);
 		lblResponsable.setEnabled(false);
-		btnEditar.setEnabled(false);
-		btnLeer.setEnabled(false);
+		
 		btnAtras.setEnabled(false);
 		mnMenu.setEnabled(false);
 		txtCliente.setEnabled(false);
@@ -871,6 +885,60 @@ public class FichaReparar {
 		matriculaField.setEnabled(false);
 		txtHoraentrada.setEnabled(false);
 		txtHorasalida.setEnabled(false);
+		
+		btnEditar.setEnabled(false);
+		btnBorrar.setEnabled(false);
+		
+	}
+	
+	public void modoEditar(){
+presupuestoField.setEnabled(true);
+		
+		comentariosArea.setEnabled(true);
+		comentariosArea.setEditable(true);
+		comentariosArea.setText("");
+		listEstado.setSelectedIndex(-1);
+		listEstado.clearSelection();
+		btnCrearFicha.setEnabled(true);
+		btnCrearFicha.setVisible(true);
+		btnVaciar.setEnabled(true);
+		btnVaciar.setVisible(true);
+		btnSiguiente.setEnabled(false);
+		btnSiguiente.setVisible(false);
+		btnAnterior.setEnabled(false);
+		btnAnterior.setVisible(false);
+		lblClientesicosDelTrvpller.setText("Reparaciones del Trvpller - Modo Crear");
+		
+		btnGuardar.setEnabled(true);
+		btnGuardar.setVisible(true);
+		lblPiezas.setEnabled(true);
+		txtPiezas.setEnabled(true);
+		lblCliente.setEnabled(false);
+		lblComentarios.setEnabled(true);
+		lblEstado.setEnabled(true);
+		lblFechaEntrada.setEnabled(true);
+		lblFechaSalida.setEnabled(true);
+		lblManodeobra.setEnabled(true);
+		lblMatricula.setEnabled(true);
+		lblOpciones.setEnabled(true);
+		lblPresupuesto.setEnabled(true);
+		listEstado.setEnabled(true);
+		lblTipoVehiculo.setEnabled(true);
+		btnStart.setEnabled(true);
+		menuBar.setEnabled(true);
+		responsableField.setEnabled(true);
+		lblResponsable.setEnabled(true);
+		
+		btnAtras.setEnabled(true);
+		mnMenu.setEnabled(true);
+		txtCliente.setEnabled(true);
+		textField.setEnabled(true);
+		matriculaField.setEnabled(true);
+		txtHoraentrada.setEnabled(true);
+		txtHorasalida.setEnabled(true);
+		
+		btnEditar.setEnabled(false);
+		btnBorrar.setEnabled(false);
 		
 	}
 
