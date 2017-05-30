@@ -675,6 +675,7 @@ public class fichaClienteCrear {
 
 			Cliente c = new Cliente(nombre_, cp_, apellido_, dni_, telefono_);
 			//Vehiculo v = new Vehiculo(dni_);
+			Listas.dniCliente=dniField.getText();
 			Listas.listaClientes.add(c);
 			//Listas.listaVehiculo.add(v);
 
