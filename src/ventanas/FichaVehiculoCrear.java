@@ -62,15 +62,10 @@ public class FichaVehiculoCrear {
 	private JMenu mnMenu;
 	private JMenu mnCoches;
 	private JMenuItem mntmCocheLeer;
-	private JMenuItem mntmCocheEditar;
-	private JMenuItem mntmCocheCrear;
 	private JMenu mnClientes;
 	private JMenuItem mntmClienteLeer;
 	private JMenuItem mntmClienteCrear;
-	private JMenuItem mntmReparacionCrear;
-	private JMenuItem mntmReparacionEditar;
 	private JMenuItem mntmReparacionLeer;
-	private JMenuItem mntmClienteEditar;
 	private JMenu mnReparaciones;
 	private JMenuBar menuBar;
 
@@ -152,17 +147,7 @@ public class FichaVehiculoCrear {
 		mnMenu = new JMenu("");
 		mnCoches = new JMenu("");
 		mntmCocheLeer = new JMenuItem("");
-		mntmCocheEditar = new JMenuItem("");
-		mntmCocheCrear = new JMenuItem("");
-		
-		mnClientes = new JMenu("");
-		mntmClienteLeer = new JMenuItem("");
-		
-		mntmClienteCrear = new JMenuItem("");
-		mntmClienteEditar = new JMenuItem("");
 		mnReparaciones = new JMenu("");
-		mntmReparacionCrear = new JMenuItem("");
-		mntmReparacionEditar = new JMenuItem("");
 		mntmReparacionLeer = new JMenuItem("");
 		lblTipoVehicul = new JLabel("Tipo Vehiculo");
 		menuBar = new JMenuBar();
@@ -315,6 +300,21 @@ public class FichaVehiculoCrear {
 		menuBar.add(mnMenu);
 		mnMenu.setIcon(
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495928384_dot-more-menu-hide.png")));
+		
+		mnClientes = new JMenu("");
+		mntmClienteLeer = new JMenuItem("");
+		
+		mntmClienteCrear = new JMenuItem("");
+		
+				mnClientes.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495929007_104.png")));
+				mnMenu.add(mnClientes);
+				
+						mntmClienteLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
+						mnClientes.add(mntmClienteLeer);
+								
+										mntmClienteCrear
+												.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
+										mnClientes.add(mntmClienteCrear);
 
 		mnCoches.setIcon(
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495927937_solid-travel-tourism-car.png")));
@@ -323,38 +323,11 @@ public class FichaVehiculoCrear {
 		mntmCocheLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
 		mnCoches.add(mntmCocheLeer);
 
-		mntmCocheEditar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930865_pen.png")));
-		mnCoches.add(mntmCocheEditar);
-
-		mntmCocheCrear
-				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
-		mnCoches.add(mntmCocheCrear);
-
-		mnClientes.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495929007_104.png")));
-		mnMenu.add(mnClientes);
-
-		mntmClienteLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
-		mnClientes.add(mntmClienteLeer);
-
-		mntmClienteEditar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930865_pen.png")));
-		mnClientes.add(mntmClienteEditar);
-
-		mntmClienteCrear
-				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
-		mnClientes.add(mntmClienteCrear);
-
 		mnReparaciones.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495928663_wrench.png")));
 		mnMenu.add(mnReparaciones);
 
 		mntmReparacionLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
 		mnReparaciones.add(mntmReparacionLeer);
-
-		mntmReparacionEditar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930865_pen.png")));
-		mnReparaciones.add(mntmReparacionEditar);
-
-		mntmReparacionCrear
-				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
-		mnReparaciones.add(mntmReparacionCrear);
 
 		btnEditar.setEnabled(false);
 		btnEditar.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -530,17 +503,6 @@ public class FichaVehiculoCrear {
 			}
 		});
 		
-		mntmCocheCrear.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				FichaVehiculoCrear fv =new FichaVehiculoCrear ();
-				fv.frameCrearFichaVehiculo.setVisible(true);
-				fv.modoCrear();
-				frameCrearFichaVehiculo.dispose();
-
-			}
-		});
-		
 		mntmClienteLeer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -585,16 +547,6 @@ public class FichaVehiculoCrear {
 				fr.getframeFichaReparar().setVisible(true);
 				fr.modoLeer();
 				fr.mostrarReparacion();
-				frameCrearFichaVehiculo.dispose();
-			}
-		});
-		
-		mntmReparacionCrear.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				FichaReparar fr = new FichaReparar();
-				fr.getframeFichaReparar().setVisible(true);
-				fr.modoCrear();
 				frameCrearFichaVehiculo.dispose();
 			}
 		});
