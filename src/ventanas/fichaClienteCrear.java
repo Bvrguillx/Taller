@@ -521,6 +521,20 @@ public class fichaClienteCrear {
 		}
 	}
 
+	public void mostrarCliente(Cliente c) {
+		if (!Listas.listaClientes.isEmpty()) {
+
+			nombreField.setText(c.getNombre());
+			lblFlechas.setText(c.getNombre());
+
+			telefonoField.setText(String.valueOf(c.getTelefono()));
+			apellidoField.setText(c.getApellido());
+			dniField.setText(c.getDni());
+			codpostalField.setText(String.valueOf(c.getTelefono()));
+
+		}
+	}
+	
 	private int nextCliente() {
 		++indiceClientes;
 		if (indiceClientes == Listas.listaClientes.size()) {
