@@ -836,7 +836,6 @@ public class FichaReparar {
 		
 		btnEditar.setEnabled(false);
 		btnBorrar.setEnabled(false);
-		
 		btnAtras.setEnabled(true);
 		mnMenu.setEnabled(true);
 		txtCliente.setEnabled(true);
