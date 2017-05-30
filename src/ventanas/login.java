@@ -3,6 +3,8 @@ package ventanas;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -19,8 +21,6 @@ import javax.swing.SwingConstants;
 
 import DAO.loginDAO;
 import container.Listas;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 public class login {
 
@@ -201,49 +201,48 @@ public class login {
 
 	public void accion(JLabel lblTitulo) {
 
-		// if ( loginDAO.login(getUsuario(), getContrasenia()) ){
-		// exito = true;
-		//
-		// JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Validos",
-		// "Login",
-		// JOptionPane.INFORMATION_MESSAGE);
-		// login.dispose();
-		// if (Listas.listaClientes.isEmpty()){
-		// fichaClienteCrear f = new fichaClienteCrear();
-		// f.getFrameCliente().setVisible(true);
-		// }else{
-		// Principal p = new Principal();
-		// p.getFramePrincipal().setVisible(true);
-		// }
-		// } else {
-		// JOptionPane.showMessageDialog(login, "Usuario y Contrasenia
-		// Incorrectos", "Login",
-		// JOptionPane.ERROR_MESSAGE);
-		// contraseniaField.setText("");
-		// exito = false;
-		// }
-		//
-
-		if (Credenciales.logeo(getUsuario(), getContrasenia())) {
-			exito = true;
-			Listas.usuario = getUsuario();
-			JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Validos", "Login",
-					JOptionPane.INFORMATION_MESSAGE);
-			login.dispose();
-			if (Listas.listaClientes.isEmpty()) {
-				fichaClienteCrear f = new fichaClienteCrear();
-				f.getFrameCliente().setVisible(true);
-			} else {
-				Principal p = new Principal();
-				p.getFramePrincipal().setVisible(true);
-			}
-		} else {
-			JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Incorrectos", "Login",
-					JOptionPane.ERROR_MESSAGE);
-			contraseniaField.setText("");
-			exito = false;
-		}
+		 if ( loginDAO.login(getUsuario(), getContrasenia()) ){
+		 exito = true;
+		
+		 JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Validos",
+		 "Login",
+		 JOptionPane.INFORMATION_MESSAGE);
+		 login.dispose();
+		 if (Listas.listaClientes.isEmpty()){
+		 fichaClienteCrear f = new fichaClienteCrear();
+		 f.getFrameCliente().setVisible(true);
+		 }else{
+		 Principal p = new Principal();
+		 p.getFramePrincipal().setVisible(true);
+		 }
+		 } else {
+		 JOptionPane.showMessageDialog(login, "Usuario y ContraseniaIncorrectos", "Login",
+		 JOptionPane.ERROR_MESSAGE);
+		 contraseniaField.setText("");
+		 exito = false;
+		 }
 	}
+
+//		if (Credenciales.logeo(getUsuario(), getContrasenia())) {
+//			exito = true;
+//			Listas.usuario = getUsuario();
+//			JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Validos", "Login",
+//					JOptionPane.INFORMATION_MESSAGE);
+//			login.dispose();
+//			if (Listas.listaClientes.isEmpty()) {
+//				fichaClienteCrear f = new fichaClienteCrear();
+//				f.getFrameCliente().setVisible(true);
+//			} else {
+//				Principal p = new Principal();
+//				p.getFramePrincipal().setVisible(true);
+//			}
+//		} else {
+//			JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Incorrectos", "Login",
+//					JOptionPane.ERROR_MESSAGE);
+//			contraseniaField.setText("");
+//			exito = false;
+//		}
+//	}
 
 	public void run() {
 		EventQueue.invokeLater(new Runnable() {

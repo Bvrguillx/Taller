@@ -12,6 +12,7 @@ public class Reparacion {
 	protected int listEstado;
 	protected String presupuestoField;
 	protected String comentariosArea;
+	protected String tipoVehiculo;
 
 	public Reparacion(String responsable, String matricula, String dniDuenio) {
 		this.responsable = responsable;
