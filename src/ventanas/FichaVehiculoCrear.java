@@ -603,7 +603,7 @@ public class FichaVehiculoCrear {
 
 	public void crearReparacion() {
 		Reparacion r = new Reparacion(Listas.usuario, matricula_,
-				Listas.listaVehiculo.get(indiceVehiculos).getDniCliente());
+				Listas.listaVehiculo.get(indiceVehiculos).getDniCliente(), Listas.listaVehiculo.get(indiceVehiculos).getTipoVehiculo());
 		Listas.listaReparaciones.add(r);
 
 	}

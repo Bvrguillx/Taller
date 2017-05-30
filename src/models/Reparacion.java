@@ -14,13 +14,14 @@ public class Reparacion {
 	protected String comentariosArea;
 	protected String tipoVehiculo;
 
-	public Reparacion(String responsable, String matricula, String dniDuenio) {
+	public Reparacion(String responsable, String matricula, String dniDuenio, String tipoVehiculo) {
 		this.responsable = responsable;
 		this.matricula = matricula;
 		this.dniDuenio = dniDuenio;
+		this.tipoVehiculo= tipoVehiculo;
 	}
 
-	public Reparacion(String responsable, String matricula, String dniDuenio, Date fechaEntrada, Date fechaSalida,
+	public Reparacion(String responsable, String matricula, String dniDuenio, String tipoVehiculo,Date fechaEntrada, Date fechaSalida,
 			int listEstado, String presupuestoField, String comentariosArea) {
 		this.responsable = responsable;
 		this.matricula = matricula;
@@ -30,6 +31,7 @@ public class Reparacion {
 		this.listEstado = listEstado;
 		this.presupuestoField = presupuestoField;
 		this.comentariosArea = comentariosArea;
+		this.tipoVehiculo= tipoVehiculo;
 	}
 
 	public String getResponsable() {
@@ -94,6 +96,14 @@ public class Reparacion {
 
 	public void setDniDuenio(String dniDuenio) {
 		this.dniDuenio = dniDuenio;
+	}
+
+	public String getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+	public void setTipoVehiculo(String tipoVehiculo) {
+		this.tipoVehiculo = tipoVehiculo;
 	}
 
 }
