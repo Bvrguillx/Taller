@@ -277,7 +277,7 @@ public class FichaVehiculoCrear {
 		//clienteField.setText("Mirar codigo");
 		// **************descomentar cuando el programa este
 		// terminado***************
-		clienteField.setText(Listas.listaClientes.get(Listas.listaClientes.size()-1).getDni());
+		clienteField.setText(Listas.dniCliente);
 		clienteField.setBounds(213, 400, 157, 30);
 		clienteField.setColumns(10);
 		clienteField.setEditable(false);
