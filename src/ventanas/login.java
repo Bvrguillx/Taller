@@ -221,7 +221,7 @@ public class login {
 		 contraseniaField.setText("");
 		 exito = false;
 		 }
-	}
+	} 
 
 //		if (Credenciales.logeo(getUsuario(), getContrasenia())) {
 //			exito = true;
