@@ -465,11 +465,12 @@ public class fichaClienteCrear {
 
 		btnNuevoVehiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FichaVehiculoCrear ventanaCrearVehiculo = new FichaVehiculoCrear();
+				TipoVehiculo ventanaTipo = new TipoVehiculo();
+				Listas.dniCliente=dniField.getText();
 				
 				
 				
-				ventanaCrearVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+				ventanaTipo.getFrameTipoVehiculo().setVisible(true);
 				frameCliente.dispose();
 				
 			}
