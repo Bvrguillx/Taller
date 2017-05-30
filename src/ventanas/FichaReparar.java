@@ -51,7 +51,6 @@ public class FichaReparar {
 	private JList listEstado;
 	private JButton btnCrearFicha;
 	private JButton btnVaciar;
-	private JLabel lblOpciones;
 	private JButton btnAtras;
 	private JTextField presupuestoField;
 	private JLabel lblPresupuesto;
@@ -151,7 +150,6 @@ public class FichaReparar {
 		});
 
 		btnVaciar = new JButton("VACIAR");
-		lblOpciones = new JLabel("Opciones");
 		btnAtras = new JButton("");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -287,11 +285,6 @@ public class FichaReparar {
 		btnVaciar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		btnVaciar.setBounds(454, 519, 169, 58);
 		frameFichaReparar.getContentPane().add(btnVaciar);
-
-		lblOpciones.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOpciones.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblOpciones.setBounds(448, 308, 256, 36);
-		frameFichaReparar.getContentPane().add(lblOpciones);
 
 		btnAtras.setIcon(new ImageIcon(
 				FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
@@ -551,6 +544,8 @@ public class FichaReparar {
 				Listas.listaReparaciones.get(indiceLista).setListEstado(Estado);
 				Listas.listaReparaciones.get(indiceLista).setComentariosArea(comentariosArea.getText());
 				Listas.listaReparaciones.get(indiceLista).setFechaEntrada(txtHoraentrada.getText());
+				Listas.listaReparaciones.get(indiceLista).setFechaSalida(txtHorasalida.getText());
+				Listas.listaReparaciones.get(indiceLista).setPresupuestoField(presupuestoField.getText());
 				
 				Principal p = new Principal();
 				p.getFramePrincipal().setVisible(true);
@@ -661,7 +656,9 @@ public class FichaReparar {
 				txtHorasalida.setText(hora2 + ":" + minutos2 + ":" + segundos2);
 				btnStop.setBackground(null);
 				
-				modoCrear();
+				modoEditar();
+				
+				
 			}
 		});
 		
@@ -732,7 +729,6 @@ public class FichaReparar {
 		lblFechaSalida.setEnabled(false);
 		lblManodeobra.setEnabled(false);
 		lblMatricula.setEnabled(false);
-		lblOpciones.setEnabled(false);
 		presupuestoField.setEnabled(false);
 		lblPresupuesto.setEnabled(false);
 		listEstado.setEnabled(false);
@@ -783,7 +779,6 @@ public class FichaReparar {
 		lblFechaSalida.setEnabled(true);
 		lblManodeobra.setEnabled(true);
 		lblMatricula.setEnabled(true);
-		lblOpciones.setEnabled(true);
 		lblPresupuesto.setEnabled(true);
 		listEstado.setEnabled(true);
 		lblTipoVehiculo.setEnabled(true);
@@ -825,7 +820,6 @@ public class FichaReparar {
 		lblFechaSalida.setEnabled(false);
 		lblManodeobra.setEnabled(false);
 		lblMatricula.setEnabled(false);
-		lblOpciones.setEnabled(false);
 		presupuestoField.setEnabled(false);
 		lblPresupuesto.setEnabled(false);
 		listEstado.setEnabled(false);
@@ -877,7 +871,6 @@ presupuestoField.setEnabled(true);
 		lblFechaSalida.setEnabled(true);
 		lblManodeobra.setEnabled(true);
 		lblMatricula.setEnabled(true);
-		lblOpciones.setEnabled(true);
 		lblPresupuesto.setEnabled(true);
 		listEstado.setEnabled(true);
 		lblTipoVehiculo.setEnabled(true);
@@ -896,6 +889,7 @@ presupuestoField.setEnabled(true);
 		
 		btnEditar.setEnabled(false);
 		btnBorrar.setEnabled(false);
+		btnCrearFicha.setEnabled(false);
 		
 	}
 
