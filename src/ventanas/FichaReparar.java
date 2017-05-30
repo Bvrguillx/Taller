@@ -529,16 +529,12 @@ public class FichaReparar {
 
 				indiceLista = Listas.listaReparaciones.size() - 1;
 
-				Date fechaEntrada = null;
-				Date fechaSalida = null;
+				
 				int Estado = listEstado.getSelectedIndex();
-				String presupuesto = presupuestoField.toString();
 				String comentarios = comentariosArea.getText();
 
-				Listas.listaReparaciones.get(indiceLista).setFechaEntrada(fechaEntrada);
-				Listas.listaReparaciones.get(indiceLista).setFechaSalida(fechaSalida);
+				
 				Listas.listaReparaciones.get(indiceLista).setListEstado(Estado);
-				Listas.listaReparaciones.get(indiceLista).setPresupuestoField(presupuesto);
 				Listas.listaReparaciones.get(indiceLista).setComentariosArea(comentarios);
 
 				frameFichaReparar.dispose();
@@ -551,17 +547,11 @@ public class FichaReparar {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				// fechaEntradaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaEntrada());
-				// fechaSalidaDC.setDate(Listas.listaReparaciones.get(indiceLista).getFechaSalida());
-				listEstado.setSelectedIndex(Listas.listaReparaciones.get(indiceLista).getListEstado());
-				presupuestoField.setText(Listas.listaReparaciones.get(indiceLista).getPresupuestoField());
-				comentariosArea.setText(Listas.listaReparaciones.get(indiceLista).getComentariosArea());
-				txtCliente.setText(Listas.listaReparaciones.get(indiceLista).getDniDuenio());
-				matriculaField.setText(Listas.listaReparaciones.get(indiceLista).getMatricula());
-
-				JOptionPane.showMessageDialog(frameFichaReparar, "�� Cambios Aplicados con Exito !!", "GUARDANDO",
-						JOptionPane.INFORMATION_MESSAGE);
-
+				int Estado = listEstado.getSelectedIndex();
+				Listas.listaReparaciones.get(indiceLista).setListEstado(Estado);
+				Listas.listaReparaciones.get(indiceLista).setComentariosArea(comentariosArea.getText());
+				Listas.listaReparaciones.get(indiceLista).setFechaEntrada(txtHoraentrada.getText());
+				
 				Principal p = new Principal();
 				p.getFramePrincipal().setVisible(true);
 				frameFichaReparar.dispose();

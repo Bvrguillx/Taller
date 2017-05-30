@@ -7,8 +7,8 @@ public class Reparacion {
 	protected String responsable;
 	protected String matricula;
 	protected String dniDuenio;
-	protected Date fechaEntrada;
-	protected Date fechaSalida;
+	protected String fechaEntrada;
+	protected String fechaSalida;
 	protected int listEstado;
 	protected String presupuestoField;
 	protected String comentariosArea;
@@ -21,7 +21,7 @@ public class Reparacion {
 		this.tipoVehiculo= tipoVehiculo;
 	}
 
-	public Reparacion(String responsable, String matricula, String dniDuenio, String tipoVehiculo,Date fechaEntrada, Date fechaSalida,
+	public Reparacion(String responsable, String matricula, String dniDuenio, String tipoVehiculo,String fechaEntrada, String fechaSalida,
 			int listEstado, String presupuestoField, String comentariosArea) {
 		this.responsable = responsable;
 		this.matricula = matricula;
@@ -50,19 +50,19 @@ public class Reparacion {
 		this.matricula = matricula;
 	}
 
-	public Date getFechaEntrada() {
+	public String getFechaEntrada() {
 		return fechaEntrada;
 	}
 
-	public void setFechaEntrada(Date fechaEntrada) {
+	public void setFechaEntrada(String fechaEntrada) {
 		this.fechaEntrada = fechaEntrada;
 	}
 
-	public Date getFechaSalida() {
+	public String getFechaSalida() {
 		return fechaSalida;
 	}
 
-	public void setFechaSalida(Date fechaSalida) {
+	public void setFechaSalida(String fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
 
