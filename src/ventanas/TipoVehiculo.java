@@ -4,14 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class TipoVehiculo {
 
 	private JFrame frameTipoVehiculo;
 
-	public JFrame getFrameTipoVehiculo() {
-		return frameTipoVehiculo;
-	}
 	/**
 	 * Launch the application.
 	 */
@@ -47,21 +47,31 @@ public class TipoVehiculo {
 		frameTipoVehiculo.getContentPane().setLayout(null);
 		
 		JButton btnCoche = new JButton("COCHE");
+		btnCoche.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1495927937_solid-travel-tourism-car.png")));
+		btnCoche.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnCoche.setBounds(61, 27, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnCoche);
 		
-		JButton btnMoto = new JButton("MOTO");
+		JButton btnMoto = new JButton("");
+		btnMoto.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1496159631_solid-travel-tourism-scooter.png")));
+		btnMoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnMoto.setBounds(239, 27, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnMoto);
 		
 		JButton btnCamion = new JButton("CAMION");
+		btnCamion.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1496159319_solid-travel-tourism-truck.png")));
 		btnCamion.setBounds(61, 149, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnCamion);
 		
 		JButton btnBici = new JButton("BICI");
+		btnBici.setIcon(new ImageIcon(TipoVehiculo.class.getResource("/iconos/1496159682_solid-travel-tourism-bicycle.png")));
 		btnBici.setBounds(239, 149, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnBici);
 	}
-
-
 }
