@@ -146,8 +146,8 @@ public class fichaDni {
 							fichaClienteCrear ventana = new fichaClienteCrear();
 							
 							ventana.getFrameCliente().setVisible(true);
-							//ventana.mostrarCliente(c);
-							
+							ventana.mostrarCliente(c);
+							ventana.modoLeer();
 							frameDni.dispose();
 						}
 					}

@@ -44,6 +44,7 @@ public class fichaClienteCrear {
 	private JButton btnEditar;
 	private int indiceClientes;
 	private JLabel lblFlechas;
+	private JButton btnNuevoVehiculo;
 
 	// ATRIBUTOS Cliente
 	protected String nombre_;
@@ -121,6 +122,7 @@ public class fichaClienteCrear {
 		btnLimpiar = new JButton("");
 		btnEditar = new JButton("Editar");
 		btnAtras_1 = new JButton("");
+		btnNuevoVehiculo = new JButton("Nuevo Vehiculo");
 
 		btnAlante = new JButton("");
 		lblFlechas = new JLabel("Cliente");
@@ -208,7 +210,8 @@ public class fichaClienteCrear {
 		btnCrear.setBounds(261, 291, 107, 48);
 		frameCliente.getContentPane().add(btnCrear);
 
-		btnCerrar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
+		btnCerrar.setIcon(new ImageIcon(
+				fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
 		btnCerrar.setBounds(444, 291, 74, 80);
 		frameCliente.getContentPane().add(btnCerrar);
 
@@ -290,6 +293,13 @@ public class fichaClienteCrear {
 		btnEditar.setEnabled(false);
 		frameCliente.getContentPane().add(btnEditar);
 
+		btnNuevoVehiculo.setVerticalAlignment(SwingConstants.TOP);
+		btnNuevoVehiculo.setVisible(false);
+		
+		btnNuevoVehiculo.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNuevoVehiculo.setBounds(204, 65, 101, 23);
+		frameCliente.getContentPane().add(btnNuevoVehiculo);
+
 	}
 
 	public void setEventos() {
@@ -310,11 +320,21 @@ public class fichaClienteCrear {
 
 				seguir = crearCliente();
 				if (seguir) {
-					FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
-
-					ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+					TipoVehiculo ventanaTipoVehiculo = new TipoVehiculo();
+					ventanaTipoVehiculo.getFrameTipoVehiculo().setVisible(true);
 					frameCliente.dispose();
 				}
+
+				// boolean seguir = false;
+				//
+				// seguir = crearCliente();
+				// if (seguir) {
+				// FichaVehiculoCrear ventanaVehiculo = new
+				// FichaVehiculoCrear();
+				//
+				// ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+				// frameCliente.dispose();
+				// }
 			}
 		});
 
@@ -371,7 +391,7 @@ public class fichaClienteCrear {
 		mntmCocheCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				FichaVehiculoCrear fv =new FichaVehiculoCrear ();
+				FichaVehiculoCrear fv = new FichaVehiculoCrear();
 				fv.frameCrearFichaVehiculo.setVisible(true);
 			}
 		});
@@ -406,7 +426,7 @@ public class fichaClienteCrear {
 				if (Listas.listaVehiculo.isEmpty()) {
 					mnCoches.setEnabled(false);
 				}
-				if(Listas.listaClientes.isEmpty()){
+				if (Listas.listaClientes.isEmpty()) {
 					mnClientes.setEnabled(false);
 				}
 			}
@@ -432,7 +452,7 @@ public class fichaClienteCrear {
 				frameCliente.dispose();
 			}
 		});
-		
+
 		mntmReparacionCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -440,6 +460,19 @@ public class fichaClienteCrear {
 				fr.getframeFichaReparar().setVisible(true);
 				fr.modoCrear();
 				frameCliente.dispose();
+			}
+		});
+
+		btnNuevoVehiculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TipoVehiculo ventanaTipo = new TipoVehiculo();
+				Listas.dniCliente=dniField.getText();
+				
+				
+				
+				ventanaTipo.getFrameTipoVehiculo().setVisible(true);
+				frameCliente.dispose();
+				
 			}
 		});
 	}
@@ -453,6 +486,8 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(true);
+		btnNuevoVehiculo.setEnabled(true);
+		btnNuevoVehiculo.setVisible(true);
 
 		lblNombre.setEnabled(false);
 		nombreField.setEnabled(false);
@@ -486,6 +521,20 @@ public class fichaClienteCrear {
 		}
 	}
 
+	public void mostrarCliente(Cliente c) {
+		if (!Listas.listaClientes.isEmpty()) {
+
+			nombreField.setText(c.getNombre());
+			lblFlechas.setText(c.getNombre());
+
+			telefonoField.setText(String.valueOf(c.getTelefono()));
+			apellidoField.setText(c.getApellido());
+			dniField.setText(c.getDni());
+			codpostalField.setText(String.valueOf(c.getTelefono()));
+
+		}
+	}
+	
 	private int nextCliente() {
 		++indiceClientes;
 		if (indiceClientes == Listas.listaClientes.size()) {
@@ -511,6 +560,8 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(false);
+		btnNuevoVehiculo.setEnabled(false);
+		btnNuevoVehiculo.setVisible(false);
 
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
@@ -539,6 +590,8 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(false);
 		btnAlante.setVisible(false);
 		btnEditar.setEnabled(false);
+		btnNuevoVehiculo.setEnabled(false);
+		btnNuevoVehiculo.setVisible(false);
 
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
@@ -635,9 +688,10 @@ public class fichaClienteCrear {
 			correcto = true;
 
 			Cliente c = new Cliente(nombre_, cp_, apellido_, dni_, telefono_);
-			Vehiculo v = new Vehiculo(dni_);
+			//Vehiculo v = new Vehiculo(dni_);
+			Listas.dniCliente=dniField.getText();
 			Listas.listaClientes.add(c);
-			Listas.listaVehiculo.add(v);
+			//Listas.listaVehiculo.add(v);
 
 		} else {
 			JOptionPane.showMessageDialog(frameCliente, errores, "Error del trVp", JOptionPane.ERROR_MESSAGE);

@@ -1,17 +1,30 @@
 package ventanas;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import container.Listas;
+import models.Vehiculo;
+
+import java.awt.event.ActionListener;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TipoVehiculo {
 
 	private JFrame frameTipoVehiculo;
 
+	private JButton btnCoche;
+	private JButton btnBici;
+	private JButton btnCamion;
+	private JButton btnMoto;
+
 	public JFrame getFrameTipoVehiculo() {
 		return frameTipoVehiculo;
 	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -33,6 +46,8 @@ public class TipoVehiculo {
 	 */
 	public TipoVehiculo() {
 		initialize();
+		setPropiedades();
+		setEventos();
 	}
 
 	/**
@@ -40,28 +55,78 @@ public class TipoVehiculo {
 	 */
 	private void initialize() {
 		frameTipoVehiculo = new JFrame();
+
+		btnBici = new JButton("BICI");
+		btnCamion = new JButton("CAMION");
+		btnMoto = new JButton("MOTO");
+		btnCoche = new JButton("COCHE");
+
+	}
+
+	private void setPropiedades() {
 		frameTipoVehiculo.setResizable(false);
 		frameTipoVehiculo.setTitle("Tipo Vehiculo");
 		frameTipoVehiculo.setBounds(100, 100, 450, 300);
 		frameTipoVehiculo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameTipoVehiculo.getContentPane().setLayout(null);
-		
-		JButton btnCoche = new JButton("COCHE");
+
 		btnCoche.setBounds(61, 27, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnCoche);
-		
-		JButton btnMoto = new JButton("MOTO");
+
 		btnMoto.setBounds(239, 27, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnMoto);
-		
-		JButton btnCamion = new JButton("CAMION");
+
 		btnCamion.setBounds(61, 149, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnCamion);
-		
-		JButton btnBici = new JButton("BICI");
+
 		btnBici.setBounds(239, 149, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnBici);
+
 	}
 
+	private void setEventos() {
+		
+		btnCoche.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Vehiculo v = new Vehiculo(Listas.dniCliente, "Coche");
+				Listas.listaVehiculo.add(v);
+				frameTipoVehiculo.dispose();
+				FichaVehiculoCrear f = new FichaVehiculoCrear();
+				f.getFrameCrearFichaVehiculo().setVisible(true);
+			}
+		});
+		btnMoto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Vehiculo v = new Vehiculo(Listas.dniCliente, "Moto");
+				Listas.listaVehiculo.add(v);
+				frameTipoVehiculo.dispose();
+				FichaVehiculoCrear f = new FichaVehiculoCrear();
+				f.getFrameCrearFichaVehiculo().setVisible(true);
+			}
+		});
+		btnCamion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Vehiculo v = new Vehiculo(Listas.dniCliente, "Camion");
+				Listas.listaVehiculo.add(v);
+				frameTipoVehiculo.dispose();
+				FichaVehiculoCrear f = new FichaVehiculoCrear();
+				f.getFrameCrearFichaVehiculo().setVisible(true);
+			}
+		});
+		btnBici.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Vehiculo v = new Vehiculo(Listas.dniCliente, "Bici");
+				Listas.listaVehiculo.add(v);
+				frameTipoVehiculo.dispose();
+				FichaVehiculoCrear f = new FichaVehiculoCrear();
+				f.getFrameCrearFichaVehiculo().setVisible(true);
+			}
+		});
+		
+	}
 
 }
