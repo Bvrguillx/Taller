@@ -810,12 +810,6 @@ public class FichaReparar {
 		presupuestoField.setEnabled(true);
 		presupuestoField.setEditable(true);
 		presupuestoField.setText("");
-		// fechaEntradaDC.setEnabled(true);
-		// fechaEntradaDC.setDate(null);
-		// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
-		// fechaSalidaDC.setEnabled(true);
-		// fechaSalidaDC.setDate(null);
-		// MIRAR A VER SI HAY ALGUN METODO PARA DEJARLO VACIO EL CAMPO
 		comentariosArea.setEnabled(true);
 		comentariosArea.setEditable(true);
 		comentariosArea.setText("");
@@ -875,6 +869,8 @@ public class FichaReparar {
 		txtCliente.setEnabled(false);
 		textField.setEnabled(false);
 		matriculaField.setEnabled(false);
+		txtHoraentrada.setEnabled(false);
+		txtHorasalida.setEnabled(false);
 		
 	}
 
