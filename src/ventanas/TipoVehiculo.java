@@ -9,6 +9,9 @@ public class TipoVehiculo {
 
 	private JFrame frameTipoVehiculo;
 
+	public JFrame getFrameTipoVehiculo() {
+		return frameTipoVehiculo;
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -59,4 +62,6 @@ public class TipoVehiculo {
 		btnBici.setBounds(239, 149, 129, 90);
 		frameTipoVehiculo.getContentPane().add(btnBici);
 	}
+
+
 }
