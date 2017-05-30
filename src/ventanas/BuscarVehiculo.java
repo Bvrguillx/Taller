@@ -184,7 +184,6 @@ public class BuscarVehiculo {
 							JOptionPane.ERROR_MESSAGE);
 
 				}
-				// Si la matricula no esta guardada ir a tipoVehiculo
 				if (!esCorrecto) {
 
 					JOptionPane.showMessageDialog(null, "La matricula " + entrada + " no esta guardada");
@@ -195,6 +194,8 @@ public class BuscarVehiculo {
 
 			}
 		});
+		
+		// Si la matricula no esta guardada ir a buscarCliente
 
 		btnNuevoVehiculo.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
