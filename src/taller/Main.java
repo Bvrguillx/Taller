@@ -25,35 +25,30 @@ public class Main {
 		Vehiculo v6 = new Vehiculo("5555ABC", 1492, "seat", "colon", "verde", 130, "Camion", "12345678B");
 		Vehiculo v7 = new Vehiculo("6666ABC", 1605, "ford", "quijote", "blanco", 20, "Bici", "12345678B");
 
-		// Reparacion r1 = new Reparacion("Demo", "1234ABC", "77777777l","moto",
-		// null, null, 1, "111", "aaaaa");
-		// Reparacion r2 = new Reparacion("Demo", "1233abc", "66666666l",
-		// "coche", null, null, 2, "222", "bbbbb");
 
 		// 3 coches 1 reparacion
-		Reparacion r1 = new Reparacion("Demo", "1234ABC", "12345678L", "Coche", null, null, 1, "111",
-				"junta de la trocola");
+		Reparacion r1 = new Reparacion("Demo", "1234ABC", "12345678L", "Coche", null, null, 5, "111","junta de la trocola");
 
-		Reparacion r2 = new Reparacion("Demo", "12ABCD12", "12345678P", "Moto", null, null, 1, "288", "escape");
+		Reparacion r2 = new Reparacion("Demo", "12ABCD12", "12345678P", "Moto", null, null, 2, "288", "escape");
 
 		Reparacion r3 = new Reparacion("Demo", "2222ABC", "12345678N", "Coche", null, null, 1, "350", "luna");
 
 		// 2 coches 2 reparaciones.
 		Reparacion r4 = new Reparacion("Demo", "3333ABC", "12345678N", "Camion", null, null, 1, "500", "Cambios");
-		Reparacion r5 = new Reparacion("Demo", "3333ABC", "12345678N", "Camion", null, null, 1, "150", "Ruedas");
+		Reparacion r5 = new Reparacion("Demo", "3333ABC", "12345678N", "Camion", null, null, 3, "150", "Ruedas");
 
-		Reparacion r6 = new Reparacion("Demo", "4444ABC", "12345678B", "Moto", null, null, 1, "620", "Direccion");
-		Reparacion r7 = new Reparacion("Demo", "4444ABC", "12345678B", "Moto", null, null, 1, "300", "Frenos");
+		Reparacion r6 = new Reparacion("Demo", "4444ABC", "12345678B", "Moto", null, null, 2, "620", "Direccion");
+		Reparacion r7 = new Reparacion("Demo", "4444ABC", "12345678B", "Moto", null, null, 4, "300", "Frenos");
 
 		// 2Coches 3 reparaciones, la ruina loco.
 
 		Reparacion r8 = new Reparacion("Demo", "5555ABC", "12345678B", "Camion", null, null, 1, "70", "Claxon");
-		Reparacion r9 = new Reparacion("Demo", "5555ABC", "12345678B", "Camion", null, null, 1, "170", "Airbag");
-		Reparacion r10 = new Reparacion("Demo", "5555ABC", "12345678B", "Camion", null, null, 1, "320", "Asientos");
+		Reparacion r9 = new Reparacion("Demo", "5555ABC", "12345678B", "Camion", null, null, 2, "170", "Airbag");
+		Reparacion r10 = new Reparacion("Demo", "5555ABC", "12345678B", "Camion", null, null, 3, "320", "Asientos");
 
 		Reparacion r11 = new Reparacion("Demo", "6666ABC", "12345678B", "Bici", null, null, 1, "50", "Alineacion");
-		Reparacion r12 = new Reparacion("Demo", "6666ABC", "12345678B", "Bici", null, null, 1, "60", "Engrase");
-		Reparacion r13 = new Reparacion("Demo", "6666ABC", "12345678B", "Bici", null, null, 1, "120",
+		Reparacion r12 = new Reparacion("Demo", "6666ABC", "12345678B", "Bici", null, null, 4, "60", "Engrase");
+		Reparacion r13 = new Reparacion("Demo", "6666ABC", "12345678B", "Bici", null, null, 5, "120",
 				"Cambio Cubiertas");
 
 		Listas.usuario = "";
