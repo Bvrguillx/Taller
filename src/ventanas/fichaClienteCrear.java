@@ -208,7 +208,8 @@ public class fichaClienteCrear {
 		btnCrear.setBounds(261, 291, 107, 48);
 		frameCliente.getContentPane().add(btnCrear);
 
-		btnCerrar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
+		btnCerrar.setIcon(new ImageIcon(
+				fichaClienteCrear.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")));
 		btnCerrar.setBounds(444, 291, 74, 80);
 		frameCliente.getContentPane().add(btnCerrar);
 
@@ -310,11 +311,21 @@ public class fichaClienteCrear {
 
 				seguir = crearCliente();
 				if (seguir) {
-					FichaVehiculoCrear ventanaVehiculo = new FichaVehiculoCrear();
-
-					ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+					TipoVehiculo ventanaTipoVehiculo = new TipoVehiculo();
+					ventanaTipoVehiculo.getFrameTipoVehiculo().setVisible(true);
 					frameCliente.dispose();
 				}
+
+				// boolean seguir = false;
+				//
+				// seguir = crearCliente();
+				// if (seguir) {
+				// FichaVehiculoCrear ventanaVehiculo = new
+				// FichaVehiculoCrear();
+				//
+				// ventanaVehiculo.getFrameCrearFichaVehiculo().setVisible(true);
+				// frameCliente.dispose();
+				// }
 			}
 		});
 
@@ -371,7 +382,7 @@ public class fichaClienteCrear {
 		mntmCocheCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				FichaVehiculoCrear fv =new FichaVehiculoCrear ();
+				FichaVehiculoCrear fv = new FichaVehiculoCrear();
 				fv.frameCrearFichaVehiculo.setVisible(true);
 			}
 		});
@@ -406,7 +417,7 @@ public class fichaClienteCrear {
 				if (Listas.listaVehiculo.isEmpty()) {
 					mnCoches.setEnabled(false);
 				}
-				if(Listas.listaClientes.isEmpty()){
+				if (Listas.listaClientes.isEmpty()) {
 					mnClientes.setEnabled(false);
 				}
 			}
@@ -432,7 +443,7 @@ public class fichaClienteCrear {
 				frameCliente.dispose();
 			}
 		});
-		
+
 		mntmReparacionCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
