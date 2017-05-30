@@ -45,7 +45,8 @@ public class fichaClienteCrear {
 	private int indiceClientes;
 	private JLabel lblFlechas;
 	private JButton btnNuevoVehiculo;
-
+	private JButton btnGuardar;
+	
 	// ATRIBUTOS Cliente
 	protected String nombre_;
 	protected int cp_;
@@ -127,6 +128,8 @@ public class fichaClienteCrear {
 		btnAlante = new JButton("");
 		lblFlechas = new JLabel("Cliente");
 		lblModo = new JLabel("Modo");
+
+		btnGuardar = new JButton("Guardar");
 
 		// MENU
 		mnMenu = new JMenu("");
@@ -295,10 +298,17 @@ public class fichaClienteCrear {
 
 		btnNuevoVehiculo.setVerticalAlignment(SwingConstants.TOP);
 		btnNuevoVehiculo.setVisible(false);
-		
+
 		btnNuevoVehiculo.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNuevoVehiculo.setBounds(204, 65, 101, 23);
 		frameCliente.getContentPane().add(btnNuevoVehiculo);
+
+		btnGuardar.setIcon(
+				new ImageIcon(fichaClienteCrear.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
+		btnGuardar.setVisible(false);
+		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
+		btnGuardar.setBounds(261, 277, 107, 48);
+		frameCliente.getContentPane().add(btnGuardar);
 
 	}
 
@@ -466,17 +476,41 @@ public class fichaClienteCrear {
 		btnNuevoVehiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TipoVehiculo ventanaTipo = new TipoVehiculo();
-				Listas.dniCliente=dniField.getText();
-				
-				
-				
+				Listas.dniCliente = dniField.getText();
+
 				ventanaTipo.getFrameTipoVehiculo().setVisible(true);
 				frameCliente.dispose();
-				
+
+			}
+		});
+
+		btnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				for (Cliente c : Listas.listaClientes) {
+						
+					c.getNombre();
+				guardarCliente(c);
+				}
 			}
 		});
 	}
+//Esta mal y cambia todos, ademas no considera formato campos de texto.
+	public void guardarCliente(Cliente c) {
+		if (!Listas.listaClientes.isEmpty()) {
 
+			c.setNombre(nombreField.getText());
+
+			c.setTelefono(Integer.valueOf(telefonoField.getText()));
+
+			c.setApellido(apellidoField.getText());
+			
+			c.setCp(Integer.valueOf(codpostalField.getText()));
+			
+			c.setDni(dniField.getText());
+
+		}
+	}
 	public void modoLeer() {
 		lblModo.setVisible(true);
 		lblModo.setText("Modo Leer Cliente");
@@ -489,6 +523,8 @@ public class fichaClienteCrear {
 		btnNuevoVehiculo.setEnabled(true);
 		btnNuevoVehiculo.setVisible(true);
 
+		
+		
 		lblNombre.setEnabled(false);
 		nombreField.setEnabled(false);
 		lblApellido.setEnabled(false);
@@ -501,7 +537,12 @@ public class fichaClienteCrear {
 		telefonoField.setEnabled(false);
 		btnLimpiar.setEnabled(false);
 		btnCerrar.setEnabled(false);
-
+		btnGuardar.setEnabled(false);
+		btnGuardar.setVisible(false);	
+		btnCrear.setVisible(false);
+		btnCrear.setEnabled(false);
+		
+		
 		indiceClientes = Listas.listaClientes.size() - 1;
 		mostrarCliente();
 	}
@@ -534,7 +575,7 @@ public class fichaClienteCrear {
 
 		}
 	}
-	
+
 	private int nextCliente() {
 		++indiceClientes;
 		if (indiceClientes == Listas.listaClientes.size()) {
@@ -575,7 +616,11 @@ public class fichaClienteCrear {
 		telefonoField.setEnabled(true);
 		btnLimpiar.setEnabled(true);
 		btnCerrar.setEnabled(true);
-
+		btnGuardar.setEnabled(true);
+		btnGuardar.setVisible(true);	
+		btnCrear.setVisible(false);
+		btnCrear.setEnabled(false);
+		
 		indiceClientes = Listas.listaClientes.size() - 1;
 		mostrarCliente();
 	}
@@ -592,7 +637,9 @@ public class fichaClienteCrear {
 		btnEditar.setEnabled(false);
 		btnNuevoVehiculo.setEnabled(false);
 		btnNuevoVehiculo.setVisible(false);
-
+		btnCrear.setVisible(true);
+		btnCrear.setEnabled(true);
+		
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
 		lblApellido.setEnabled(true);
@@ -688,10 +735,10 @@ public class fichaClienteCrear {
 			correcto = true;
 
 			Cliente c = new Cliente(nombre_, cp_, apellido_, dni_, telefono_);
-			//Vehiculo v = new Vehiculo(dni_);
-			Listas.dniCliente=dniField.getText();
+			// Vehiculo v = new Vehiculo(dni_);
+			Listas.dniCliente = dniField.getText();
 			Listas.listaClientes.add(c);
-			//Listas.listaVehiculo.add(v);
+			// Listas.listaVehiculo.add(v);
 
 		} else {
 			JOptionPane.showMessageDialog(frameCliente, errores, "Error del trVp", JOptionPane.ERROR_MESSAGE);
