@@ -616,7 +616,6 @@ public class FichaVehiculoCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(true);
-
 		lblMatricula.setEnabled(false);
 		matriculaField.setEnabled(false);
 		lblKm.setEnabled(false);
@@ -647,7 +646,6 @@ public class FichaVehiculoCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(false);
-
 		lblMatricula.setEnabled(true);
 		matriculaField.setEnabled(true);
 		lblKm.setEnabled(true);
@@ -701,7 +699,6 @@ public class FichaVehiculoCrear {
 	public void mostrarVehiculo() {
 		if (!Listas.listaVehiculo.isEmpty()) {
 			Vehiculo ve = Listas.listaVehiculo.get(indiceVehiculos);
-
 			matriculaField.setText(ve.getMatricula());
 			kmField.setText(String.valueOf(ve.getMatricula()));
 			marcaField.setText(ve.getMarca());
