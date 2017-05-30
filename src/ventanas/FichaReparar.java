@@ -100,6 +100,7 @@ public class FichaReparar {
 	private JMenu mnReparaciones;
 	private JMenuBar menuBar;
 	private JButton btnBorrar;
+	private JButton btnNueva;
 
 	/**
 	 * Launch the application.
@@ -169,7 +170,8 @@ public class FichaReparar {
 		btnSiguiente = new JButton("SIGUIENTE");
 
 		btnAnterior = new JButton("ANTERIOR");
-
+		btnNueva = new JButton("Nueva");
+		
 		btnGuardar = new JButton("GUARDAR");
 		lblCliente = new JLabel("Cliente");
 		txtCliente = new JTextField();
@@ -222,7 +224,7 @@ public class FichaReparar {
 
 		lblClientesicosDelTrvpller.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
 		lblClientesicosDelTrvpller.setHorizontalAlignment(SwingConstants.CENTER);
-		lblClientesicosDelTrvpller.setBounds(198, 0, 305, 46);
+		lblClientesicosDelTrvpller.setBounds(169, 0, 305, 46);
 		frameFichaReparar.getContentPane().add(lblClientesicosDelTrvpller);
 		frameFichaReparar.setResizable(false);
 
@@ -327,7 +329,7 @@ public class FichaReparar {
 		btnSiguiente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnSiguiente.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
-		btnSiguiente.setBounds(495, 27, 70, 57);
+		btnSiguiente.setBounds(464, 27, 70, 57);
 		frameFichaReparar.getContentPane().add(btnSiguiente);
 
 		btnAnterior.setEnabled(false);
@@ -335,7 +337,7 @@ public class FichaReparar {
 		btnAnterior.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnAnterior.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnAnterior.setBounds(607, 28, 70, 54);
+		btnAnterior.setBounds(643, 28, 70, 54);
 		frameFichaReparar.getContentPane().add(btnAnterior);
 
 		btnGuardar.setEnabled(false);
@@ -466,6 +468,10 @@ public class FichaReparar {
 		btnBorrar.setBounds(266, 519, 174, 46);
 		frameFichaReparar.getContentPane().add(btnBorrar);
 		btnBorrar.setEnabled(false);
+		
+		
+		btnNueva.setBounds(553, 27, 70, 57);
+		frameFichaReparar.getContentPane().add(btnNueva);
 
 	}
 
@@ -489,6 +495,16 @@ public class FichaReparar {
 
 	public void setEventos() {
 
+		btnNueva.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				BuscarVehiculo bv = new BuscarVehiculo();
+				bv.getFrameBuscarMatricula().setVisible(true);
+				frameFichaReparar.dispose();
+			}
+		});
+		
 		btnBorrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -780,12 +796,12 @@ public class FichaReparar {
 		listEstado.setEnabled(false);
 		lblTipoVehiculo.setEnabled(false);
 		btnStart.setEnabled(false);
-		menuBar.setEnabled(false);
+		menuBar.setEnabled(true);
 		responsableField.setEnabled(false);
 		lblResponsable.setEnabled(false);
 		
 		btnAtras.setEnabled(false);
-		mnMenu.setEnabled(false);
+		mnMenu.setEnabled(true);
 		txtCliente.setEnabled(false);
 		textField.setEnabled(false);
 		matriculaField.setEnabled(false);
