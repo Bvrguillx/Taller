@@ -207,6 +207,7 @@ public class login {
 		 JOptionPane.showMessageDialog(login, "Usuario y Contrasenia Validos",
 		 "Login",
 		 JOptionPane.INFORMATION_MESSAGE);
+		 Listas.usuario = getUsuario();
 		 login.dispose();
 		 if (Listas.listaClientes.isEmpty()){
 		 fichaClienteCrear f = new fichaClienteCrear();
