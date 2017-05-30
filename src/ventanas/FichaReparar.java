@@ -2,6 +2,13 @@ package ventanas;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
@@ -13,13 +20,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.JTextArea;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Date;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -46,8 +50,6 @@ public class FichaReparar {
 	private JTextField presupuestoField;
 	private JLabel lblPresupuesto;
 	private JTextArea comentariosArea;
-	private JDateChooser fechaEntradaDC;
-	private JDateChooser fechaSalidaDC;
 	protected login g;
 	private JButton btnEditar;
 	private JButton btnSiguiente;
@@ -58,6 +60,10 @@ public class FichaReparar {
 	private JTextField txtCliente;
 	private JLabel lblCliente;
 	private int indiceLista;
+	private Calendar calendario1;
+	private Calendar calendario2;
+	private int hora1, minutos1, segundos1;
+	private int hora2, minutos2, segundos2;
 
 	// menu
 	private JMenu mnMenu;
@@ -74,6 +80,8 @@ public class FichaReparar {
 	private JMenuItem mntmClienteEditar;
 	private JMenu mnReparaciones;
 	private JMenuBar menuBar;
+	private JTextField textField;
+	private JTextField txtPiezas;
 
 	/**
 	 * Launch the application.
@@ -117,21 +125,27 @@ public class FichaReparar {
 		responsableField = new JTextField();
 		lblMatricula = new JLabel("Matricula");
 		matriculaField = new JTextField();
-		lblFechaEntrada = new JLabel("Fecha Entrada");
-		lblFechaSalida = new JLabel("Fecha Salida");
+		lblFechaEntrada = new JLabel("Hora Entrada");
+		lblFechaSalida = new JLabel("Hora Salida");
 		lblComentarios = new JLabel("Comentarios");
 		lblEstado = new JLabel("Estado");
 		listEstado = new JList();
 		btnCrearFicha = new JButton("CREAR FICHA");
+		btnCrearFicha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 
 		btnVaciar = new JButton("VACIAR");
 		lblOpciones = new JLabel("Opciones");
 		btnAtras = new JButton("");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		presupuestoField = new JTextField();
 		lblPresupuesto = new JLabel("Presupuesto");
 		comentariosArea = new JTextArea();
-		fechaEntradaDC = new JDateChooser();
-		fechaSalidaDC = new JDateChooser();
 		btnLeer = new JButton("LEER");
 		btnEditar = new JButton("EDITAR");
 		btnSiguiente = new JButton("SIGUIENTE");
@@ -142,6 +156,8 @@ public class FichaReparar {
 		btnPrincipal = new JButton("");
 		lblCliente = new JLabel("Cliente");
 		txtCliente = new JTextField();
+		calendario1 = new GregorianCalendar();
+		calendario2 = new GregorianCalendar();
 		// MENU
 		mnMenu = new JMenu("");
 		mnCoches = new JMenu("");
@@ -162,7 +178,7 @@ public class FichaReparar {
 	public void setPropiedades() {
 
 		frameFichaReparar.setTitle("Reparacion de Vehiculos");
-		frameFichaReparar.setBounds(100, 100, 743, 515);
+		frameFichaReparar.setBounds(100, 100, 743, 621);
 		frameFichaReparar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameFichaReparar.getContentPane().setLayout(null);
 
@@ -203,18 +219,18 @@ public class FichaReparar {
 
 		lblFechaSalida.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFechaSalida.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFechaSalida.setBounds(227, 213, 209, 36);
+		lblFechaSalida.setBounds(-2, 308, 209, 36);
 		frameFichaReparar.getContentPane().add(lblFechaSalida);
 
 		lblComentarios.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComentarios.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblComentarios.setBounds(454, 99, 259, 36);
+		lblComentarios.setBounds(454, 82, 259, 36);
 		frameFichaReparar.getContentPane().add(lblComentarios);
 
 		lblEstado.setHorizontalAlignment(SwingConstants.CENTER);
 		listEstado.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		lblEstado.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblEstado.setBounds(6, 301, 209, 36);
+		lblEstado.setBounds(5, 407, 209, 36);
 		frameFichaReparar.getContentPane().add(lblEstado);
 		listEstado.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		listEstado.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -230,19 +246,19 @@ public class FichaReparar {
 				return values[index];
 			}
 		});
-		listEstado.setBounds(6, 348, 250, 139);
+		listEstado.setBounds(5, 454, 249, 139);
 		frameFichaReparar.getContentPane().add(listEstado);
 
 		btnCrearFicha.setIcon(new ImageIcon(
 				FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/images/capslock-icon.png")));
 		btnCrearFicha.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		btnCrearFicha.setBounds(447, 352, 259, 57);
+		btnCrearFicha.setBounds(454, 291, 259, 57);
 		frameFichaReparar.getContentPane().add(btnCrearFicha);
 
 		btnVaciar.setIcon(new ImageIcon(
 				FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-confirm.png")));
 		btnVaciar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		btnVaciar.setBounds(447, 420, 259, 57);
+		btnVaciar.setBounds(454, 519, 169, 58);
 		frameFichaReparar.getContentPane().add(btnVaciar);
 
 		lblOpciones.setHorizontalAlignment(SwingConstants.CENTER);
@@ -252,38 +268,32 @@ public class FichaReparar {
 
 		btnAtras.setIcon(new ImageIcon(
 				FichaReparar.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
-		btnAtras.setBounds(624, 20, 82, 68);
+		btnAtras.setBounds(655, 525, 82, 68);
 		frameFichaReparar.getContentPane().add(btnAtras);
 
 		lblPresupuesto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPresupuesto.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblPresupuesto.setBounds(235, 128, 209, 36);
+		lblPresupuesto.setBounds(233, 308, 209, 36);
 		frameFichaReparar.getContentPane().add(lblPresupuesto);
 
 		presupuestoField.setColumns(10);
-		presupuestoField.setBounds(235, 164, 209, 46);
+		presupuestoField.setBounds(233, 344, 209, 46);
 		frameFichaReparar.getContentPane().add(presupuestoField);
 
 		comentariosArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		comentariosArea.setBounds(464, 138, 249, 157);
+		comentariosArea.setBounds(464, 121, 249, 157);
 		frameFichaReparar.getContentPane().add(comentariosArea);
-
-		fechaEntradaDC.setBounds(16, 249, 199, 46);
-		frameFichaReparar.getContentPane().add(fechaEntradaDC);
-
-		fechaSalidaDC.setBounds(245, 249, 199, 46);
-		frameFichaReparar.getContentPane().add(fechaSalidaDC);
 
 		btnLeer.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Copy_16x16_JFX.png")));
 		btnLeer.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
-		btnLeer.setBounds(266, 433, 169, 54);
+		btnLeer.setBounds(266, 519, 169, 54);
 		frameFichaReparar.getContentPane().add(btnLeer);
 
 		btnEditar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnEditar.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
-		btnEditar.setBounds(266, 368, 169, 54);
+		btnEditar.setBounds(266, 454, 169, 54);
 		frameFichaReparar.getContentPane().add(btnEditar);
 
 		btnSiguiente.setEnabled(false);
@@ -291,7 +301,7 @@ public class FichaReparar {
 		btnSiguiente.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnSiguiente.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
-		btnSiguiente.setBounds(447, 348, 257, 57);
+		btnSiguiente.setBounds(462, 25, 70, 57);
 		frameFichaReparar.getContentPane().add(btnSiguiente);
 
 		btnAnterior.setEnabled(false);
@@ -299,7 +309,7 @@ public class FichaReparar {
 		btnAnterior.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
 		btnAnterior.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
-		btnAnterior.setBounds(447, 416, 259, 54);
+		btnAnterior.setBounds(638, 28, 70, 54);
 		frameFichaReparar.getContentPane().add(btnAnterior);
 
 		btnPrincipal.setIcon(
@@ -314,7 +324,7 @@ public class FichaReparar {
 		btnGuardar.setIcon(
 				new ImageIcon(FichaReparar.class.getResource("/com/sun/java/swing/plaf/windows/icons/UpFolder.gif")));
 		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 16));
-		btnGuardar.setBounds(266, 312, 169, 46);
+		btnGuardar.setBounds(454, 360, 259, 58);
 		frameFichaReparar.getContentPane().add(btnGuardar);
 
 		lblCliente.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -374,6 +384,36 @@ public class FichaReparar {
 		mntmReparacionCrear
 				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
 		mnReparaciones.add(mntmReparacionCrear);
+		
+		JButton btnStart = new JButton("");
+		btnStart.setIcon(new ImageIcon(FichaReparar.class.getResource("/iconos/1496159860_Cancel_Icon.png")));
+		btnStart.setBounds(454, 421, 111, 95);
+		frameFichaReparar.getContentPane().add(btnStart);
+		
+		JButton btnStop = new JButton("");
+		btnStop.setIcon(new ImageIcon(FichaReparar.class.getResource("/iconos/1496160128_stop.png")));
+		btnStop.setBounds(582, 421, 111, 92);
+		frameFichaReparar.getContentPane().add(btnStop);
+		
+		JLabel lblTipoVehiculo = new JLabel("Tipo Vehiculo");
+		lblTipoVehiculo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblTipoVehiculo.setBounds(278, 128, 127, 36);
+		frameFichaReparar.getContentPane().add(lblTipoVehiculo);
+		
+		textField = new JTextField();
+		textField.setBounds(233, 164, 209, 41);
+		frameFichaReparar.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblPiezas = new JLabel("Piezas");
+		lblPiezas.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPiezas.setBounds(294, 213, 169, 36);
+		frameFichaReparar.getContentPane().add(lblPiezas);
+		
+		txtPiezas = new JTextField();
+		txtPiezas.setBounds(233, 249, 209, 46);
+		frameFichaReparar.getContentPane().add(txtPiezas);
+		txtPiezas.setColumns(10);
 	}
 
 	public void setEventos() {
@@ -441,8 +481,8 @@ public class FichaReparar {
 
 				indiceLista = Listas.listaReparaciones.size() - 1;
 
-				Date fechaEntrada = fechaEntradaDC.getDate();
-				Date fechaSalida = fechaSalidaDC.getDate();
+				Date fechaEntrada = null;
+				Date fechaSalida = null;
 				int Estado = listEstado.getSelectedIndex();
 				String presupuesto = presupuestoField.toString();
 				String comentarios = comentariosArea.getText();
