@@ -195,16 +195,7 @@ public class FichaReparar {
 		lblTipoVehiculo = new JLabel("Tipo Vehiculo");
 		lblPiezas = new JLabel("Piezas");
 		txtPiezas = new JTextField();
-		txtPiezas.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-						char caracter = e.getKeyChar();
-		                if (((caracter < '0') || (caracter > '9'))
-		                        && (caracter != '\b')) {
-		                	e.consume();
-		                }
-			}
-		});
+
 		
 		txtPiezas.setText("0");
 		textField = new JTextField();
@@ -641,6 +632,17 @@ public class FichaReparar {
 				
 				btnStop.setBackground(Color.RED);
 				btnStop.setBackground(java.awt.Color.red);
+			}
+		});
+		
+		txtPiezas.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+						char caracter = e.getKeyChar();
+		                if (((caracter < '0') || (caracter > '9'))
+		                        && (caracter != '\b')) {
+		                	e.consume();
+		                }
 			}
 		});
 
