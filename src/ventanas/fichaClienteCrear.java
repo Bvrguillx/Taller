@@ -281,6 +281,7 @@ public class fichaClienteCrear {
 
 		btnEditar.setBounds(530, 291, 89, 81);
 		btnEditar.setEnabled(false);
+		btnEditar.setVisible(false);
 		frameCliente.getContentPane().add(btnEditar);
 		btnNuevoVehiculo.setVisible(false);
 		btnNuevoVehiculo.setBounds(530, 80, 89, 95);
@@ -522,9 +523,13 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(true);
+		btnEditar.setVisible(true);
 		btnNuevoVehiculo.setEnabled(true);
 		btnNuevoVehiculo.setVisible(true);
-
+		btnBorrar.setEnabled(true);
+		btnBorrar.setVisible(true);
+		
+		
 		lblNombre.setEnabled(false);
 		nombreField.setEnabled(false);
 		lblApellido.setEnabled(false);
@@ -603,9 +608,12 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(false);
 		btnEditar.setEnabled(false);
+		btnEditar.setVisible(false);
 		btnNuevoVehiculo.setEnabled(false);
 		btnNuevoVehiculo.setVisible(false);
-
+		btnBorrar.setEnabled(false);
+		btnBorrar.setVisible(false);
+		
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
 		lblApellido.setEnabled(true);
@@ -639,11 +647,14 @@ public class fichaClienteCrear {
 		btnAlante.setEnabled(false);
 		btnAlante.setVisible(false);
 		btnEditar.setEnabled(false);
+		btnEditar.setVisible(false);
 		btnNuevoVehiculo.setEnabled(false);
 		btnNuevoVehiculo.setVisible(false);
 		btnCrear.setVisible(true);
 		btnCrear.setEnabled(true);
-
+		btnBorrar.setEnabled(false);
+		btnBorrar.setVisible(false);
+		
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
 		lblApellido.setEnabled(true);
