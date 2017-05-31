@@ -160,13 +160,13 @@ public class BuscarVehiculo {
 				Matcher matricula4numeros = cuatroNumerosCentro.matcher(entrada);
 
 				if (matricula3letras.matches() || matricula4numeros.matches()) {
-					JOptionPane.showMessageDialog(null, entrada + "  Formato Matricula correcto");
+					
 
 					for (Reparacion c : Listas.listaReparaciones) {
 
 						if (c.getMatricula().contains(entrada)) {
 							esCorrecto = true;
-							JOptionPane.showMessageDialog(null, "La matricula " + entrada + "  esta guardada");
+							
 
 							FichaReparar ventanaReparar = new FichaReparar();
 

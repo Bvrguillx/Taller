@@ -140,7 +140,6 @@ public class fichaDni {
 					for (Cliente c : Listas.listaClientes) {
 						if (c.getDni().contains(dnientrada)) {
 							esCorrecto = true;
-							JOptionPane.showMessageDialog(null, "El dni " + dnientrada + "  esta guardada");
 														
 							fichaClienteCrear ventana = new fichaClienteCrear();
 							
