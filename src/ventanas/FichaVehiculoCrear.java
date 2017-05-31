@@ -341,7 +341,7 @@ public class FichaVehiculoCrear {
 		lblTipoVehicul.setBounds(213, 52, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(lblTipoVehicul);
 
-		tipoVehiculoField.setText(Listas.listaReparaciones.get(Listas.listaReparaciones.size() - 1).getTipoVehiculo());
+		tipoVehiculoField.setText(Listas.listaVehiculo.get(Listas.listaVehiculo.size() - 1).getTipoVehiculo());
 		tipoVehiculoField.setEditable(false);
 		tipoVehiculoField.setColumns(10);
 		tipoVehiculoField.setBounds(213, 93, 157, 30);
