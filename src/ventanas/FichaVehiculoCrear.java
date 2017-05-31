@@ -610,6 +610,7 @@ public class FichaVehiculoCrear {
 		btnReparar.setEnabled(true);
 		btnClear.setEnabled(false);
 		btnCerrar.setEnabled(true);
+		
 
 		indiceVehiculos = Listas.listaVehiculo.size() - 1;
 		mostrarVehiculo();
@@ -685,6 +686,7 @@ public class FichaVehiculoCrear {
 			colorField.setText(ve.getColor());
 			motorField.setText(String.valueOf(ve.getPotencia()));
 			clienteField.setText(ve.getDniCliente());
+			tipoVehiculoField.setText(ve.getTipoVehiculo());
 		}
 	}
 

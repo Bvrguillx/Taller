@@ -157,9 +157,9 @@ public class FichaReparar {
 		presupuestoField.setEditable(false);
 		lblPresupuesto = new JLabel("Presupuesto");
 		comentariosArea = new JTextArea();
-		btnSiguiente = new JButton("SIGUIENTE");
+		btnSiguiente = new JButton("");
 
-		btnAnterior = new JButton("ANTERIOR");
+		btnAnterior = new JButton("");
 		btnNueva = new JButton("Nueva");
 		
 		btnGuardar = new JButton("GUARDAR");
@@ -763,7 +763,7 @@ public class FichaReparar {
 		
 		btnEditar.setEnabled(true);
 		btnBorrar.setEnabled(true);
-		btnStop.setEnabled(true);
+		btnAtras.setEnabled(true);
 		
 		indiceLista=Listas.listaReparaciones.size()-1;
 		mostrarReparacion();
