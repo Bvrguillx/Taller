@@ -358,8 +358,9 @@ public class FichaVehiculoCrear {
 
 				FichaReparar fr = new FichaReparar();
 				fr.getframeFichaReparar().setVisible(true);
-
+				fr.modoCrear();
 				frameCrearFichaVehiculo.dispose();
+				
 			}
 		});
 		
