@@ -23,6 +23,8 @@ import javax.swing.SwingConstants;
 import container.Listas;
 import models.Cliente;
 import models.Vehiculo;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class fichaClienteCrear {
 
@@ -46,7 +48,7 @@ public class fichaClienteCrear {
 	private JLabel lblFlechas;
 	private JButton btnNuevoVehiculo;
 	private JButton btnGuardar;
-	
+
 	// ATRIBUTOS Cliente
 	protected String nombre_;
 	protected int cp_;
@@ -107,11 +109,14 @@ public class fichaClienteCrear {
 		frameCliente.setResizable(false);
 		lblNombre = new JLabel("Nombre");
 		nombreField = new JTextField();
+
 		lblApellido = new JLabel("Apellido");
 		apellidoField = new JTextField();
+
 		lblTelefono = new JLabel("Telefono");
 		lblCodPostal = new JLabel("Codigo Postal");
 		telefonoField = new JTextField();
+
 		lblDNI = new JLabel("DNI");
 		dniField = new JTextField();
 		btnCrear = new JButton("CREAR");
@@ -120,7 +125,8 @@ public class fichaClienteCrear {
 		btnEditar = new JButton("Editar");
 		btnAtras_1 = new JButton("");
 		btnNuevoVehiculo = new JButton("");
-		btnNuevoVehiculo.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/iconos/1495931018_new_product.png")));
+		btnNuevoVehiculo
+				.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/iconos/1495931018_new_product.png")));
 		btnNuevoVehiculo.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
 
 		btnAlante = new JButton("");
@@ -171,6 +177,7 @@ public class fichaClienteCrear {
 		frameCliente.getContentPane().add(lblTelefono);
 
 		codpostalField = new JTextField();
+
 		codpostalField.setHorizontalAlignment(SwingConstants.CENTER);
 		codpostalField.setColumns(10);
 		codpostalField.setBounds(261, 224, 227, 42);
@@ -220,18 +227,18 @@ public class fichaClienteCrear {
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495928384_dot-more-menu-hide.png")));
 		mnClientes = new JMenu("");
 		mntmClienteLeer = new JMenuItem("");
-		
-				mntmClienteCrear = new JMenuItem("");
-				
-						mnClientes.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495929007_104.png")));
-						mnMenu.add(mnClientes);
-						
-								mntmClienteLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
-								mnClientes.add(mntmClienteLeer);
-								
-										mntmClienteCrear
-												.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
-										mnClientes.add(mntmClienteCrear);
+
+		mntmClienteCrear = new JMenuItem("");
+
+		mnClientes.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495929007_104.png")));
+		mnMenu.add(mnClientes);
+
+		mntmClienteLeer.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495930663_67.png")));
+		mnClientes.add(mntmClienteLeer);
+
+		mntmClienteCrear
+				.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495931018_new_product.png")));
+		mnClientes.add(mntmClienteCrear);
 
 		mnCoches.setIcon(
 				new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1495927937_solid-travel-tourism-car.png")));
@@ -281,7 +288,7 @@ public class fichaClienteCrear {
 		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
 		btnGuardar.setBounds(261, 277, 107, 48);
 		frameCliente.getContentPane().add(btnGuardar);
-		
+
 		btnBorrar = new JButton("");
 		btnBorrar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/iconos/1496197748_trash-80px.png")));
 		btnBorrar.setBounds(530, 199, 89, 95);
@@ -443,11 +450,49 @@ public class fichaClienteCrear {
 				Listas.listaClientes.get(indiceClientes).setApellido(apellidoField.getText());
 				Listas.listaClientes.get(indiceClientes).setCp(Integer.parseInt(codpostalField.getText()));
 				Listas.listaClientes.get(indiceClientes).setTelefono(Integer.parseInt(telefonoField.getText()));
+			}
+
+		});
+
+		codpostalField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char caracter = e.getKeyChar();
+				if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+					e.consume();
 				}
-			
+			}
+		});
+		apellidoField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char caracter = e.getKeyChar();
+				if (!((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+					e.consume();
+				}
+			}
+		});
+		telefonoField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char caracter = e.getKeyChar();
+				if (((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+					e.consume();
+				}
+			}
+		});
+		nombreField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char caracter = arg0.getKeyChar();
+				if (!((caracter < '0') || (caracter > '9')) && (caracter != '\b')) {
+					arg0.consume();
+				}
+			}
 		});
 	}
-//Esta mal y cambia todos, ademas no considera formato campos de texto.
+
+	// Esta mal y cambia todos, ademas no considera formato campos de texto.
 	public void guardarCliente(Cliente c) {
 		if (!Listas.listaClientes.isEmpty()) {
 
@@ -456,13 +501,14 @@ public class fichaClienteCrear {
 			c.setTelefono(Integer.valueOf(telefonoField.getText()));
 
 			c.setApellido(apellidoField.getText());
-			
+
 			c.setCp(Integer.valueOf(codpostalField.getText()));
-			
+
 			c.setDni(dniField.getText());
 
 		}
 	}
+
 	public void modoLeer() {
 		lblModo.setVisible(true);
 		lblModo.setText("Modo Leer Cliente");
@@ -475,8 +521,6 @@ public class fichaClienteCrear {
 		btnNuevoVehiculo.setEnabled(true);
 		btnNuevoVehiculo.setVisible(true);
 
-		
-		
 		lblNombre.setEnabled(false);
 		nombreField.setEnabled(false);
 		lblApellido.setEnabled(false);
@@ -490,13 +534,13 @@ public class fichaClienteCrear {
 		btnLimpiar.setEnabled(false);
 		btnCerrar.setEnabled(false);
 		btnGuardar.setEnabled(false);
-		btnGuardar.setVisible(false);	
+		btnGuardar.setVisible(false);
 		btnCrear.setVisible(false);
 		btnCrear.setEnabled(false);
-		
+
 		btnBorrar.setEnabled(true);
 		btnNuevoVehiculo.setEnabled(true);
-		
+
 		indiceClientes = Listas.listaClientes.size() - 1;
 		mostrarCliente();
 	}
@@ -571,13 +615,13 @@ public class fichaClienteCrear {
 		btnLimpiar.setEnabled(true);
 		btnCerrar.setEnabled(true);
 		btnGuardar.setEnabled(true);
-		btnGuardar.setVisible(true);	
+		btnGuardar.setVisible(true);
 		btnCrear.setVisible(false);
 		btnCrear.setEnabled(false);
-		
+
 		btnBorrar.setEnabled(false);
 		btnNuevoVehiculo.setEnabled(false);
-		
+
 		mostrarCliente();
 	}
 
@@ -595,7 +639,7 @@ public class fichaClienteCrear {
 		btnNuevoVehiculo.setVisible(false);
 		btnCrear.setVisible(true);
 		btnCrear.setEnabled(true);
-		
+
 		lblNombre.setEnabled(true);
 		nombreField.setEnabled(true);
 		lblApellido.setEnabled(true);
@@ -608,7 +652,7 @@ public class fichaClienteCrear {
 		telefonoField.setEnabled(true);
 		btnLimpiar.setEnabled(true);
 		btnCerrar.setEnabled(true);
-		
+
 		btnBorrar.setEnabled(false);
 		btnNuevoVehiculo.setEnabled(false);
 
