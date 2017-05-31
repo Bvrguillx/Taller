@@ -166,15 +166,16 @@ public class FichaReparar {
 		lblCliente = new JLabel("Cliente");
 		txtCliente = new JTextField();
 		txtCliente.setEditable(false);
-		calendario1 = new GregorianCalendar();
-		calendario2 = new GregorianCalendar();
+		
 		btnEditar = new JButton("Editar");
-		btnBorrar = new JButton("Eliminar");
-		btnBorrar.addMouseListener(new MouseAdapter() {
+		btnEditar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				modoEditar();
 			}
 		});
+		btnBorrar = new JButton("Eliminar");
+		
 		
 		// MENU
 		mnMenu = new JMenu("");
@@ -920,10 +921,12 @@ presupuestoField.setEnabled(true);
 	}
 
 	public void start() {
+		calendario1 = new GregorianCalendar();
 		time_start = System.currentTimeMillis();
 	}
 
 	public void stop() {
+		calendario2 = new GregorianCalendar();
 		time_end = System.currentTimeMillis();
 	}
 
