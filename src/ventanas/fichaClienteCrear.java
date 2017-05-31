@@ -134,7 +134,7 @@ public class fichaClienteCrear {
 		lblFlechas = new JLabel("Cliente");
 		lblFlechas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblModo = new JLabel("Modo");
-		lblModo.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblModo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		btnGuardar = new JButton("Guardar");
 
@@ -274,7 +274,7 @@ public class fichaClienteCrear {
 		lblFlechas.setBounds(354, 14, 146, 48);
 		frameCliente.getContentPane().add(lblFlechas);
 
-		lblModo.setBounds(168, 14, 89, 40);
+		lblModo.setBounds(152, 14, 133, 40);
 		lblModo.setText("Modo Crear");
 		frameCliente.getContentPane().add(lblModo);
 
@@ -294,6 +294,14 @@ public class fichaClienteCrear {
 		frameCliente.getContentPane().add(btnGuardar);
 
 		btnBorrar = new JButton("");
+		btnBorrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				Listas.listaClientes.remove(indiceClientes);
+				nextCliente();
+				mostrarCliente();
+			}
+		});
 		btnBorrar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/iconos/1496197748_trash-80px.png")));
 		btnBorrar.setBounds(530, 186, 89, 95);
 		frameCliente.getContentPane().add(btnBorrar);

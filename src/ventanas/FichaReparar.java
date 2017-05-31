@@ -675,6 +675,10 @@ public class FichaReparar {
 			public void focusGained(FocusEvent e) {
 			txtPiezas.setText("");
 			}
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				total();
+			}
 		});
 		
 		///////////////////////////////////////////////////////////////

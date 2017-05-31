@@ -57,7 +57,9 @@ public class FichaVehiculoCrear {
 	private int indiceVehiculos;
 	private JButton btnEditar;
 	private JLabel lblTipoVehicul;
-
+	private JButton btnBorrar;
+	
+	
 	// MENU
 	private JMenu mnMenu;
 	private JMenu mnCoches;
@@ -141,6 +143,7 @@ public class FichaVehiculoCrear {
 		clienteField = new JTextField();
 		usuarioField = new JTextField();
 		lblUsuario = new JLabel("Mecanico");
+		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		btnAtras_1 = new JButton("");
 		btnAlante = new JButton("");
 		btnEditar = new JButton("EDITAR");
@@ -153,6 +156,8 @@ public class FichaVehiculoCrear {
 		lblTipoVehicul = new JLabel("Tipo Vehiculo");
 		menuBar = new JMenuBar();
 		tipoVehiculoField = new JTextField();
+		 btnBorrar = new JButton("");
+
 
 	}
 
@@ -242,12 +247,12 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().add(btnReparar);
 
 		btnClear.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1496111513_erase.png")));
-		btnClear.setBounds(438, 453, 81, 81);
+		btnClear.setBounds(468, 443, 81, 91);
 		frameCrearFichaVehiculo.getContentPane().add(btnClear);
 
 		btnCerrar.setIcon(new ImageIcon(
 				FichaVehiculoCrear.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
-		btnCerrar.setBounds(559, 453, 81, 81);
+		btnCerrar.setBounds(559, 443, 81, 91);
 		frameCrearFichaVehiculo.getContentPane().add(btnCerrar);
 
 		lblOpciones.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
@@ -269,7 +274,7 @@ public class FichaVehiculoCrear {
 		frameCrearFichaVehiculo.getContentPane().add(clienteField);
 
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblUsuario.setBounds(49, 367, 81, 22);
+		lblUsuario.setBounds(10, 367, 157, 22);
 		frameCrearFichaVehiculo.getContentPane().add(lblUsuario);
 
 		usuarioField.setEditable(false);
@@ -346,7 +351,21 @@ public class FichaVehiculoCrear {
 		tipoVehiculoField.setColumns(10);
 		tipoVehiculoField.setBounds(213, 93, 157, 30);
 		frameCrearFichaVehiculo.getContentPane().add(tipoVehiculoField);
-
+		
+		btnBorrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Listas.listaVehiculo.remove(indiceVehiculos);
+				nextVehiculo();
+				mostrarVehiculo();
+			}
+		});
+		btnBorrar.setIcon(new ImageIcon(FichaVehiculoCrear.class.getResource("/iconos/1496197748_trash-80px.png")));
+		btnBorrar.setBounds(380, 443, 81, 91);
+		frameCrearFichaVehiculo.getContentPane().add(btnBorrar);
+		btnBorrar.setVisible(false);
+		btnBorrar.setEnabled(false);
+		
 	}
 
 	public void setEventos() {
@@ -595,7 +614,10 @@ public class FichaVehiculoCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(true);
-
+		btnBorrar.setVisible(true);
+		btnBorrar.setEnabled(true);
+		
+		
 		lblMatricula.setEnabled(false);
 		matriculaField.setEnabled(false);
 		lblKm.setEnabled(false);
@@ -626,7 +648,9 @@ public class FichaVehiculoCrear {
 		btnAlante.setEnabled(true);
 		btnAlante.setVisible(true);
 		btnEditar.setEnabled(false);
-
+		btnBorrar.setVisible(false);
+		btnBorrar.setEnabled(false);
+		
 		lblMatricula.setEnabled(true);
 		matriculaField.setEnabled(true);
 		lblKm.setEnabled(true);
@@ -656,7 +680,8 @@ public class FichaVehiculoCrear {
 		btnAlante.setEnabled(false);
 		btnAlante.setVisible(false);
 		btnEditar.setEnabled(false);
-
+		btnBorrar.setVisible(false);
+		btnBorrar.setEnabled(false);
 		lblMatricula.setEnabled(true);
 		matriculaField.setEnabled(true);
 		lblKm.setEnabled(true);
