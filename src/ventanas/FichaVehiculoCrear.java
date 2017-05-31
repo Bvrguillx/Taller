@@ -147,6 +147,13 @@ public class FichaVehiculoCrear {
 		btnAtras_1 = new JButton("");
 		btnAlante = new JButton("");
 		btnEditar = new JButton("EDITAR");
+		btnEditar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				modoEditar();
+				
+			}
+		});
 		// MENU
 		mnMenu = new JMenu("");
 		mnCoches = new JMenu("");
