@@ -206,8 +206,8 @@ public class FichaReparar {
 		frameFichaReparar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameFichaReparar.getContentPane().setLayout(null);
 
-		lblClientesicosDelTrvpller.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 20));
-		lblClientesicosDelTrvpller.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClientesicosDelTrvpller.setFont(new Font("Dialog", Font.PLAIN, 16));
+		lblClientesicosDelTrvpller.setHorizontalAlignment(SwingConstants.LEFT);
 		lblClientesicosDelTrvpller.setBounds(169, 0, 305, 46);
 		frameFichaReparar.getContentPane().add(lblClientesicosDelTrvpller);
 		frameFichaReparar.setResizable(false);
@@ -763,6 +763,7 @@ public class FichaReparar {
 		
 		btnEditar.setEnabled(true);
 		btnBorrar.setEnabled(true);
+		btnStop.setEnabled(false);
 		
 		indiceLista=Listas.listaReparaciones.size()-1;
 		mostrarReparacion();
