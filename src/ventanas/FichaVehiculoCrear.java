@@ -359,6 +359,8 @@ public class FichaVehiculoCrear {
 				FichaReparar fr = new FichaReparar();
 				fr.getframeFichaReparar().setVisible(true);
 				fr.modoCrear();
+				fr.indiceLista=indiceVehiculos;
+				fr.mostrarReparacion();
 				frameCrearFichaVehiculo.dispose();
 				
 			}

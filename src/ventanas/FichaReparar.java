@@ -58,7 +58,7 @@ public class FichaReparar {
 	private JButton btnGuardar;
 	private JTextField txtCliente;
 	private JLabel lblCliente;
-	private int indiceLista;
+	protected int indiceLista;
 	private Calendar calendario1;
 	private Calendar calendario2;
 	private int hora1, minutos1, segundos1;
