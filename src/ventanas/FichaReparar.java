@@ -34,6 +34,8 @@ import models.Reparacion;
 import models.Vehiculo;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class FichaReparar {
 
@@ -193,6 +195,16 @@ public class FichaReparar {
 		lblTipoVehiculo = new JLabel("Tipo Vehiculo");
 		lblPiezas = new JLabel("Piezas");
 		txtPiezas = new JTextField();
+		txtPiezas.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+						char caracter = e.getKeyChar();
+		                if (((caracter < '0') || (caracter > '9'))
+		                        && (caracter != '\b')) {
+		                	e.consume();
+		                }
+			}
+		});
 		
 		txtPiezas.setText("0");
 		textField = new JTextField();
