@@ -128,7 +128,7 @@ public class FichaReparar {
 	 */
 	@SuppressWarnings({ "rawtypes", })
 	private void initialize() {
-
+ 
 		frameFichaReparar = new JFrame();
 		lblClientesicosDelTrvpller = new JLabel("Reparaciones del Trvpller");
 		lblResponsable = new JLabel("Responsable");
