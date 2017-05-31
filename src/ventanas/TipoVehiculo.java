@@ -1,17 +1,15 @@
 package ventanas;
 
+import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import container.Listas;
 import models.Vehiculo;
-
-import java.awt.event.ActionListener;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
 
 public class TipoVehiculo {
 

@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,9 +18,6 @@ import javax.swing.JTextField;
 
 import container.Listas;
 import models.Reparacion;
-import models.Vehiculo;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class BuscarVehiculo {
 

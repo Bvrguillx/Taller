@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 
 import container.Listas;
 import models.Cliente;
-import models.Vehiculo;
 
 public class fichaDni {
 

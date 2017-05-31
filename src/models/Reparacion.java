@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Date;
-
 public class Reparacion {
 
 	protected String responsable;
