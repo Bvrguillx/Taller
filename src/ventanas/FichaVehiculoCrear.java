@@ -613,7 +613,6 @@ public class FichaVehiculoCrear {
 		btnReparar.setEnabled(true);
 		btnClear.setEnabled(false);
 		btnCerrar.setEnabled(true);
-		
 
 		indiceVehiculos = Listas.listaVehiculo.size() - 1;
 		mostrarVehiculo();

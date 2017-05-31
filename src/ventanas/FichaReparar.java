@@ -382,7 +382,6 @@ public class FichaReparar {
 		lblTipoVehiculo.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTipoVehiculo.setBounds(278, 128, 127, 36);
 		frameFichaReparar.getContentPane().add(lblTipoVehiculo);
-		lblTipoVehiculo.setText(Listas.tipoVehiculo);
 
 		textField.setBounds(233, 164, 209, 41);
 		frameFichaReparar.getContentPane().add(textField);
@@ -760,10 +759,13 @@ public class FichaReparar {
 		matriculaField.setEnabled(false);
 		txtHoraentrada.setEnabled(false);
 		txtHorasalida.setEnabled(false);
-		
+		btnStop.setEnabled(false);
 		btnEditar.setEnabled(true);
 		btnBorrar.setEnabled(true);
 		btnAtras.setEnabled(true);
+		btnStart.setVisible(false);
+		btnStop.setVisible(false);
+		
 		
 		indiceLista=Listas.listaReparaciones.size()-1;
 		mostrarReparacion();
@@ -815,6 +817,8 @@ public class FichaReparar {
 		matriculaField.setEnabled(true);
 		txtHoraentrada.setEnabled(true);
 		txtHorasalida.setEnabled(true);
+		btnStart.setVisible(true);
+		btnStop.setVisible(true);
 	}
 	public void modoCrono() {
 		presupuestoField.setEnabled(false);
@@ -858,6 +862,9 @@ public class FichaReparar {
 		
 		btnEditar.setEnabled(false);
 		btnBorrar.setEnabled(false);
+		
+		btnStart.setVisible(false);
+		btnStop.setVisible(true);
 		
 	}
 	
@@ -909,6 +916,8 @@ presupuestoField.setEnabled(true);
 		btnEditar.setEnabled(false);
 		btnBorrar.setEnabled(false);
 		btnCrearFicha.setEnabled(false);
+		btnStart.setVisible(true);
+		btnStop.setVisible(true);
 		
 	}
 
