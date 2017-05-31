@@ -122,7 +122,9 @@ public class fichaClienteCrear {
 		btnCrear = new JButton("CREAR");
 		btnCerrar = new JButton("");
 		btnLimpiar = new JButton("");
-		btnEditar = new JButton("Editar");
+		btnEditar = new JButton("");
+		btnEditar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/iconos/1495930865_pen.png")));
+		btnEditar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
 		btnAtras_1 = new JButton("");
 		btnNuevoVehiculo = new JButton("");
 		btnNuevoVehiculo
@@ -131,7 +133,9 @@ public class fichaClienteCrear {
 
 		btnAlante = new JButton("");
 		lblFlechas = new JLabel("Cliente");
+		lblFlechas.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblModo = new JLabel("Modo");
+		lblModo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 
 		btnGuardar = new JButton("Guardar");
 
@@ -206,7 +210,7 @@ public class fichaClienteCrear {
 		btnCrear.setIcon(
 				new ImageIcon(fichaClienteCrear.class.getResource("/com/sun/javafx/scene/web/skin/Cut_16x16_JFX.png")));
 		btnCrear.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
-		btnCrear.setBounds(261, 291, 107, 48);
+		btnCrear.setBounds(261, 291, 107, 81);
 		frameCliente.getContentPane().add(btnCrear);
 
 		btnCerrar.setIcon(new ImageIcon(
@@ -256,26 +260,26 @@ public class fichaClienteCrear {
 		btnAtras_1.setIcon(new ImageIcon(fichaClienteCrear.class
 				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black-rtl.png")));
 
-		btnAtras_1.setBounds(277, 14, 49, 34);
+		btnAtras_1.setBounds(295, 14, 49, 48);
 		btnAtras_1.setVisible(false);
 		frameCliente.getContentPane().add(btnAtras_1);
 
 		btnAlante.setIcon(new ImageIcon(fichaClienteCrear.class
 				.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black.png")));
-		btnAlante.setBounds(439, 14, 49, 34);
+		btnAlante.setBounds(510, 14, 49, 48);
 		btnAlante.setVisible(false);
 		frameCliente.getContentPane().add(btnAlante);
 
-		lblFlechas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFlechas.setHorizontalAlignment(SwingConstants.LEFT);
 		lblFlechas.setVisible(false);
-		lblFlechas.setBounds(334, 14, 101, 34);
+		lblFlechas.setBounds(354, 14, 146, 48);
 		frameCliente.getContentPane().add(lblFlechas);
 
 		lblModo.setBounds(168, 14, 89, 40);
 		lblModo.setText("Modo Crear");
 		frameCliente.getContentPane().add(lblModo);
 
-		btnEditar.setBounds(271, 350, 89, 23);
+		btnEditar.setBounds(530, 291, 89, 81);
 		btnEditar.setEnabled(false);
 		frameCliente.getContentPane().add(btnEditar);
 		btnNuevoVehiculo.setVisible(false);
@@ -286,12 +290,12 @@ public class fichaClienteCrear {
 				new ImageIcon(fichaClienteCrear.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
 		btnGuardar.setVisible(false);
 		btnGuardar.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 15));
-		btnGuardar.setBounds(261, 277, 107, 48);
+		btnGuardar.setBounds(261, 291, 107, 81);
 		frameCliente.getContentPane().add(btnGuardar);
 
 		btnBorrar = new JButton("");
 		btnBorrar.setIcon(new ImageIcon(fichaClienteCrear.class.getResource("/iconos/1496197748_trash-80px.png")));
-		btnBorrar.setBounds(530, 199, 89, 95);
+		btnBorrar.setBounds(530, 186, 89, 95);
 		frameCliente.getContentPane().add(btnBorrar);
 		btnBorrar.setVisible(false);
 
