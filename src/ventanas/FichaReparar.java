@@ -763,7 +763,7 @@ public class FichaReparar {
 		
 		btnEditar.setEnabled(true);
 		btnBorrar.setEnabled(true);
-		btnStop.setEnabled(false);
+		btnStop.setEnabled(true);
 		
 		indiceLista=Listas.listaReparaciones.size()-1;
 		mostrarReparacion();
